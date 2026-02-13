@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Zorgstart — Overzicht & strategische waarde</title>
+
+  <style>
+    :root{
+      --bg: #f3f6fb;
+      --card: #ffffff;
+      --text: #0f253a;
+      --muted: #5b6b7a;
+      --border: rgba(15, 37, 58, .10);
+      --shadow: 0 16px 40px rgba(15, 37, 58, .10);
+      --accent: #1faacd;
+      --accent-2: #165b72;
+      --warm: #f97316;
+      --ok: #22c55e;
+
+      --radius: 18px;
+      --radius-sm: 14px;
+      --pad: clamp(16px, 2.2vw, 22px);
+      --max: 1120px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(900px 450px at 15% -10%, rgba(31,170,205,.16), transparent 60%),
+        radial-gradient(800px 400px at 90% 0%, rgba(249,115,22,.12), transparent 55%),
+        linear-gradient(180deg, #eef3fb, var(--bg));
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 48px; }
+
+    /* Top bar */
+    .topbar{
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; margin-bottom: 18px;
+    }
+    .brand{
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 12px; border: 1px solid var(--border); border-radius: 999px;
+      background: rgba(255,255,255,.6); backdrop-filter: blur(8px);
+    }
+    .logo{
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), rgba(31,170,205,.35));
+      box-shadow: 0 10px 20px rgba(31,170,205,.25);
+      position: relative;
+    }
+    .logo:after{
+      content:""; position:absolute; inset: 9px;
+      border-radius: 8px; border: 2px solid rgba(255,255,255,.85);
+    }
+    .brand strong{ font-size: 14px; letter-spacing: .2px; }
+    .brand span{ display:block; font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+    .pill{
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 12px; border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.6);
+      backdrop-filter: blur(8px);
+      font-size: 12px; color: var(--muted);
+      white-space: nowrap;
+    }
+    .dot{
+      width: 9px; height: 9px; border-radius: 999px; background: var(--ok);
+      box-shadow: 0 0 0 5px rgba(34,197,94,.14);
+    }
+
+    /* Hero */
+    .hero{
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px -120px auto auto;
+      width: 420px; height: 420px; border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(31,170,205,.35), transparent 60%);
+      filter: blur(1px);
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto auto -140px -140px;
+      width: 420px; height: 420px; border-radius: 999px;
+      background: radial-gradient(circle at 50% 50%, rgba(249,115,22,.22), transparent 60%);
+    }
+    .hero-inner{
+      position: relative;
+      padding: clamp(22px, 3vw, 34px);
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero-inner{ grid-template-columns: 1fr; }
+    }
+
+    .badge{
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 12px; border-radius: 999px;
+      background: rgba(31,170,205,.10);
+      color: var(--accent-2);
+      border: 1px solid rgba(31,170,205,.20);
+      font-weight: 650;
+      font-size: 12px;
+      letter-spacing: .2px;
+      width: fit-content;
+    }
+    .badge svg{ width: 16px; height: 16px; }
+
+    h1{
+      margin: 12px 0 10px;
+      font-size: clamp(22px, 3.2vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -0.4px;
+    }
+    .lead{
+      margin: 0 0 16px;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--muted);
+      max-width: 64ch;
+    }
+
+    .chips{ display:flex; flex-wrap: wrap; gap: 10px; }
+    .chip{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      font-size: 12.5px;
+      color: var(--text);
+    }
+    .chip .ic{
+      width: 22px; height: 22px; border-radius: 8px;
+      display:grid; place-items:center;
+      background: rgba(31,170,205,.10);
+      border: 1px solid rgba(31,170,205,.18);
+      color: var(--accent-2);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    /* Aside card (quick view) */
+    .quick{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.78);
+      padding: var(--pad);
+      box-shadow: 0 10px 26px rgba(15,37,58,.06);
+    }
+    .quick h3{
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+    .kv{
+      display:grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .kv .row{
+      display:flex; align-items:flex-start; justify-content: space-between; gap: 12px;
+      padding: 10px 12px;
+      border: 1px dashed rgba(15,37,58,.14);
+      border-radius: 14px;
+      background: rgba(248, 251, 255, .7);
+    }
+    .kv .row b{ font-size: 12.5px; }
+    .kv .row span{ font-size: 12.5px; color: var(--muted); text-align: right; }
+
+    /* Main grid */
+    .grid{
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 960px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.84);
+      box-shadow: 0 12px 30px rgba(15,37,58,.07);
+      overflow: hidden;
+    }
+    .card .hd{
+      padding: 16px var(--pad);
+      border-bottom: 1px solid var(--border);
+      display:flex; align-items:center; justify-content: space-between; gap: 12px;
+      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.72));
+    }
+    .card .hd h2{
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: .2px;
+    }
+    .tag{
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(249,115,22,.10);
+      border: 1px solid rgba(249,115,22,.20);
+      color: #8a3b02;
+      white-space: nowrap;
+    }
+    .card .bd{ padding: var(--pad); }
+
+    /* “Pillars” list */
+    .pillars{
+      display:grid;
+      gap: 12px;
+    }
+    .pillar{
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.70);
+      padding: 14px 14px 14px 14px;
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 12px;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .pillar:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 14px 26px rgba(15,37,58,.08);
+    }
+    .p-ic{
+      width: 44px; height: 44px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: rgba(31,170,205,.10);
+      border: 1px solid rgba(31,170,205,.18);
+      color: var(--accent-2);
+    }
+    .p-ic svg{ width: 22px; height: 22px; }
+    .pillar h4{
+      margin: 0 0 4px;
+      font-size: 13.5px;
+    }
+    .pillar p{
+      margin: 0 0 8px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .bullets{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 12.8px;
+      line-height: 1.55;
+    }
+    .bullets li{ margin: 2px 0; }
+
+    /* Maturity timeline */
+    .timeline{
+      display:grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .step{
+      display:flex; gap: 12px; align-items:flex-start;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(248, 251, 255, .8);
+    }
+    .step .nr{
+      width: 36px; height: 36px; border-radius: 14px;
+      display:grid; place-items:center;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), rgba(31,170,205,.55));
+      box-shadow: 0 10px 18px rgba(31,170,205,.22);
+      flex: 0 0 auto;
+    }
+    .step h5{
+      margin: 0 0 4px;
+      font-size: 13px;
+    }
+    .step p{
+      margin: 0;
+      font-size: 12.8px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Side column blocks */
+    .mini{
+      display:grid;
+      gap: 18px;
+    }
+    .note{
+      padding: var(--pad);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 12px 28px rgba(15,37,58,.06);
+    }
+    .note h3{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+    .muted{ color: var(--muted); font-size: 13px; line-height: 1.55; margin: 0; }
+
+    .links{
+      display:grid; gap: 10px; margin-top: 12px;
+    }
+    .link{
+      display:flex; justify-content: space-between; align-items:center; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(248, 251, 255, .75);
+      font-size: 12.8px;
+      color: var(--text);
+    }
+    .link small{ color: var(--muted); }
+    .arrow{
+      width: 28px; height: 28px; border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(31,170,205,.10);
+      border: 1px solid rgba(31,170,205,.18);
+      color: var(--accent-2);
+      flex: 0 0 auto;
+    }
+
+    .callout{
+      border-radius: var(--radius);
+      padding: var(--pad);
+      border: 1px solid rgba(34,197,94,.28);
+      background: rgba(34,197,94,.08);
+    }
+    .callout b{ display:block; margin-bottom: 6px; }
+    .callout ul{ margin: 0; padding-left: 18px; font-size: 12.8px; color: var(--text); }
+    .callout li{ margin: 4px 0; }
+
+    /* Footer */
+    .footer{
+      margin-top: 18px;
+      display:flex; flex-wrap: wrap; gap: 10px; align-items:center; justify-content: space-between;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 8px 2px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.75);
+      font-size: 12.5px;
+      color: var(--text);
+    }
+    .btn svg{ width: 16px; height: 16px; color: var(--accent-2); }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="brand" aria-label="Zorgstart header">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong>Zorgstart</strong>
+          <span>Van ontslagflow naar strategische kerncomponent</span>
+        </div>
+      </div>
+      <div class="pill">
+        <span class="dot" aria-hidden="true"></span>
+        Focus: efficiëntie • instroom • matching • patiëntwaarde
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="badge">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l3 7h7l-5.7 4.1L18.5 21 12 16.8 5.5 21l2.2-7.9L2 9h7l3-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+            Strategische nota — overleg maandag
+          </div>
+
+          <h1>Een uitnodigend, schaalbaar model voor <span style="color:var(--accent-2)">sociaal haalbaar ontslag</span>.</h1>
+          <p class="lead">
+            Zorgstart ondersteunt sociale diensten en ontslagteams via standaardisatie, triage en digitale workflows.
+            Zo verschuift de focus van administratieve druk naar adviserend werk en complex casemanagement — met meetbare impact op doorstroom.
+          </p>
+
+          <div class="chips">
+            <div class="chip"><span class="ic">1</span> Operationele optimalisatie</div>
+            <div class="chip"><span class="ic">2</span> CROP-automatisering</div>
+            <div class="chip"><span class="ic">3</span> Real-time matching</div>
+            <div class="chip"><span class="ic">4</span> Patiëntwaarde</div>
+          </div>
+        </div>
+
+        <aside class="quick">
+          <h3>Snelle leeslijn</h3>
+          <p class="muted">
+            Het systeem werkt vandaag, maar staat onder spanning door stijgende complexiteit en verkorte ligduur.
+            Zorgstart maakt het structureel schaalbaar.
+          </p>
+
+          <div class="kv">
+            <div class="row">
+              <b>Doel</b>
+              <span>Sneller, veiliger, voorspelbaarder ontslag</span>
+            </div>
+            <div class="row">
+              <b>Mechanisme</b>
+              <span>Intake + triage + workflow + matching</span>
+            </div>
+            <div class="row">
+              <b>Resultaat</b>
+              <span>Meer ruimte voor casemanagement</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Main grid -->
+    <section class="grid" aria-label="Overzicht">
+      <!-- Left: pillars -->
+      <div class="card">
+        <div class="hd">
+          <h2>Vier strategische hefbomen</h2>
+          <span class="tag">van intern proces → business-kern</span>
+        </div>
+        <div class="bd">
+          <div class="pillars">
+
+            <!-- 1 -->
+            <article class="pillar">
+              <div class="p-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <h4>1) Operationele optimalisatie & efficiëntere inzet van FTE</h4>
+                <p>
+                  Standaardisatie, centralisatie en digitalisering van intake en triage verleggen het werk van uitvoerend naar adviserend.
+                  Zo kan capaciteit gefaseerd worden geoptimaliseerd zonder kwaliteitsverlies.
+                </p>
+                <ul class="bullets">
+                  <li>Uniforme intake & triagecriteria</li>
+                  <li>Minder manuele administratie</li>
+                  <li>Meer tijd voor complex casemanagement</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- 2 -->
+            <article class="pillar">
+              <div class="p-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M8 7h8M8 12h8M8 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M6 4h12v16H6z" stroke="currentColor" stroke-width="1.5" />
+                </svg>
+              </div>
+              <div>
+                <h4>2) Automatisering van het CROP-proces & strategische instroom</h4>
+                <p>
+                  Integratie in Zorgstart maakt het CROP-proces minder manueel via beslissingslogica en triagecriteria.
+                  De “grijze zone” wordt beter geselecteerd — vaak zorgintensieve profielen die aansluiten bij ons zorgmodel.
+                </p>
+                <ul class="bullets">
+                  <li>Duidelijke beslisregels en routing</li>
+                  <li>Betere selectie, meer complexiteit in portfolio</li>
+                  <li>Onderbouwbaar via lopende studie</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- 3 -->
+            <article class="pillar">
+              <div class="p-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M7 17l10-10M7 7h10v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <h4>3) Zorgstart als dynamisch matchingplatform</h4>
+                <p>
+                  Zorgaanbieders registreren en actualiseren beschikbaarheid, competenties, specialisaties en regionale dekking.
+                  Dit maakt real-time matching mogelijk tussen zorgvraag en zorgaanbod.
+                </p>
+                <ul class="bullets">
+                  <li>Actueel aanbod (competenties + regio + capaciteit)</li>
+                  <li>Snellere doorverwijzing en planning</li>
+                  <li>Af te toetsen binnen lopend proefproject (ZAS)</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- 4 -->
+            <article class="pillar">
+              <div class="p-ic" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 21s7-4.4 7-10a4 4 0 0 0-7-2.5A4 4 0 0 0 5 11c0 5.6 7 10 7 10z"
+                        stroke="currentColor" stroke-width="1.5" fill="none"/>
+                </svg>
+              </div>
+              <div>
+                <h4>4) Patiëntwaarde via betere zorgplannen & juiste matching</h4>
+                <p>
+                  In een volgende fase ondersteunt Zorgstart patiënten rechtstreeks bij het optimaliseren van zorgplannen
+                  en het matchen met de juiste zorgverleners — met meer transparantie en continuïteit.
+                </p>
+                <ul class="bullets">
+                  <li>Heldere zorgplanning en opvolging</li>
+                  <li>Patiëntgerichtheid en transparantie</li>
+                  <li>Continuïteit over lijnen heen</li>
+                </ul>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: maturity + links + open points -->
+      <div class="mini">
+
+        <div class="card">
+          <div class="hd">
+            <h2>Maturiteitsroadmap</h2>
+            <span class="tag" style="background:rgba(31,170,205,.10);border-color:rgba(31,170,205,.22);color:var(--accent-2);">
+              gefaseerd schaalbaar
+            </span>
+          </div>
+          <div class="bd">
+            <div class="timeline">
+              <div class="step">
+                <div class="nr">1</div>
+                <div>
+                  <h5>Standaard intake & triage</h5>
+                  <p>Uniforme flow, minder variatie, snelle routing van vragen en dossiers.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="nr">2</div>
+                <div>
+                  <h5>Automatisering CROP</h5>
+                  <p>Duidelijke beslislogica en triagecriteria voor betere selectie en instroom.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="nr">3</div>
+                <div>
+                  <h5>Matching zorgaanbod</h5>
+                  <p>Real-time beschikbaarheid en competenties voor efficiënte doorverwijzing.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="nr">4</div>
+                <div>
+                  <h5>Patiëntgerichte zorgplannen</h5>
+                  <p>Ondersteuning voor transparantie, continuïteit en betere uitkomsten.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <h3>Beleidscontext & inspiratie</h3>
+          <p class="muted">
+            Interessante bronnen i.k.v. ziekenhuiswerking, sociaal werk, geïntegreerde zorg en casemanagement.
+          </p>
+
+          <div class="links">
+            <a class="link" href="https://www.departementzorg.be/nl/ziekenhuiserkenning-en-regelgeving" target="_blank" rel="noopener">
+              <div>
+                <b>Departement Zorg</b><br/>
+                <small>Ziekenhuiserkenning & regelgeving</small>
+              </div>
+              <div class="arrow" aria-hidden="true">↗</div>
+            </a>
+
+            <a class="link" href="https://www.health.belgium.be/nl/tools/gids-sociaal-werk-ziekenhuizen" target="_blank" rel="noopener">
+              <div>
+                <b>FOD Volksgezondheid</b><br/>
+                <small>Gids sociaal werk in ziekenhuizen</small>
+              </div>
+              <div class="arrow" aria-hidden="true">↗</div>
+            </a>
+
+            <a class="link" href="https://www.riziv.fgov.be/nl/professionals/info-voor-allen/het-interfederaal-plan-voor-geintegreerde-zorg/geintegreerde-zorg-voor-chronisch-zieken" target="_blank" rel="noopener">
+              <div>
+                <b>RIZIV</b><br/>
+                <small>Interfederaal plan geïntegreerde zorg</small>
+              </div>
+              <div class="arrow" aria-hidden="true">↗</div>
+            </a>
+
+            <a class="link" href="https://kce.fgov.be/sites/default/files/2026-01/KCE_413As_ESRO_Case-management-Model-Synthese.pdf" target="_blank" rel="noopener">
+              <div>
+                <b>KCE</b><br/>
+                <small>Case management — model synthese (PDF)</small>
+              </div>
+              <div class="arrow" aria-hidden="true">↗</div>
+            </a>
+          </div>
+        </div>
+
+        <div class="callout">
+          <b>Open punten (voor maandag)</b>
+          <ul>
+            <li><b>Thuiszorg 2.0 — Thuiszorgzekerheid (regio Oostende):</b> wachten op bevraagde info.</li>
+            <li><b>Vraag B. Segers (reva ZAS) rond kinesisten:</b> overleg wordt ingepland.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>Tip: plak dit bestand als <b>index.html</b> in je repo en publish via GitHub Pages.</span>
+      <a class="btn" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 5l-7 7h4v7h6v-7h4l-7-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+        </svg>
+        Naar boven
+      </a>
+    </div>
+
+  </div>
+</body>
+</html>
