@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zorgstart — Wireframes (V1 + richting volledige versie)</title>
+  <meta name="description" content="Wireframes: Inbox, Review split view, Taken/Publish, Dashboard, en preview van Probleemgebieden/Bundels/Zorgplan." />
+
+  <style>
+    :root{
+      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
+      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
+      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
+        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
+        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
+    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
+    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
+    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
+    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
+    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
+    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
+    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
+    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
+    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+    .title{display:flex; align-items:center; gap:10px; font-weight:900}
+    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
+    .content{padding:14px}
+    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
+    .tabs{display:flex; gap:8px; flex-wrap:wrap}
+    .tab{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.14);
+      padding:8px 10px;border-radius:999px;
+      color:var(--muted); font-weight:900; font-size:13px;
+      cursor:pointer; user-select:none;
+      transition:transform .15s ease, border-color .15s ease, background .15s ease;
+    }
+    .tab:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
+    .tab.active{color:rgba(255,255,255,.92); border-color:rgba(93,214,255,.35)}
+    .screen{display:none}
+    .screen.active{display:block}
+    .frame{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.12);
+      border-radius:18px;
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+    }
+    .framebar{
+      display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      padding:12px 12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+    }
+    .framebar b{letter-spacing:-.01em}
+    .btn{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.14);
+      padding:8px 10px;border-radius:12px;
+      color:rgba(255,255,255,.90); font-weight:900; font-size:13px;
+    }
+    .layout{
+      display:grid; grid-template-columns:1fr; gap:12px; padding:12px;
+    }
+    @media(min-width:980px){.layout{grid-template-columns:1fr 1fr}}
+    .box{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:12px;
+      min-height:220px;
+    }
+    .box h3{margin:0 0 8px; font-size:14px}
+    .muted{color:var(--muted); font-size:13px; line-height:1.5}
+    .row{display:flex; justify-content:space-between; gap:10px; padding:10px 10px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.10); margin-top:8px}
+    .pill2{font-size:12px; font-weight:900; padding:3px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); color:var(--muted)}
+    .pill2.good{border-color:rgba(72,213,151,.35); color:rgba(255,255,255,.88)}
+    .pill2.bad{border-color:rgba(255,107,107,.35); color:rgba(255,255,255,.88)}
+    .pill2.warn{border-color:rgba(255,209,102,.35); color:rgba(255,255,255,.88)}
+    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .small{font-size:12.5px}
+  </style>
+</head>
+
+<body>
+  <div class="grid" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Wireframes</span></div>
+      <nav>
+        <a class="navlink" href="index.html">Home</a>
+        <a class="navlink" href="board.html">Board</a>
+        <a class="navlink" href="strategy.html">Strategie</a>
+        <a class="navlink" href="v1.html">V1</a>
+        <a class="navlink" href="roadmap.html">Roadmap</a>
+        <a class="navlink" href="governance.html">Governance</a>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="pill"><span class="dot"></span><span>Wireframes (klikbaar)</span><span class="badge">demo-look</span></div>
+        <h1>Zo kan Zorgstart eruitzien — V1 én preview van de volledige versie</h1>
+        <p class="sub">
+          Dit zijn “screens” die je kan tonen alsof het een demo is. Geen backend nodig, maar de structuur klopt:
+          inbox → review → publish → dashboard → (preview) probleemgebieden/bundels/zorgplan.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span><span>Schermen</span></div>
+        <div class="tabs" id="tabs">
+          <span class="tab active" data-screen="inbox">Inbox</span>
+          <span class="tab" data-screen="review">Review</span>
+          <span class="tab" data-screen="publish">Publish</span>
+          <span class="tab" data-screen="dash">Dashboard</span>
+          <span class="tab" data-screen="full">Volledige versie (preview)</span>
+        </div>
+      </div>
+
+      <div class="content">
+        <!-- INBOX -->
+        <div class="screen active" id="inbox">
+          <div class="frame">
+            <div class="framebar">
+              <b>Inbox — Cases</b>
+              <div style="display:flex; gap:8px; flex-wrap:wrap">
+                <span class="btn">+ Upload</span>
+                <span class="btn">Filter</span>
+                <span class="btn">Rapport</span>
+              </div>
+            </div>
+            <div class="layout">
+              <div class="box">
+                <h3>Vandaag</h3>
+                <div class="row"><div><b>Case #1048</b><div class="muted">Orthopedie · ontslagbrief binnen</div></div><span class="pill2 warn">Review nodig</span></div>
+                <div class="row"><div><b>Case #1051</b><div class="muted">Geriatrie · scan (OCR)</div></div><span class="pill2 warn">In verwerking</span></div>
+                <div class="row"><div><b>Case #1039</b><div class="muted">Neuro · gepubliceerd</div></div><span class="pill2 good">THUIS groen</span></div>
+              </div>
+              <div class="box">
+                <h3>Snelle KPI’s</h3>
+                <div class="row"><div><b>Median upload → voorstel</b><div class="muted">Document → AI output</div></div><span class="pill2 good">6 min</span></div>
+                <div class="row"><div><b>Median voorstel → approve</b><div class="muted">Review door sociale dienst</div></div><span class="pill2 good">14 min</span></div>
+                <div class="row"><div><b>Open THUIS-stoppers</b><div class="muted">Niet ingevulde taken</div></div><span class="pill2 bad">8</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- REVIEW -->
+        <div class="screen" id="review">
+          <div class="frame">
+            <div class="framebar">
+              <b>Review — Split view</b>
+              <div style="display:flex; gap:8px; flex-wrap:wrap">
+                <span class="btn">Opslaan</span>
+                <span class="btn">Approve</span>
+              </div>
+            </div>
+            <div class="layout">
+              <div class="box">
+                <h3>Document viewer</h3>
+                <div class="muted">PDF links met highlights (evidence) per taak.</div>
+                <div class="row"><div><b>Highlighted passage</b><div class="muted">“Wondzorg 3x/week, start 48u…”</div></div><span class="pill2">Evidence</span></div>
+                <div class="row"><div><b>Highlighted passage</b><div class="muted">“Kinesitherapie 2x/week…”</div></div><span class="pill2">Evidence</span></div>
+              </div>
+              <div class="box">
+                <h3>AI voorstel → Taken</h3>
+                <div class="row"><div><b>Wondzorg</b><div class="muted">Thuisverpleegkundige · 3x/week</div></div><span class="pill2 good">0.92</span></div>
+                <div class="row"><div><b>Mobilisatie</b><div class="muted">Kinesist · 2x/week</div></div><span class="pill2 good">0.88</span></div>
+                <div class="row"><div><b>Valpreventie screening</b><div class="muted">Ergotherapeut · 1x</div></div><span class="pill2 warn">0.74</span></div>
+                <div class="row"><div><b>Medicatie-opvolging</b><div class="muted">Thuisverpleegkundige · dagelijks</div></div><span class="pill2 warn">0.78</span></div>
+                <div class="muted" style="margin-top:10px">Bewerk/voeg toe/verwijder + verplicht “approve” door sociale dienst.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PUBLISH -->
+        <div class="screen" id="publish">
+          <div class="frame">
+            <div class="framebar">
+              <b>Publish & Follow-up</b>
+              <div style="display:flex; gap:8px; flex-wrap:wrap">
+                <span class="btn">Publiceer (draft)</span>
+                <span class="btn">Herinnering</span>
+              </div>
+            </div>
+            <div class="layout">
+              <div class="box">
+                <h3>Ketenstatus (V1 light)</h3>
+                <div class="row"><div><b>MED</b><div class="muted">klinisch klaar</div></div><span class="pill2 good">groen</span></div>
+                <div class="row"><div><b>HOSP</b><div class="muted">transport/administratie</div></div><span class="pill2 warn">oranje</span></div>
+                <div class="row"><div><b>THUIS</b><div class="muted">taken ingevuld?</div></div><span class="pill2 warn">oranje</span></div>
+              </div>
+              <div class="box">
+                <h3>Flexizorg status</h3>
+                <div class="row"><div><b>Thuisverpleegkundige</b><div class="muted">2 kandidaten</div></div><span class="pill2 good">ingepland</span></div>
+                <div class="row"><div><b>Kinesist</b><div class="muted">1 kandidaat</div></div><span class="pill2 good">ingepland</span></div>
+                <div class="row"><div><b>Ergotherapeut</b><div class="muted">0 kandidaten</div></div><span class="pill2 bad">open</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DASH -->
+        <div class="screen" id="dash">
+          <div class="frame">
+            <div class="framebar">
+              <b>Dashboard — Beddenhuis impact</b>
+              <div style="display:flex; gap:8px; flex-wrap:wrap">
+                <span class="btn">Per afdeling</span>
+                <span class="btn">Per discipline</span>
+                <span class="btn">Export</span>
+              </div>
+            </div>
+            <div class="layout">
+              <div class="box">
+                <h3>Kern KPI’s</h3>
+                <div class="row"><div><b>Doorlooptijd (upload → publish)</b><div class="muted">median</div></div><span class="pill2 good">24 min</span></div>
+                <div class="row"><div><b>Time-to-fill</b><div class="muted">median</div></div><span class="pill2 warn">8 u</span></div>
+                <div class="row"><div><b>% AI edits</b><div class="muted">kwaliteit & learning</div></div><span class="pill2 warn">22%</span></div>
+              </div>
+              <div class="box">
+                <h3>THUIS stoppers</h3>
+                <div class="row"><div><b>Open taken</b><div class="muted">top 3 knelpunten</div></div><span class="pill2 bad">Ergo · gezinszorg · hulpmiddelen</span></div>
+                <div class="muted" style="margin-top:10px">Dit is directe input voor ketenoverleg en contractering/portfolio.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FULL PREVIEW -->
+        <div class="screen" id="full">
+          <div class="frame">
+            <div class="framebar">
+              <b>Volledige versie (preview) — Probleemgebieden → Bundels → Zorgplan</b>
+              <div style="display:flex; gap:8px; flex-wrap:wrap">
+                <span class="btn">Zorgplan</span>
+                <span class="btn">Patiëntversie</span>
+              </div>
+            </div>
+            <div class="layout">
+              <div class="box">
+                <h3>Probleemgebieden (voorbeeld)</h3>
+                <div class="row"><div><b>Mobiliteit</b><div class="muted">impact: hoog</div></div><span class="pill2 warn">bundel</span></div>
+                <div class="row"><div><b>Valrisico</b><div class="muted">impact: hoog</div></div><span class="pill2 warn">bundel</span></div>
+                <div class="row"><div><b>Medicatiebeheer</b><div class="muted">polyfarmacie/insuline</div></div><span class="pill2 warn">schema</span></div>
+                <div class="row"><div><b>Wondzorg</b><div class="muted">3x/week</div></div><span class="pill2 good">actief</span></div>
+              </div>
+              <div class="box">
+                <h3>Uw zorg thuis (patiëntvertaling)</h3>
+                <div class="muted">
+                  “Vanaf uw thuiskomst komt een verpleegkundige 3× per week voor uw wonde.  
+                  Een kinesist helpt u 2× per week met stappen. Uw medicatie wordt samen met u overlopen.  
+                  Bij koorts, roodheid of toenemende pijn contacteer …”
+                </div>
+                <div class="row"><div><b>Contact</b><div class="muted">coördinator + huisarts</div></div><span class="pill2">1 klik</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="small">Tip: gebruik dit als “demo” in directie — klik door de tabs.</div>
+      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+    </div>
+  </div>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const screens = Array.from(document.querySelectorAll('.screen'));
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      screens.forEach(s => s.classList.remove('active'));
+      t.classList.add('active');
+      const id = t.dataset.screen;
+      const screen = document.getElementById(id);
+      if(screen) screen.classList.add('active');
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    }));
+  </script>
+</body>
+</html>
