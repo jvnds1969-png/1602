@@ -1,150 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zorgstart – Verdienmodel</title>
-<style>
-body{
-  margin:0;
-  font-family:system-ui, -apple-system, sans-serif;
-  background:#0b1020;
-  color:#f5f7ff;
-}
-header{
-  padding:60px 40px;
-  background:linear-gradient(135deg,#7c5cff,#ff6b6b);
-}
-header h1{
-  margin:0;
-  font-size:36px;
-}
-header p{
-  margin-top:10px;
-  font-size:18px;
-  opacity:.9;
-}
-.section{
-  padding:60px 40px;
-  max-width:1100px;
-  margin:auto;
-}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-}
-.card{
-  background:#111729;
-  padding:30px;
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.08);
-}
-.card h2{
-  margin-top:0;
-}
-.highlight{
-  margin-top:20px;
-  padding:20px;
-  background:rgba(124,92,255,.12);
-  border-radius:14px;
-}
-footer{
-  text-align:center;
-  padding:40px;
-  opacity:.6;
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zorgstart — Verdienmodel</title>
+  <meta name="description" content="Verdienmodel Zorgstart: van v1 site-licentie naar modulair ecosysteem met zorgbundels, casemanagement en data-analytics." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-<header>
-  <h1>Zorgstart – Verdienmodel</h1>
-  <p>Van v1 task-engine naar volledig transmurale ecosysteem</p>
-</header>
-
-<div class="section">
-
-  <div class="grid">
-
-    <div class="card">
-      <h2>Verdienmodel v1</h2>
-      <ul>
-        <li>Site-licentie: €25.000 – €40.000 / jaar</li>
-        <li>of €20–€30 per CROP-thuisontslag</li>
-        <li>Hybride mogelijk</li>
-      </ul>
-      <div class="highlight">
-        0,3 ligdag reductie = duidelijke positieve business case.
+  <div class="wrap">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Zorgstart</span>
+          <span class="badge">Verdienmodel</span>
+        </div>
+        <nav>
+          <a class="navlink" href="index.html">Overzicht</a>
+          <a class="navlink" href="strategy.html">Analyse</a>
+          <a class="navlink" href="v1.html">Versie 1</a>
+          <a class="navlink" href="journey.html">Journey</a>
+          <a class="navlink" href="roadmap.html">Roadmap</a>
+          <a class="navlink" href="board.html">Board</a>
+          <a class="navlink" href="governance.html">Governance</a>
+          <a class="navlink" href="wireframes.html">Wireframes</a>
+          <a class="navlink" href="pitch.html">Pitch</a>
+          <a class="navlink" href="uitrol.html">Uitrol</a>
+          <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+        </nav>
       </div>
     </div>
 
-    <div class="card">
-      <h2>Waardepropositie v1</h2>
-      <ul>
-        <li>Snellere doorstroom</li>
-        <li>Minder last-minute ontslagstress</li>
-        <li>Minder heropnames</li>
-        <li>Volledige audit trail</li>
-      </ul>
-    </div>
+    <section class="hero reveal">
+      <div class="hero-inner">
+        <div class="pill">
+          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+          <span>Van v1 task-engine naar transmurale ecosysteem</span>
+          <span class="badge">business case</span>
+        </div>
+        <h1>Verdienmodel: licentie, transactie en ecosysteem-inkomsten.</h1>
+        <p class="sub">
+          V1 opent de deur in ziekenhuizen. De volledige versie bouwt recurrent ecosysteeminkomen via modules, data en matching.
+        </p>
+      </div>
+    </section>
 
+    <section class="panel reveal">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span> Verdienmodel V1</div>
+        <span class="badge">direct inzetbaar</span>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>Prijsmodel</h3>
+            <ul>
+              <li>Site-licentie: €25.000 – €40.000 / jaar</li>
+              <li>Of €20–€30 per CROP-thuisontslag</li>
+              <li>Hybride model mogelijk</li>
+            </ul>
+            <div class="callout" style="margin-top:12px">
+              <strong>Business case</strong>
+              <p>0,3 ligdag reductie = duidelijke positieve business case voor elk ziekenhuis.</p>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Waardepropositie V1</h3>
+            <ul>
+              <li>Snellere doorstroom beddenhuis</li>
+              <li>Minder last-minute ontslagstress</li>
+              <li>Minder heropnames door volledige taakoverdracht</li>
+              <li>Volledige audit trail voor governance</li>
+            </ul>
+          </div>
+        </div>
+        <div class="kpis" style="margin-top:14px">
+          <div class="kpi"><div class="label">Licentie</div><div class="value">€25–40k</div><div class="hint">per site / jaar</div></div>
+          <div class="kpi"><div class="label">Per ontslag</div><div class="value">€20–30</div><div class="hint">CROP-thuisprofiel</div></div>
+          <div class="kpi"><div class="label">Ligdagwinst</div><div class="value">−0,3 dag</div><div class="hint">= positieve ROI</div></div>
+          <div class="kpi"><div class="label">Break-even</div><div class="value"><6 mnd</div><div class="hint">na live start</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel reveal">
+      <div class="head">
+        <div class="title"><span class="swatch accent"></span> Volledige versie (V2+)</div>
+        <span class="badge">modulair ecosysteem</span>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>Module 1 — Zorgbundels</h3>
+            <p>Upsell bovenop V1</p>
+            <ul>
+              <li>+ €15.000 – €25.000 licentie</li>
+              <li>Geavanceerde zorgpaden per probleemgebied</li>
+              <li>Evidence-based bundelconfiguratie</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Module 2 — Casemanagement</h3>
+            <p>Transmurale opvolging per patiënt</p>
+            <ul>
+              <li>Per-patiënt fee model</li>
+              <li>Proactieve monitoring na ontslag</li>
+              <li>Integratie met eerste lijn</li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid2" style="margin-top:14px">
+          <div class="card">
+            <h3>Module 3 — Matching / Flexizorg</h3>
+            <ul>
+              <li>Transactiefee bij zorgopstart</li>
+              <li>Netwerkversterking Altrio</li>
+              <li>Automatische capaciteitsmatching</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Data & Analytics</h3>
+            <ul>
+              <li>Doorstroomrapportering per afdeling</li>
+              <li>Heropname-analyse en trends</li>
+              <li>Strategische dashboards voor directie</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:14px">
+          <strong>Strategie</strong>
+          <p>V1 opent de deur in ziekenhuizen. V2+ bouwt recurrent ecosysteeminkomen via modules, data en transmurale matching.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer reveal">
+      <div>
+        <b>Zorgstart</b> — van ontslagtaak naar zorgplatform
+        <span class="sep">·</span>
+        <span class="small">Verdienmodel & groeipad</span>
+      </div>
+      <div class="small">
+        <a href="uitrol.html">Uitrol</a>
+        <span class="sep">·</span>
+        <a href="pitch.html">Pitch</a>
+        <span class="sep">·</span>
+        <a href="index.html">← Home</a>
+      </div>
+    </div>
   </div>
 
-</div>
-
-<div class="section">
-
-  <h1>Verdienmodel Volledige Versie (v2+)</h1>
-
-  <div class="grid">
-
-    <div class="card">
-      <h2>Module 1 – Zorgbundels</h2>
-      <p>Upsell bovenop v1</p>
-      <ul>
-        <li>+ €15.000 – €25.000 licentie</li>
-        <li>Geavanceerde zorgpaden</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Module 2 – Casemanagement</h2>
-      <ul>
-        <li>Per patiënt fee</li>
-        <li>Transmurale opvolging</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Module 3 – Matching / Flexizorg</h2>
-      <ul>
-        <li>Transactiefee bij zorgopstart</li>
-        <li>Netwerkversterking Altrio</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Data & Analytics</h2>
-      <ul>
-        <li>Doorstroomrapportering</li>
-        <li>Heropname-analyse</li>
-        <li>Strategische dashboards</li>
-      </ul>
-    </div>
-
-  </div>
-
-  <div class="highlight">
-    Strategie: v1 opent de deur in ziekenhuizen.  
-    v2+ bouwt recurrent ecosysteeminkomen.
-  </div>
-
-</div>
-
-<footer>
-Zorgstart – van ontslagtaak naar zorgplatform
-</footer>
-
+  <script>
+    const p=location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('.navlink').forEach(a=>{
+      if(a.getAttribute('href')===p) a.classList.add('active');
+    });
+    const els=Array.from(document.querySelectorAll('.reveal'));
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12});
+    els.forEach(el=>io.observe(el));
+  </script>
 </body>
 </html>
