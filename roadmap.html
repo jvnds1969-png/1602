@@ -1,25 +1,24 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zorgstart — Roadmap naar volledige versie</title>
-  <meta name="description" content="Roadmap: V1 task engine naar probleemgebieden, zorgbundels, geïntegreerd zorgplan, medicatieschema en patiëntvertaling." />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zorgstart — Roadmap naar volledige versie</title>
+    <meta name="description" content="Roadmap: V1 task engine naar probleemgebieden, zorgbundels, geïntegreerd zorgplan, medicatieschema en patiëntvertaling." />
 
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="brand">
-          <span class="dot"></span>
-          <span>Zorgstart</span>
-          <span class="badge">roadmap naar volledig eZorgstart-app</span>
-        </div>
-        <nav>
-                  <a class="navlink" href="index.html">Overzicht</a>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Zorgstart</span>
+        <span class="badge">Roadmap</span>
+      </div>
+      <nav>
+        <a class="navlink" href="index.html">Overzicht</a>
         <a class="navlink" href="strategy.html">Analyse</a>
         <a class="navlink" href="v1.html">Versie 1</a>
         <a class="navlink" href="journey.html">Journey</a>
@@ -28,142 +27,109 @@
         <a class="navlink" href="governance.html">Governance</a>
         <a class="navlink" href="wireframes.html">Wireframes</a>
         <a class="navlink" href="pitch.html">Pitch</a>
-                      <a class="navlink" href="uitrol.html">Uitrol</a>
-                      <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
-      </div>
+        <a class="navlink" href="uitrol.html">Uitrol</a>
+        <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+      </nav>
     </div>
+  </div>
 
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="pill">
-          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
-          <span>Van V1 naar volledige Zorgstart</span>
-          <span class="badge">probleemgebieden → bundels → plan</span>
-        </div>
-        <h1>Van takenlijst naar geïntegreerd zorgplan — inclusief medicatieschema en patiëntvertaling.</h1>
-        <p class="sub">
-          V1 is de administratieve motor. De volledige versie bouwt daarop voort met klinische structuur (probleemgebieden),
-          evidence-based zorgbundels, een geïntegreerd zorgplan en een begrijpelijke vertaling naar de patiënt.
-        </p>
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="pill">
+        <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+        <span>Van V1 naar volledige Zorgstart</span>
+        <span class="badge">probleemgebieden → bundels → plan</span>
       </div>
-    </section>
+      <h1>Van takenlijst naar geïntegreerd zorgplan — inclusief medicatieschema en patiëntvertaling.</h1>
+      <p class="sub">
+        V1 is de administratieve motor. De volledige versie bouwt daarop voort met klinische structuur (probleemgebieden),
+        evidence-based zorgbundels, een geïntegreerd zorgplan en een begrijpelijke vertaling naar de patiënt.
+      </p>
+    </div>
+  </section>
 
-    <section class="panel">
+  <section class="section reveal">
+    <div class="panel">
       <div class="head">
-        <div class="title">
-          <span class="swatch brand"></span>
-          <span>De logische groeilijn</span>
-          <span class="badge">architectuur</span>
-        </div>
-        <div class="badge">beheersbaar & schaalbaar</div>
+        <div class="title"><span class="swatch brand"></span> De logische groeilijn</div>
+        <span class="badge">architectuur</span>
       </div>
-      <div class="content grid2">
-        <div class="road">
-          <div class="milestone">
-            <div class="k">FASE 1</div>
-            <div class="h">V1 — Discharge Task Engine</div>
-            <div class="d">Ontslagbrief → taken → review → Flexizorg + feedback. (datafoundation)</div>
-          </div>
-          <div class="milestone">
-            <div class="k">FASE 2</div>
-            <div class="h">Probleemgebieden</div>
-            <div class="d">Classificatie van tekst/taken naar een vaste taxonomie (bv. 16 domeinen) met confidence en evidence.</div>
-          </div>
-          <div class="milestone">
-            <div class="k">FASE 3</div>
-            <div class="h">Zorgbundels</div>
-            <div class="d">Per probleemgebied gestandaardiseerde bundels met interventies (rollen, timing, minimumset + optioneel).</div>
-          </div>
-          <div class="milestone">
-            <div class="k">FASE 4</div>
-            <div class="h">Geïntegreerd zorgplan</div>
-            <div class="d">Bundels, taken, hulpmiddelen, afspraken en verantwoordelijken in één plan; ketenstatus per onderdeel.</div>
-          </div>
-          <div class="milestone">
-            <div class="k">FASE 5</div>
-            <div class="h">Medicatieschema (gestructureerd)</div>
-            <div class="d">Extractie/normalisatie, koppeling aan taken (toediening, monitoring, educatie) en risicofocus (polyfarmacie).</div>
-          </div>
-          <div class="milestone">
-            <div class="k">FASE 6</div>
-            <div class="h">Patiëntvertaling (“Uw zorg thuis”)</div>
-            <div class="d">Eenvoudige taal, planning, wie-komt-wanneer, alarmsymptomen, contactpunten en verwachtingen.</div>
-          </div>
-          <div class="milestone">
-            <div class="k">FASE 7</div>
-            <div class="h">Volwaardige ketenmonitor (GO/NO-GO)</div>
-            <div class="d">MED/HOSP/THUIS-stoppers live, escalatiepaden en rapportering (doorstroom, veiligheid, heropname-indicatoren).</div>
-          </div>
+      <div class="body">
+        <div class="chips"><span class="chip">beheersbaar & schaalbaar</span></div>
+        <div class="steps" style="margin-top:12px">
+          <div class="step"><div class="num">1</div><div><b>V1 — Discharge Task Engine</b><div class="mini">Ontslagbrief → taken → review → Flexizorg + feedback. (datafoundation)</div></div></div>
+          <div class="step"><div class="num">2</div><div><b>Probleemgebieden</b><div class="mini">Classificatie van tekst/taken naar een vaste taxonomie (bv. 16 domeinen) met confidence en evidence.</div></div></div>
+          <div class="step"><div class="num">3</div><div><b>Zorgbundels</b><div class="mini">Per probleemgebied gestandaardiseerde bundels met interventies (rollen, timing, minimumset + optioneel).</div></div></div>
+          <div class="step"><div class="num">4</div><div><b>Geïntegreerd zorgplan</b><div class="mini">Bundels, taken, hulpmiddelen, afspraken en verantwoordelijken in één plan; ketenstatus per onderdeel.</div></div></div>
+          <div class="step"><div class="num">5</div><div><b>Medicatieschema (gestructureerd)</b><div class="mini">Extractie/normalisatie, koppeling aan taken (toediening, monitoring, educatie) en risicofocus (polyfarmacie).</div></div></div>
+          <div class="step"><div class="num">6</div><div><b>Patiëntvertaling ("Uw zorg thuis")</b><div class="mini">Eenvoudige taal, planning, wie-komt-wanneer, alarmsymptomen, contactpunten en verwachtingen.</div></div></div>
+          <div class="step"><div class="num">7</div><div><b>Volwaardige ketenmonitor (GO/NO-GO)</b><div class="mini">MED/HOSP/THUIS-stoppers live, escalatiepaden en rapportering (doorstroom, veiligheid, heropname-indicatoren).</div></div></div>
         </div>
-
-        <div class="callout">
-          <b>Strategisch voordeel</b>
-          Elke fase bouwt voort op dezelfde kern: <b>evidence</b>, <b>audit trail</b>, <b>human approval</b> en <b>meetbaarheid</b>.
-          Zo blijft het bestuurbaar voor ziekenhuisdirectie én acceptabel voor het werkveld.
-          <ul class="list" style="margin-top:10px">
+        <div class="callout" style="margin-top:14px">
+          <p><b>Strategisch voordeel</b> Elke fase bouwt voort op dezelfde kern: <b>evidence</b>, <b>audit trail</b>, <b>human approval</b> en <b>meetbaarheid</b>. Zo blijft het bestuurbaar voor ziekenhuisdirectie én acceptabel voor het werkveld.</p>
+          <ul>
             <li>V1 = directe ROI via tijd en doorlooptijd.</li>
             <li>V2–V4 = kwaliteits- en veiligheidswinst (klinische structuur).</li>
             <li>V5–V7 = patiëntwaarde, governance en netwerkimpact.</li>
           </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="panel" id="whatitlookslike">
+  <section class="section reveal">
+    <div class="panel">
       <div class="head">
-        <div class="title">
-          <span class="swatch accent"></span>
-          <span>Hoe de volledige versie eruit ziet (concept)</span>
-          <span class="badge">zorgplan</span>
-        </div>
-        <div class="badge">probleemgebieden → bundels → taken</div>
+        <div class="title"><span class="swatch brand"></span> Hoe de volledige versie eruit ziet (concept)</div>
+        <span class="badge">zorgplan</span>
       </div>
-
-      <div class="content grid2">
-        <div class="card">
-          <h3>Professioneel zorgplan (voor keten)</h3>
-          <p>Een plan met tabbladen:</p>
-          <ul class="list">
-            <li><b>Probleemgebieden</b> (bv. Mobiliteit, Valrisico, Wondzorg, Medicatiebeheer, Cognitie, Voeding, …).</li>
-            <li><b>Zorgbundels</b> per probleemgebied (standaard + maatwerk).</li>
-            <li><b>Taken</b> per discipline (met status, eigenaar, timing).</li>
-            <li><b>Medicatieschema</b> (gestructureerd + opvolgtaken).</li>
-            <li><b>Afspraken & hulpmiddelen</b> (levering, plaatsing, controle).</li>
-          </ul>
+      <div class="body">
+        <div class="chips"><span class="chip">probleemgebieden → bundels → taken</span></div>
+        <div class="grid2" style="margin-top:12px">
+          <div class="card">
+            <h3>Professioneel zorgplan (voor keten)</h3>
+            <p>Een plan met tabbladen:</p>
+            <ul>
+              <li><b>Probleemgebieden</b> (bv. Mobiliteit, Valrisico, Wondzorg, Medicatiebeheer, Cognitie, Voeding, …).</li>
+              <li><b>Zorgbundels</b> per probleemgebied (standaard + maatwerk).</li>
+              <li><b>Taken</b> per discipline (met status, eigenaar, timing).</li>
+              <li><b>Medicatieschema</b> (gestructureerd + opvolgtaken).</li>
+              <li><b>Afspraken & hulpmiddelen</b> (levering, plaatsing, controle).</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Patiëntplan ("Uw zorg thuis")</h3>
+            <p>Een vertaalslag in begrijpelijke taal:</p>
+            <ul>
+              <li>Wat gebeurt er de komende dagen?</li>
+              <li>Wie komt wanneer?</li>
+              <li>Waarop moet u letten (alarmsymptomen)?</li>
+              <li>Contactpunten en afspraken.</li>
+              <li>Medicatie: eenvoudig schema.</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="card">
-          <h3>Patiëntplan (“Uw zorg thuis”)</h3>
-          <p>Een vertaalslag in begrijpelijke taal:</p>
-          <ul class="list">
-            <li>Wat gebeurt er de komende dagen?</li>
-            <li>Wie komt wanneer?</li>
-            <li>Waarop moet u letten (alarmsymptomen)?</li>
-            <li>Contactpunten en afspraken.</li>
-            <li>Medicatie: eenvoudig schema.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      <div class="small">
-        Terug naar:
-        <a href="v1.html">V1</a> of
-        <a href="strategy.html">Strategie</a>
-      </div>
-      <div class="small">
-        <a href="index.html">← Terug naar Home</a>
       </div>
     </div>
-  </div>
-  <script>
-    const p=location.pathname.split('/').pop()||'index.html';
-    document.querySelectorAll('.navlink').forEach(a=>{
-      if(a.getAttribute('href')===p) a.classList.add('active');
-    });
-    document.querySelectorAll('section').forEach(s=>s.classList.add('reveal'));
-  </script>
+  </section>
 
+  <div class="footer reveal">
+    <div>Terug naar: <a href="v1.html">V1</a> of <a href="strategy.html">Strategie</a></div>
+    <div class="small"><a href="index.html">← Terug naar Home</a></div>
+  </div>
+</div>
+
+<script>
+const p=location.pathname.split('/').pop()||'index.html';
+document.querySelectorAll('.navlink').forEach(a=>{
+  if(a.getAttribute('href')===p) a.classList.add('active');
+});
+const els=Array.from(document.querySelectorAll('.reveal'));
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+els.forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
