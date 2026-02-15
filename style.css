@@ -406,3 +406,101 @@ li{margin:3px 0}
   opacity:1;
   transform:translateY(0);
 }
+
+/* Compatibility: navlink class (used in pages with inline CSS) */
+nav{
+  display:flex; gap:6px; flex-wrap:wrap;
+  align-items:center;
+}
+.navlink{
+  color:var(--muted-soft);
+  text-decoration:none;
+  padding:7px 11px;
+  border-radius:999px;
+  border:1px solid transparent;
+  background: transparent;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+  font-weight:600;
+  font-size:14px;
+}
+.navlink:hover{
+  color:var(--brand-dark);
+  background: rgba(31,170,205,.06);
+  border-color: rgba(31,170,205,.25);
+  transform: translateY(-1px);
+}
+.navlink.active{
+  color:#ffffff;
+  border-color: rgba(31,170,205,.9);
+  background: linear-gradient(135deg,var(--brand),var(--brand-dark));
+}
+
+/* Common page elements */
+a{color:inherit; text-decoration:none}
+.hero-inner{
+  position:relative; z-index:1; display:grid; gap:10px;
+}
+.content{
+  padding:14px 16px 16px;
+}
+.list{
+  margin:6px 0 0 18px;
+  padding:0;
+  color:var(--muted-soft);
+  font-size:13px;
+  line-height:1.6;
+}
+.list li{margin:3px 0}
+.small{font-size:12.5px;color:var(--muted-soft)}
+
+/* Steps (v1 page) */
+.steps{display:grid; gap:8px}
+.step{
+  display:flex; gap:10px; align-items:flex-start;
+  border:1px solid var(--border); background:#f7fbff;
+  padding:9px 10px; border-radius:12px; box-shadow:var(--shadow2);
+}
+.num{
+  width:30px;height:30px;border-radius:10px;
+  display:grid;place-items:center;
+  font-weight:800; font-size:13px;
+  background:rgba(31,170,205,.10);
+  border:1px solid rgba(31,170,205,.35);
+  color:var(--brand-dark);
+  font-family:var(--mono);
+}
+.mini{font-size:12.5px; color:var(--muted-soft); line-height:1.45; margin-top:2px}
+.chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+.chip{
+  border:1px solid var(--border); background:#f5f8fd;
+  padding:4px 8px; border-radius:999px;
+  font-size:11px; color:var(--muted-soft); font-weight:700; text-transform:uppercase;
+}
+
+/* Table */
+.table{
+  width:100%; border-collapse:separate; border-spacing:0;
+  overflow:hidden; border-radius:12px;
+  border:1px solid var(--border); background:#f9fbff;
+  box-shadow:var(--shadow2); font-size:13px;
+}
+.table th, .table td{
+  padding:10px 11px; border-bottom:1px solid var(--border);
+  text-align:left; vertical-align:top;
+}
+.table th{background:#f3f7fc; font-weight:700; color:var(--brand-dark)}
+.table tr:last-child td{border-bottom:none}
+
+/* Timeline (journey page) */
+.timeline{display:grid; gap:8px}
+.event{
+  display:flex; gap:10px; align-items:flex-start;
+  border:1px solid var(--border); background:#f7fbff;
+  padding:9px 10px; border-radius:12px; box-shadow:var(--shadow2);
+}
+.dot2{
+  width:12px;height:12px;border-radius:999px;
+  background:#cad6e6; outline:1px solid rgba(198,208,221,.9); margin-top:4px;
+}
+.dot2.good{background:linear-gradient(135deg,var(--accent),#66bb6a)}
+.dot2.bad{background:linear-gradient(135deg,var(--bad),#b71c1c)}
