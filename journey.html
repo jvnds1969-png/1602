@@ -8,82 +8,315 @@
 
   <style>
     :root{
-      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
-      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
-      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --bg:#f5f7fa;
+      --bg-soft:#ffffff;
+      --border:#dde3eb;
+      --border-strong:#c6d0dd;
+      --text:#1b2430;
+      --muted:#5c6b7c;
+      --muted-soft:#7b8ba0;
+
+      --brand:#1faacd;
+      --brand-dark:#115f73;
+      --accent:#4caf50;
+      --bad:#e53935;
+
+      --shadow:0 14px 40px rgba(15,35,52,.12);
+      --shadow2:0 8px 20px rgba(15,35,52,.10);
+
+      --r:14px;
+      --r2:12px;
+
       --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:var(--sans); color:var(--text);
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
       background:
-        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
-        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
-        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+        radial-gradient(1100px 700px at 12% 5%, rgba(31,170,205,.06), transparent 60%),
+        radial-gradient(900px 650px at 82% 10%, rgba(78,122,154,.08), transparent 60%),
+        linear-gradient(180deg,#f8fbff 0%,var(--bg) 40%,#eef2f8 100%);
       overflow-x:hidden;
     }
-    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
-    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
-    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
-    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
-    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
-    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
-    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
-    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
-    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
-    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
-    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
-    .title{display:flex; align-items:center; gap:10px; font-weight:900}
-    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
-    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
-    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
-    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
-    .content{padding:14px}
-    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
-    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
-    .card{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:16px; padding:14px; box-shadow:var(--shadow2)}
-    .card h3{margin:0 0 6px; font-size:15px}
-    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
-    .timeline{display:grid; gap:10px}
-    .event{display:flex; gap:12px; align-items:flex-start; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:12px; border-radius:16px}
-    .dot2{width:12px;height:12px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10);margin-top:4px}
-    .dot2.good{background:linear-gradient(135deg,var(--good),#20c997)}
-    .dot2.bad{background:linear-gradient(135deg,var(--bad),#ff3b3b)}
-    .callout{border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10); padding:12px 12px; border-radius:16px; box-shadow:var(--shadow2)}
-    .callout b{display:block; margin-bottom:6px}
-    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .small{font-size:12.5px}
+
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 64px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(248,251,255,.95), rgba(248,251,255,.9));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:var(--max); margin:0 auto;
+      padding:10px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .dot{
+      width:18px;height:18px;border-radius:999px;
+      background:
+        radial-gradient(circle at 30% 30%,#ffffff,transparent 65%),
+        linear-gradient(135deg,var(--brand),#4e7a9a);
+      box-shadow: 0 0 0 4px rgba(31,170,205,.18);
+      border:1px solid rgba(17,95,115,.20);
+    }
+    .badge{
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f3f7fc;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    nav{
+      display:flex; gap:6px; flex-wrap:wrap; align-items:center;
+    }
+    .navlink{
+      color:var(--muted-soft);
+      text-decoration:none;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid transparent;
+      background: transparent;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      font-weight:600;
+      font-size:13px;
+    }
+    .navlink:hover{
+      color:var(--brand-dark);
+      background: rgba(31,170,205,.06);
+      border-color: rgba(31,170,205,.25);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding:20px 18px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px;
+      background:
+        radial-gradient(closest-side at 12% 20%, rgba(31,170,205,.10), transparent 65%),
+        radial-gradient(closest-side at 82% 30%, rgba(78,122,154,.12), transparent 65%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .hero-inner{
+      position:relative; z-index:1;
+      display:grid; gap:10px;
+    }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 11px;
+      border:1px solid var(--border);
+      background: rgba(248,251,255,.95);
+      border-radius:999px;
+      width:fit-content;
+      color:var(--muted-soft);
+      font-weight:600;
+      font-size:13px;
+    }
+    .pill .badge{background:#ffffff;}
+    h1{
+      margin:8px 0 6px;
+      font-size:clamp(24px,2.8vw,34px);
+      letter-spacing:-.02em;
+      line-height:1.15;
+      color:var(--brand-dark);
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:900px;
+      line-height:1.6;
+    }
+
+    /* Panel */
+    .panel{
+      margin-top:16px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .head{
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      flex-wrap:wrap;
+      background:linear-gradient(90deg,#f7fafc,#eef3f9);
+    }
+    .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:750;
+      font-size:15px;
+      color:var(--brand-dark);
+      letter-spacing:-.01em;
+    }
+    .swatch{
+      width:10px;height:10px;border-radius:999px;
+      background:#cad6e6;
+      outline:1px solid rgba(198,208,221,.9);
+    }
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand-dark))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#66bb6a)}
+    .head .badge{background:#ffffff;}
+
+    .content{
+      padding:14px 16px 16px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media(max-width:980px){
+      .grid2{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background:#f9fbff;
+      border-radius:12px;
+      padding:12px 13px;
+      box-shadow:var(--shadow2);
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .list{
+      margin:6px 0 0 18px;
+      padding:0;
+      color:var(--muted-soft);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .list li{margin:3px 0}
+
+    .callout{
+      border:1px solid rgba(31,170,205,.35);
+      background:#f2f8fd;
+      padding:11px 12px;
+      border-radius:12px;
+      box-shadow:var(--shadow2);
+      font-size:13px;
+      color:var(--brand-dark);
+    }
+    .callout b{display:block;margin-bottom:4px}
+
+    /* Timeline */
+    .timeline{
+      display:grid;
+      gap:8px;
+    }
+    .event{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      border:1px solid var(--border);
+      background:#f7fbff;
+      padding:9px 10px;
+      border-radius:12px;
+      box-shadow:var(--shadow2);
+    }
+    .dot2{
+      width:12px;height:12px;border-radius:999px;
+      background:#cad6e6;
+      outline:1px solid rgba(198,208,221,.9);
+      margin-top:4px;
+    }
+    .dot2.good{background:linear-gradient(135deg,var(--accent),#66bb6a);}
+    .dot2.bad{background:linear-gradient(135deg,var(--bad),#b71c1c);}
+
+    /* Footer */
+    .footer{
+      margin-top:18px;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      border-radius:16px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      box-shadow:var(--shadow2);
+    }
+    .small{font-size:12.5px;color:var(--muted-soft)}
+    .footer a{
+      color:var(--muted-soft);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(162,177,195,.9);
+    }
+    .footer a:hover{
+      color:var(--brand-dark);
+      border-bottom-color:rgba(31,170,205,.8);
+    }
   </style>
 </head>
 
 <body>
-  <div class="grid" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="topbar">
-      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Journey</span></div>
-      <nav>
-        <a class="navlink" href="index.html">Home</a>
-        <a class="navlink" href="strategy.html">Strategie</a>
-        <a class="navlink" href="v1.html">Zorgstart V1</a>
-        <a class="navlink" href="roadmap.html">Roadmap</a>
-      </nav>
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Zorgstart</span>
+          <span class="badge">journey</span>
+        </div>
+        <nav>
+          <a class="navlink" href="index.html">Home</a>
+          <a class="navlink" href="strategy.html">Strategie</a>
+          <a class="navlink" href="v1.html">Zorgstart V1</a>
+          <a class="navlink" href="roadmap.html">Roadmap</a>
+        </nav>
+      </div>
     </div>
 
     <section class="hero">
       <div class="hero-inner">
-        <div class="pill"><span class="dot"></span><span>Patiëntjourney — Mevrouw De Smet (78)</span><span class="badge">impact V1</span></div>
-        <h1>Zelfde patiënt, ander ontslag: van stress naar uitvoerbaarheid</h1>
+        <div class="pill">
+          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+          <span>Patiëntjourney — Mevrouw De Smet (78)</span>
+          <span class="badge">impact V1</span>
+        </div>
+        <h1>Zelfde patiënt, ander ontslag: van stress naar uitvoerbaarheid.</h1>
         <p class="sub">
           Deze journey toont het verschil tussen het klassieke proces en Zorgstart V1. V1 verandert geen medische beslissing,
           maar versnelt de keten: ontslagbrief → taken → matching → status.
@@ -93,7 +326,11 @@
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>Profiel</span><span class="badge">realistisch</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>Profiel</span>
+          <span class="badge">realistisch</span>
+        </div>
         <div class="badge">geriatrisch · kwetsbaar</div>
       </div>
       <div class="content grid2">
@@ -109,7 +346,7 @@
         </div>
         <div class="callout">
           <b>Context</b>
-          Arts denkt: “binnen 48 uur ontslagbaar”.
+          Arts denkt: “binnen 48 uur ontslagbaar”.  
           Maar uitvoerbaarheid hangt af van wondzorg, mobilisatie, medicatieopvolging, hulpmiddelen en capaciteit.
         </div>
       </div>
@@ -117,25 +354,61 @@
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch accent"></span><span>Scenario 1 — klassiek (zonder Zorgstart)</span><span class="badge">reactief</span></div>
+        <div class="title">
+          <span class="swatch accent"></span>
+          <span>Scenario 1 — klassiek (zonder Zorgstart)</span>
+          <span class="badge">reactief</span>
+        </div>
         <div class="badge">stoppers komen laat</div>
       </div>
       <div class="content grid2">
         <div class="card">
           <h3>Wat gebeurt er?</h3>
           <div class="timeline">
-            <div class="event"><span class="dot2 bad"></span><div><b>Dag 5: ontslagbrief komt binnen</b><div class="sub" style="font-size:13px">PDF, vrije tekst, wisselende structuur → handmatig knip/plak naar taken.</div></div></div>
-            <div class="event"><span class="dot2 bad"></span><div><b>Sociale dienst triage (45–90 min)</b><div class="sub" style="font-size:13px">Taken, disciplines, urgentie, frequentie, telefonische rondes.</div></div></div>
-            <div class="event"><span class="dot2 bad"></span><div><b>THUIS-capaciteit onzeker</b><div class="sub" style="font-size:13px">Thuisvpk/kine/gezinszorg niet snel beschikbaar, hulpmiddelen niet rond.</div></div></div>
-            <div class="event"><span class="dot2 bad"></span><div><b>Resultaat</b><div class="sub" style="font-size:13px">Ontslag schuift 1–2 dagen op, beddruk stijgt, stress bij patiënt.</div></div></div>
+            <div class="event">
+              <span class="dot2 bad"></span>
+              <div>
+                <b>Dag 5: ontslagbrief komt binnen</b>
+                <div class="sub" style="font-size:13px">
+                  PDF, vrije tekst, wisselende structuur → handmatig knip/plak naar taken.
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <span class="dot2 bad"></span>
+              <div>
+                <b>Sociale dienst triage (45–90 min)</b>
+                <div class="sub" style="font-size:13px">
+                  Taken, disciplines, urgentie, frequentie, telefonische rondes.
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <span class="dot2 bad"></span>
+              <div>
+                <b>THUIS-capaciteit onzeker</b>
+                <div class="sub" style="font-size:13px">
+                  Thuisverpleging/kine/gezinszorg niet snel beschikbaar, hulpmiddelen niet rond.
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <span class="dot2 bad"></span>
+              <div>
+                <b>Resultaat</b>
+                <div class="sub" style="font-size:13px">
+                  Ontslag schuift 1–2 dagen op, beddruk stijgt, stress bij patiënt.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="callout">
           <b>Welke stoppers spelen?</b>
           <ul class="list">
-            <li><b>MED</b>: ontslag is “medisch ok”, maar onzekerheid blijft</li>
-            <li><b>HOSP</b>: doorlooptijd administratie/afspraken/transport</li>
-            <li><b>THUIS</b>: capaciteit + hulpmiddelen + mantelzorg onzeker</li>
+            <li><b>MED</b>: ontslag is medisch ok, maar onzekerheid blijft.</li>
+            <li><b>HOSP</b>: doorlooptijd administratie/afspraken/transport.</li>
+            <li><b>THUIS</b>: capaciteit + hulpmiddelen + mantelzorg onzeker.</li>
           </ul>
         </div>
       </div>
@@ -143,28 +416,72 @@
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>Scenario 2 — met Zorgstart V1</span><span class="badge">planbaar</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>Scenario 2 — met Zorgstart V1</span>
+          <span class="badge">planbaar</span>
+        </div>
         <div class="badge">task engine + Flexizorg</div>
       </div>
       <div class="content grid2">
         <div class="card">
           <h3>Wat verandert er?</h3>
           <div class="timeline">
-            <div class="event"><span class="dot2 good"></span><div><b>Dag 5: upload ontslagbrief</b><div class="sub" style="font-size:13px">Secure upload → OCR/structuur → extractie.</div></div></div>
-            <div class="event"><span class="dot2 good"></span><div><b>AI takenvoorstel met evidence</b><div class="sub" style="font-size:13px">Taken per discipline + bronverwijzing + confidence.</div></div></div>
-            <div class="event"><span class="dot2 good"></span><div><b>Sociale dienst valideert (sneller)</b><div class="sub" style="font-size:13px">Geen copy/paste; enkel review & fine-tune.</div></div></div>
-            <div class="event"><span class="dot2 good"></span><div><b>Publicatie naar Flexizorg (draft)</b><div class="sub" style="font-size:13px">Professionals tekenen in; status keert terug.</div></div></div>
-            <div class="event"><span class="dot2 good"></span><div><b>Ontslagmoment = uitvoeringsmoment</b><div class="sub" style="font-size:13px">Wondzorg/kine/medicatie-opvolging/hulpmiddelen liggen klaar of zijn ingepland.</div></div></div>
+            <div class="event">
+              <span class="dot2 good"></span>
+              <div>
+                <b>Dag 5: upload ontslagbrief</b>
+                <div class="sub" style="font-size:13px">
+                  Secure upload → OCR/structuur → extractie.
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <span class="dot2 good"></span>
+              <div>
+                <b>AI-takenvoorstel met evidence</b>
+                <div class="sub" style="font-size:13px">
+                  Taken per discipline met bronverwijzing en confidence.
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <span class="dot2 good"></span>
+              <div>
+                <b>Sociale dienst valideert (sneller)</b>
+                <div class="sub" style="font-size:13px">
+                  Geen copy/paste; enkel review en bijsturen.
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <span class="dot2 good"></span>
+              <div>
+                <b>Publicatie naar Flexizorg (draft)</b>
+                <div class="sub" style="font-size:13px">
+                  Professionals tekenen in; status keert terug.
+                </div>
+              </div>
+            </div>
+            <div class="event">
+              <span class="dot2 good"></span>
+              <div>
+                <b>Ontslagmoment = uitvoeringsmoment</b>
+                <div class="sub" style="font-size:13px">
+                  Wondzorg/kine/medicatie-opvolging/hulpmiddelen zijn ingepland of klaar.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
         <div class="callout">
-          <b>Impact (directie-taal)</b>
+          <b>Impact (directietaal)</b>
           <ul class="list">
-            <li>30–60% minder triage-tijd → meer tijd voor patiëntgesprek</li>
-            <li>snellere publicatie en invulling → minder niet-medische ligdagen</li>
-            <li>uniforme output + audit trail → governance</li>
-            <li>THUIS-stopper wordt zichtbaar en stuurbaar</li>
+            <li>30–60% minder triage-tijd → meer tijd voor patiëntgesprek.</li>
+            <li>Snellere publicatie en invulling → minder niet-medische ligdagen.</li>
+            <li>Uniforme output + audit trail → governance.</li>
+            <li>THUIS-stopper wordt zichtbaar en stuurbaar.</li>
           </ul>
         </div>
       </div>
@@ -172,30 +489,39 @@
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch accent"></span><span>Wat V1 nog niet is (eerlijk)</span><span class="badge">fasering</span></div>
+        <div class="title">
+          <span class="swatch accent"></span>
+          <span>Wat V1 nog niet is (eerlijk)</span>
+          <span class="badge">fasering</span>
+        </div>
         <div class="badge">basis voor V2+</div>
       </div>
       <div class="content grid2">
         <div class="card">
           <h3>Niet in V1</h3>
           <ul class="list">
-            <li>geen vroegtijdige risicoscreening bij opname</li>
-            <li>geen probleemgebieden/zorgbundels</li>
-            <li>geen volledig geïntegreerd zorgplan</li>
-            <li>geen heropname-monitoring</li>
+            <li>Geen vroegtijdige risicoscreening bij opname.</li>
+            <li>Geen probleemgebieden/zorgbundels.</li>
+            <li>Geen volledig geïntegreerd zorgplan.</li>
+            <li>Geen heropname-monitoring.</li>
           </ul>
         </div>
         <div class="callout">
           <b>Waarom V1 toch de juiste eerste stap is</b>
-          V1 legt de datalaag en de operationele workflow (review → approve → publish → feedback).
+          V1 legt de datalaag en de operationele workflow (review → approve → publish → feedback).  
           Zonder deze motor blijven de volgende fases theoretisch.
         </div>
       </div>
     </section>
 
     <div class="footer">
-      <div class="small">Volgende: <a href="roadmap.html" style="text-decoration:underline">Roadmap</a> — van V1 naar volledige Zorgstart.</div>
-      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+      <div class="small">
+        Volgende:
+        <a href="roadmap.html">Roadmap</a> — van V1 naar volledige Zorgstart.
+      </div>
+      <div class="small">
+        <a href="index.html">← Terug naar Home</a>
+      </div>
     </div>
   </div>
 </body>
