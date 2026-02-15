@@ -8,99 +8,369 @@
 
   <style>
     :root{
-      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
-      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
-      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --bg:#f5f7fa;
+      --bg-soft:#ffffff;
+      --border:#dde3eb;
+      --border-strong:#c6d0dd;
+      --text:#1b2430;
+      --muted:#5c6b7c;
+      --muted-soft:#7b8ba0;
+
+      --brand:#1faacd;
+      --brand-dark:#115f73;
+      --accent:#4caf50;
+      --bad:#e53935;
+      --info:#4e7a9a;
+
+      --shadow:0 14px 40px rgba(15,35,52,.12);
+      --shadow2:0 8px 20px rgba(15,35,52,.10);
+
+      --r:14px;
+      --r2:12px;
+
       --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:var(--sans); color:var(--text);
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
       background:
-        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
-        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
-        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+        radial-gradient(1100px 700px at 12% 5%, rgba(31,170,205,.06), transparent 60%),
+        radial-gradient(900px 650px at 82% 10%, rgba(78,122,154,.08), transparent 60%),
+        linear-gradient(180deg,#f8fbff 0%,var(--bg) 40%,#eef2f8 100%);
       overflow-x:hidden;
     }
-    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
-    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
-    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
-    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
-    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
-    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
-    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
-    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
-    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
-    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
-    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
-    .title{display:flex; align-items:center; gap:10px; font-weight:900}
-    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
-    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
-    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
-    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
-    .content{padding:14px}
-    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
-    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
-    .card{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:16px; padding:14px; box-shadow:var(--shadow2)}
-    .card h3{margin:0 0 6px; font-size:15px}
-    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
-    .callout{border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10); padding:12px 12px; border-radius:16px; box-shadow:var(--shadow2)}
-    .callout b{display:block; margin-bottom:6px}
-    .kpis{display:grid; gap:10px}
-    .kpi{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04)}
-    .kpi b{display:block}
-    .kpi .meta{color:var(--muted); font-size:12.8px; line-height:1.45}
-    .chiprow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .chip{border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:4px 8px; border-radius:999px; font-size:12px; color:var(--muted); font-weight:900}
-    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .small{font-size:12.5px}
+
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 64px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(248,251,255,.95), rgba(248,251,255,.9));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:var(--max); margin:0 auto;
+      padding:10px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .dot{
+      width:18px;height:18px;border-radius:999px;
+      background:
+        radial-gradient(circle at 30% 30%,#ffffff,transparent 65%),
+        linear-gradient(135deg,var(--brand),#4e7a9a);
+      box-shadow: 0 0 0 4px rgba(31,170,205,.18);
+      border:1px solid rgba(17,95,115,.20);
+    }
+    .badge{
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f3f7fc;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    nav{
+      display:flex; gap:6px; flex-wrap:wrap; align-items:center;
+    }
+    .navlink{
+      color:var(--muted-soft);
+      text-decoration:none;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid transparent;
+      background: transparent;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      font-weight:600;
+      font-size:13px;
+    }
+    .navlink:hover{
+      color:var(--brand-dark);
+      background: rgba(31,170,205,.06);
+      border-color: rgba(31,170,205,.25);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding:20px 18px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px;
+      background:
+        radial-gradient(closest-side at 12% 20%, rgba(31,170,205,.10), transparent 65%),
+        radial-gradient(closest-side at 82% 30%, rgba(78,122,154,.12), transparent 65%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .hero-inner{
+      position:relative; z-index:1;
+      display:grid; gap:10px;
+    }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 11px;
+      border:1px solid var(--border);
+      background: rgba(248,251,255,.95);
+      border-radius:999px;
+      width:fit-content;
+      color:var(--muted-soft);
+      font-weight:600;
+      font-size:13px;
+    }
+    .pill .badge{
+      background:#ffffff;
+    }
+    h1{
+      margin:8px 0 6px;
+      font-size:clamp(24px,2.8vw,34px);
+      letter-spacing:-.02em;
+      line-height:1.15;
+      color:var(--brand-dark);
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:900px;
+      line-height:1.6;
+    }
+    .chiprow{
+      display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;
+    }
+    .chip{
+      border:1px solid var(--border);
+      background:#f5f8fd;
+      padding:4px 8px;
+      border-radius:999px;
+      font-size:11px;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    /* Panels */
+    .panel{
+      margin-top:16px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .head{
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      flex-wrap:wrap;
+      background:linear-gradient(90deg,#f7fafc,#eef3f9);
+    }
+    .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:750;
+      font-size:15px;
+      color:var(--brand-dark);
+      letter-spacing:-.01em;
+    }
+    .swatch{
+      width:10px;height:10px;border-radius:999px;
+      background:#cad6e6;
+      outline:1px solid rgba(198,208,221,.9);
+    }
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand-dark))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#66bb6a)}
+
+    .head .badge{
+      background:#ffffff;
+    }
+
+    .content{
+      padding:14px 16px 16px;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media(max-width:980px){
+      .grid2{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background:#f9fbff;
+      border-radius:12px;
+      padding:12px 13px;
+      box-shadow:var(--shadow2);
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .list{
+      margin:6px 0 0 18px;
+      padding:0;
+      color:var(--muted-soft);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .list li{margin:3px 0}
+
+    .callout{
+      border:1px solid rgba(31,170,205,.35);
+      background:#f2f8fd;
+      padding:11px 12px;
+      border-radius:12px;
+      box-shadow:var(--shadow2);
+      font-size:13px;
+      color:var(--brand-dark);
+    }
+    .callout b{display:block;margin-bottom:4px}
+
+    /* KPI blokken */
+    .kpis{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:10px;
+    }
+    @media(max-width:980px){
+      .kpis{grid-template-columns:repeat(2, minmax(0,1fr));}
+    }
+    .kpi{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:8px;
+      padding:10px 11px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#f7fbff;
+      box-shadow:var(--shadow2);
+    }
+    .kpi b{
+      display:block;
+      font-size:13px;
+      color:var(--brand-dark);
+    }
+    .kpi .meta{
+      color:var(--muted-soft);
+      font-size:12.5px;
+      line-height:1.45;
+    }
+    .kpi .badge{
+      font-size:10px;
+      padding:3px 7px;
+      align-self:flex-start;
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:18px;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      border-radius:16px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      box-shadow:var(--shadow2);
+    }
+    .small{font-size:12.5px;color:var(--muted-soft)}
+    .footer a{
+      color:var(--muted-soft);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(162,177,195,.9);
+    }
+    .footer a:hover{
+      color:var(--brand-dark);
+      border-bottom-color:rgba(31,170,205,.8);
+    }
   </style>
 </head>
 
 <body>
-  <div class="grid" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="topbar">
-      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Board</span></div>
-      <nav>
-        <a class="navlink" href="index.html">Home</a>
-        <a class="navlink" href="strategy.html">Strategie</a>
-        <a class="navlink" href="v1.html">V1</a>
-        <a class="navlink" href="journey.html">Journey</a>
-        <a class="navlink" href="roadmap.html">Roadmap</a>
-        <a class="navlink" href="governance.html">Governance</a>
-        <a class="navlink" href="wireframes.html">Wireframes</a>
-      </nav>
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Zorgstart</span>
+          <span class="badge">board</span>
+        </div>
+        <nav>
+          <a class="navlink" href="index.html">Home</a>
+          <a class="navlink" href="strategy.html">Strategie</a>
+          <a class="navlink" href="v1.html">V1</a>
+          <a class="navlink" href="journey.html">Journey</a>
+          <a class="navlink" href="roadmap.html">Roadmap</a>
+          <a class="navlink" href="governance.html">Governance</a>
+          <a class="navlink" href="wireframes.html">Wireframes</a>
+        </nav>
+      </div>
     </div>
 
     <section class="hero">
       <div class="hero-inner">
-        <div class="pill"><span class="dot"></span><span>Board onepager</span><span class="badge">1 pagina</span></div>
-        <h1>Zorgstart = ketensturing voor veilig en sneller ontslag</h1>
+        <div class="pill">
+          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+          <span>Board onepager</span>
+          <span class="badge">1 pagina</span>
+        </div>
+        <h1>Zorgstart = ketensturing voor veilig en sneller ontslag.</h1>
         <p class="sub">
           Niet-medische ligdagen en last-minute ketenstress ontstaan wanneer “THUIS” te laat zichtbaar wordt.
-          Zorgstart maakt de ontslagketen planbaar via uniforme taken, matching en meetbare status.
+          Zorgstart maakt de ontslagketen planbaar via uniforme taken, matching en een meetbare status.
         </p>
         <div class="chiprow">
-          <span class="chip">beddenhuis-impact</span><span class="chip">veiligheid</span><span class="chip">audit trail</span><span class="chip">human-in-the-loop</span>
+          <span class="chip">beddenhuis-impact</span>
+          <span class="chip">veiligheid</span>
+          <span class="chip">audit trail</span>
+          <span class="chip">human-in-the-loop</span>
         </div>
       </div>
     </section>
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>Het probleem</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>Het probleem</span>
+        </div>
         <div class="badge">structureel · transmuraal</div>
       </div>
       <div class="content grid2">
@@ -109,29 +379,35 @@
           <ul class="list">
             <li>geen normering sociale dienst, stijgende complexiteit</li>
             <li>geen uniforme overdracht (vrije tekst, variatie)</li>
-            <li>capacititeitsonzekerheid eerste lijn (gezinszorg, thuisvpk, kine, hulpmiddelen)</li>
+            <li>capaciteitsonzekerheid eerste lijn (gezinszorg, thuisverpleging, kine, hulpmiddelen)</li>
             <li>weekenddruk → “te laat in beeld”</li>
           </ul>
         </div>
         <div class="callout">
           <b>Het echte mechanisme</b>
           Ontslag is een ketenbeslissing: <b>MED · HOSP · THUIS</b>.  
-          De grootste variatie zit in <b>THUIS</b> (beschikbaarheid + organisatie).
+          De grootste variatie zit in <b>THUIS</b> (beschikbaarheid en organisatie).
         </div>
       </div>
     </section>
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch accent"></span><span>De oplossing (V1 actief)</span></div>
+        <div class="title">
+          <span class="swatch accent"></span>
+          <span>De oplossing (V1 actief)</span>
+        </div>
         <div class="badge">snelle ROI</div>
       </div>
       <div class="content grid2">
         <div class="card">
           <h3>Zorgstart V1 — Discharge Task Engine</h3>
-          <p>AI zet ontslagbrief om naar gestructureerde taken per discipline, met evidence. Sociale dienst valideert. Taken worden gepubliceerd naar Flexizorg met statusfeedback.</p>
+          <p>
+            AI zet ontslagbrieven om naar gestructureerde taken per discipline, met evidence.
+            De sociale dienst valideert. Taken worden gepubliceerd naar Flexizorg met statusfeedback.
+          </p>
           <ul class="list">
-            <li>minder knip/plakwerk</li>
+            <li>minder knip- en plakwerk</li>
             <li>snellere publicatie</li>
             <li>uniforme output</li>
             <li>audit trail</li>
@@ -139,14 +415,17 @@
         </div>
         <div class="callout">
           <b>Wat dit oplevert</b>
-          Sneller “time-to-arrange” en “time-to-fill” → minder niet-medische ligdagen en minder ketenstress.
+          Snellere time-to-arrange en time-to-fill → minder niet-medische ligdagen en minder ketenstress.
         </div>
       </div>
     </section>
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>KPI’s (meetbaar in V1)</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>KPI’s (meetbaar in V1)</span>
+        </div>
         <div class="badge">CMO-proof</div>
       </div>
       <div class="content kpis">
@@ -173,7 +452,7 @@
         </div>
         <div class="kpi">
           <div>
-            <b>% edits op AI voorstel</b>
+            <b>% edits op AI-voorstel</b>
             <div class="meta">kwaliteit, training, governance</div>
           </div>
           <span class="badge">quality</span>
@@ -183,7 +462,10 @@
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch accent"></span><span>Groeipad (zonder te oversellen)</span></div>
+        <div class="title">
+          <span class="swatch accent"></span>
+          <span>Groeipad (zonder te oversellen)</span>
+        </div>
         <div class="badge">V2+</div>
       </div>
       <div class="content grid2">
@@ -205,8 +487,14 @@
     </section>
 
     <div class="footer">
-      <div class="small">Extra: <a href="governance.html" style="text-decoration:underline">Governance & GDPR</a> · <a href="wireframes.html" style="text-decoration:underline">Wireframes</a></div>
-      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+      <div class="small">
+        Extra:
+        <a href="governance.html">Governance & GDPR</a> ·
+        <a href="wireframes.html">Wireframes</a>
+      </div>
+      <div class="small">
+        <a href="index.html">← Terug naar Home</a>
+      </div>
     </div>
   </div>
 </body>
