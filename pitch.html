@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zorgstart — Directie pitch (3 minuten)</title>
+  <meta name="description" content="3-minuten directiepitch voor Zorgstart: probleem, oplossing V1, ketenbeslissing, KPI’s, roadmap, call-to-action." />
+
+  <style>
+    :root{
+      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
+      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
+      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
+        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
+        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
+
+    /* topbar */
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
+    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
+
+    /* hero */
+    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
+    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
+    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
+    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
+    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
+    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
+    .chiprow{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .chip{border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:4px 8px; border-radius:999px; font-size:12px; color:var(--muted); font-weight:900}
+
+    /* panel */
+    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
+    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+    .title{display:flex; align-items:center; gap:10px; font-weight:900}
+    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
+    .content{padding:14px}
+
+    /* slide-like blocks */
+    .slides{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:980px){.slides{grid-template-columns:1fr 1fr}}
+    .slide{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.12);
+      border-radius:18px;
+      box-shadow:var(--shadow2);
+      overflow:hidden;
+      position:relative;
+      min-height:240px;
+    }
+    .slide::before{
+      content:"";
+      position:absolute; inset:-80px;
+      background:
+        radial-gradient(closest-side at 18% 18%, rgba(93,214,255,.10), transparent 60%),
+        radial-gradient(closest-side at 82% 28%, rgba(124,92,255,.10), transparent 62%),
+        radial-gradient(closest-side at 55% 90%, rgba(255,209,102,.08), transparent 60%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .slide-inner{position:relative; z-index:1; padding:14px}
+    .slide-top{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+    .step{font-family:var(--mono); font-size:12px; padding:3px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); color:rgba(255,255,255,.82)}
+    .timer{font-family:var(--mono); font-size:12px; color:var(--muted)}
+    .slide h3{margin:0 0 8px; font-size:16px; letter-spacing:-.01em}
+    .slide p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.55}
+    .bullets{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
+    .keyline{margin-top:12px; padding:10px 12px; border-radius:16px; border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10)}
+    .keyline b{display:block; margin-bottom:4px}
+    .cta{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:18px; box-shadow:var(--shadow2)
+    }
+    .btn{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:10px 12px;border-radius:12px;cursor:pointer;
+      transition:transform .15s ease,background .15s ease,border-color .15s ease;
+      box-shadow:var(--shadow2);
+      font-weight:900;letter-spacing:.01em
+    }
+    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08);border-color:rgba(93,214,255,.35)}
+    .btn:active{transform:translateY(0) scale(.99)}
+    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .small{font-size:12.5px}
+
+    /* notes */
+    .notes{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(0,0,0,.12);
+      border-radius:18px;
+      box-shadow:var(--shadow2);
+      padding:14px;
+    }
+    .notes h3{margin:0 0 10px; font-size:15px}
+    .notes .mono{font-family:var(--mono); font-size:12.5px; color:rgba(255,255,255,.82); line-height:1.6}
+    .notes .mono .label{color:var(--muted)}
+    .kbd{font-family:var(--mono); font-size:12px; opacity:.85; padding:2px 8px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.18)}
+    .row2{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:980px){.row2{grid-template-columns:1.2fr .8fr}}
+  </style>
+</head>
+
+<body>
+  <div class="grid" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Pitch</span></div>
+      <nav>
+        <a class="navlink" href="index.html">Home</a>
+        <a class="navlink" href="board.html">Board</a>
+        <a class="navlink" href="strategy.html">Strategie</a>
+        <a class="navlink" href="v1.html">V1</a>
+        <a class="navlink" href="journey.html">Journey</a>
+        <a class="navlink" href="roadmap.html">Roadmap</a>
+        <a class="navlink" href="governance.html">Governance</a>
+        <a class="navlink" href="wireframes.html">Wireframes</a>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="pill"><span class="dot"></span><span>Directie pitch</span><span class="badge">± 3 minuten</span></div>
+        <h1>Ontslag is een ketenbeslissing — Zorgstart maakt de keten planbaar</h1>
+        <p class="sub">
+          De bottlenecks zitten zelden in motivatie of expertise, maar in het te laat zichtbaar worden van <b>THUIS</b>.
+          Zorgstart V1 pakt vandaag al het grootste “verlies”: ongestructureerde discharge info → trage ketenacties.
+        </p>
+        <div class="chiprow">
+          <span class="chip">beddenhuis-impact</span>
+          <span class="chip">snelle ROI</span>
+          <span class="chip">decision support</span>
+          <span class="chip">audit trail</span>
+          <span class="chip">gefaseerd</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span><span>Pitch in 6 “slides”</span></div>
+        <div class="badge"><span class="kbd">klik</span> om speaker-notes te tonen</div>
+      </div>
+
+      <div class="content row2">
+        <div class="slides" id="slides">
+
+          <!-- 1 -->
+          <article class="slide" data-note="n1">
+            <div class="slide-inner">
+              <div class="slide-top">
+                <span class="step">SLIDE 1</span>
+                <span class="timer">0:00–0:30</span>
+              </div>
+              <h3>De realiteit: ontslag = MED + HOSP + THUIS</h3>
+              <p>
+                Niet-medische ligdagen ontstaan wanneer <b>THUIS</b> pas laat in beeld komt
+                (capaciteit gezinszorg, thuisvpk, kine, hulpmiddelen, mantelzorg).
+              </p>
+              <ul class="bullets">
+                <li>complexiteit ↑, normering sociale dienst ontbreekt</li>
+                <li>overdracht is variabel (vrije tekst, incomplete context)</li>
+                <li>weekenddruk maakt alles “last minute”</li>
+              </ul>
+              <div class="keyline">
+                <b>Key message</b>
+                Als THUIS niet planbaar is, wordt beddenhuis onvoorspelbaar.
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="slide" data-note="n2">
+            <div class="slide-inner">
+              <div class="slide-top">
+                <span class="step">SLIDE 2</span>
+                <span class="timer">0:30–1:00</span>
+              </div>
+              <h3>CROP is nuttig, maar niet voldoende</h3>
+              <p>
+                CROP optimaliseert <b>revalidatie-instroom</b> (pathologie-gedreven),
+                maar adresseert niet de sociale/keten-uitvoerbaarheid.
+              </p>
+              <ul class="bullets">
+                <li>CROP = medisch triagepad</li>
+                <li>Zorgstart = <b>transmurale laag</b> die uitvoerbaarheid stuurt</li>
+              </ul>
+              <div class="keyline">
+                <b>Key message</b>
+                Zorgstart is complementair: het maakt “wat na het ziekenhuis komt” beheersbaar.
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="slide" data-note="n3">
+            <div class="slide-inner">
+              <div class="slide-top">
+                <span class="step">SLIDE 3</span>
+                <span class="timer">1:00–1:40</span>
+              </div>
+              <h3>Wat V1 vandaag al doet: discharge → taken (met evidence)</h3>
+              <p>
+                Zorgstart V1 (geactiveerd) zet ontslagbrieven automatisch om naar een
+                <b>gestructureerd takenpakket per discipline</b>. Sociale dienst valideert.
+              </p>
+              <ul class="bullets">
+                <li>minder knip/plakwerk, snellere publicatie</li>
+                <li>uniforme output, minder vergeten acties</li>
+                <li>audit trail: wie keurde wat goed, wanneer</li>
+                <li>publicatie naar Flexizorg (draft → ingevuld)</li>
+              </ul>
+              <div class="keyline">
+                <b>Key message</b>
+                V1 maakt de keten sneller “actief” en meetbaar, zonder risico: mens beslist.
+              </div>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="slide" data-note="n4">
+            <div class="slide-inner">
+              <div class="slide-top">
+                <span class="step">SLIDE 4</span>
+                <span class="timer">1:40–2:10</span>
+              </div>
+              <h3>De winst in beddenhuis-termen (KPI’s)</h3>
+              <p>
+                V1 levert meteen KPI’s die directie/CMO wil zien: doorlooptijd,
+                invulling en “open stoppers”.
+              </p>
+              <ul class="bullets">
+                <li>upload → takenvoorstel</li>
+                <li>voorstel → approve (sociale dienst)</li>
+                <li>time-to-fill per discipline</li>
+                <li>% edits (kwaliteit & governance)</li>
+              </ul>
+              <div class="keyline">
+                <b>Key message</b>
+                We sturen niet op gevoel, maar op ketendata.
+              </div>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="slide" data-note="n5">
+            <div class="slide-inner">
+              <div class="slide-top">
+                <span class="step">SLIDE 5</span>
+                <span class="timer">2:10–2:40</span>
+              </div>
+              <h3>Waarom dit “past” in het interfederaal casemanagement</h3>
+              <p>
+                Het vroegere model werkte (neutrale coördinatie, vroege detectie, transmuraal),
+                maar was personeels-afhankelijk. Zorgstart digitaliseert dit schaalbaar.
+              </p>
+              <ul class="bullets">
+                <li>decision support + human-in-the-loop</li>
+                <li>triage/matching wordt proces, niet persoonsafhankelijk</li>
+                <li>basis voor probleemgebieden/bundels/zorgplan (V2+)</li>
+              </ul>
+              <div class="keyline">
+                <b>Key message</b>
+                V1 is de motor. V2+ maakt er de volledige transmurale architectuur van.
+              </div>
+            </div>
+          </article>
+
+          <!-- 6 -->
+          <article class="slide" data-note="n6">
+            <div class="slide-inner">
+              <div class="slide-top">
+                <span class="step">SLIDE 6</span>
+                <span class="timer">2:40–3:00</span>
+              </div>
+              <h3>Wat we maandag vragen (helder, klein, bestuurbaar)</h3>
+              <p>
+                Geen “IT-project”, maar een gefaseerde keteninterventie. Start beperkt,
+                bewijs impact, schaal gecontroleerd.
+              </p>
+              <ul class="bullets">
+                <li>pilot-afdeling + dataset (30–50 ontslagbrieven)</li>
+                <li>POC: end-to-end flow (upload → propose → approve → draft Flexizorg)</li>
+                <li>afspraken rond governance en KPI-rapport</li>
+              </ul>
+              <div class="keyline">
+                <b>Call-to-action</b>
+                Laat ons V1 bewijzen op doorlooptijd + time-to-fill + open stoppers.
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Speaker notes -->
+        <aside class="notes" id="notes">
+          <h3>Speaker-notes (klik op een slide)</h3>
+          <div class="mono" id="noteBody">
+            <div><span class="label">Tip:</span> gebruik dit als spreektekst met Erwin. Het is “directietaal”: keten, KPI’s, risico’s, governance.</div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="content">
+        <div class="cta">
+          <div>
+            <b>1 zin om af te sluiten</b>
+            <div class="small" style="color:var(--muted); margin-top:6px">
+              “Zorgstart maakt THUIS vroeg zichtbaar en uitvoerbaar — en dat is de snelste weg naar een planbaar beddenhuis.”
+            </div>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="btn" id="printBtn">Print / PDF</button>
+            <a class="btn" href="board.html">Open Board onepager</a>
+            <a class="btn" href="wireframes.html">Open Wireframes</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="small">Extra: voeg deze pagina toe aan je nav als <b>pitch.html</b>.</div>
+      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+    </div>
+  </div>
+
+  <script>
+    const noteMap = {
+      n1: [
+        "Open met ketenlogica. Geen schuldvraag, wel mechanisme.",
+        "Leg MED/HOSP/THUIS uit: MED = klinisch, HOSP = processen/weekend, THUIS = capaciteit/mantelzorg/hulpmiddelen.",
+        "Zeg expliciet: bottlenecks zijn transmuraal, niet intern."
+      ],
+      n2: [
+        "Positioneer CROP positief: nuttig voor reva-instroom en bedflow.",
+        "Maar: CROP is pathologie-gedreven; sociale/ketencomplexiteit ontbreekt.",
+        "Zorgstart is de transmurale laag bovenop CROP: uitvoerbaarheid en matching."
+      ],
+      n3: [
+        "V1 is een concrete, snelle bouwsteen: discharge letter → taken per discipline.",
+        "Benadruk evidence + audit trail + human-in-the-loop: AI beslist niet.",
+        "Link met Flexizorg: sneller posten, sneller invullen, status terug."
+      ],
+      n4: [
+        "Directie wil KPI’s: doorlooptijd, invulling, open stoppers.",
+        "Zeg: hiermee maken we ketenbeslissing zichtbaar en bestuurbaar.",
+        "Je kan dit per afdeling tonen: waar zit verlies? (ergo/gezinszorg/hulpmiddelen)."
+      ],
+      n5: [
+        "Interfederaal casemanagement: concept werkte maar was niet schaalbaar (FTE-afhankelijk).",
+        "Zorgstart digitaliseert de principes: vroeg detecteren, coördineren, transmuraal.",
+        "V1 levert de datalaag; V2+ maakt probleemgebieden/bundels/zorgplan mogelijk."
+      ],
+      n6: [
+        "Vraag een beperkte pilot: 1 afdeling, 30–50 brieven, 1 flow end-to-end.",
+        "Afspraken: governance (RBAC, retentie, logging), KPI-rapport, evaluatiemoment.",
+        "Afsluiten: klein starten, snel bewijzen, gecontroleerd opschalen."
+      ]
+    };
+
+    const noteBody = document.getElementById('noteBody');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    slides.forEach(slide => {
+      slide.style.cursor = 'pointer';
+      slide.addEventListener('click', () => {
+        const k = slide.dataset.note;
+        const lines = noteMap[k] || [];
+        noteBody.innerHTML = lines.map(x => `<div>• ${x}</div>`).join("") || "<div>Geen notes.</div>";
+        slides.forEach(s => s.style.outline = 'none');
+        slide.style.outline = '2px solid rgba(93,214,255,.35)';
+        slide.style.outlineOffset = '-2px';
+      });
+    });
+
+    document.getElementById('printBtn').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>
