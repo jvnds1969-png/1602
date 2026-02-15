@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zorgstart — Board onepager</title>
+  <meta name="description" content="Zorgstart Board onepager: probleem, oplossing, impact, KPI’s, fasering, risico’s." />
+
+  <style>
+    :root{
+      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
+      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
+      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
+        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
+        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
+    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
+    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
+    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
+    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
+    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
+    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
+    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
+    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
+    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+    .title{display:flex; align-items:center; gap:10px; font-weight:900}
+    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
+    .content{padding:14px}
+    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
+    .card{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:16px; padding:14px; box-shadow:var(--shadow2)}
+    .card h3{margin:0 0 6px; font-size:15px}
+    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
+    .callout{border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10); padding:12px 12px; border-radius:16px; box-shadow:var(--shadow2)}
+    .callout b{display:block; margin-bottom:6px}
+    .kpis{display:grid; gap:10px}
+    .kpi{display:flex; align-items:flex-start; justify-content:space-between; gap:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04)}
+    .kpi b{display:block}
+    .kpi .meta{color:var(--muted); font-size:12.8px; line-height:1.45}
+    .chiprow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .chip{border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:4px 8px; border-radius:999px; font-size:12px; color:var(--muted); font-weight:900}
+    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .small{font-size:12.5px}
+  </style>
+</head>
+
+<body>
+  <div class="grid" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Board</span></div>
+      <nav>
+        <a class="navlink" href="index.html">Home</a>
+        <a class="navlink" href="strategy.html">Strategie</a>
+        <a class="navlink" href="v1.html">V1</a>
+        <a class="navlink" href="journey.html">Journey</a>
+        <a class="navlink" href="roadmap.html">Roadmap</a>
+        <a class="navlink" href="governance.html">Governance</a>
+        <a class="navlink" href="wireframes.html">Wireframes</a>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="pill"><span class="dot"></span><span>Board onepager</span><span class="badge">1 pagina</span></div>
+        <h1>Zorgstart = ketensturing voor veilig en sneller ontslag</h1>
+        <p class="sub">
+          Niet-medische ligdagen en last-minute ketenstress ontstaan wanneer “THUIS” te laat zichtbaar wordt.
+          Zorgstart maakt de ontslagketen planbaar via uniforme taken, matching en meetbare status.
+        </p>
+        <div class="chiprow">
+          <span class="chip">beddenhuis-impact</span><span class="chip">veiligheid</span><span class="chip">audit trail</span><span class="chip">human-in-the-loop</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span><span>Het probleem</span></div>
+        <div class="badge">structureel · transmuraal</div>
+      </div>
+      <div class="content grid2">
+        <div class="card">
+          <h3>Waarom stokken ontslagen?</h3>
+          <ul class="list">
+            <li>geen normering sociale dienst, stijgende complexiteit</li>
+            <li>geen uniforme overdracht (vrije tekst, variatie)</li>
+            <li>capacititeitsonzekerheid eerste lijn (gezinszorg, thuisvpk, kine, hulpmiddelen)</li>
+            <li>weekenddruk → “te laat in beeld”</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <b>Het echte mechanisme</b>
+          Ontslag is een ketenbeslissing: <b>MED · HOSP · THUIS</b>.  
+          De grootste variatie zit in <b>THUIS</b> (beschikbaarheid + organisatie).
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch accent"></span><span>De oplossing (V1 actief)</span></div>
+        <div class="badge">snelle ROI</div>
+      </div>
+      <div class="content grid2">
+        <div class="card">
+          <h3>Zorgstart V1 — Discharge Task Engine</h3>
+          <p>AI zet ontslagbrief om naar gestructureerde taken per discipline, met evidence. Sociale dienst valideert. Taken worden gepubliceerd naar Flexizorg met statusfeedback.</p>
+          <ul class="list">
+            <li>minder knip/plakwerk</li>
+            <li>snellere publicatie</li>
+            <li>uniforme output</li>
+            <li>audit trail</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <b>Wat dit oplevert</b>
+          Sneller “time-to-arrange” en “time-to-fill” → minder niet-medische ligdagen en minder ketenstress.
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span><span>KPI’s (meetbaar in V1)</span></div>
+        <div class="badge">CMO-proof</div>
+      </div>
+      <div class="content kpis">
+        <div class="kpi">
+          <div>
+            <b>Tijd upload → takenvoorstel</b>
+            <div class="meta">technische throughput, schaalbaarheid</div>
+          </div>
+          <span class="badge">efficiency</span>
+        </div>
+        <div class="kpi">
+          <div>
+            <b>Tijd voorstel → approve</b>
+            <div class="meta">triage-efficiëntie sociale dienst</div>
+          </div>
+          <span class="badge">workflow</span>
+        </div>
+        <div class="kpi">
+          <div>
+            <b>Time-to-fill per discipline</b>
+            <div class="meta">ketencapaciteit en invulling</div>
+          </div>
+          <span class="badge">keten</span>
+        </div>
+        <div class="kpi">
+          <div>
+            <b>% edits op AI voorstel</b>
+            <div class="meta">kwaliteit, training, governance</div>
+          </div>
+          <span class="badge">quality</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch accent"></span><span>Groeipad (zonder te oversellen)</span></div>
+        <div class="badge">V2+</div>
+      </div>
+      <div class="content grid2">
+        <div class="card">
+          <h3>Van V1 naar volledige Zorgstart</h3>
+          <ul class="list">
+            <li>probleemgebieden (taxonomie) → zorgbundels</li>
+            <li>geïntegreerd zorgplan incl. medicatieschema</li>
+            <li>patiëntvertaling (“Uw zorg thuis”)</li>
+            <li>ketenmonitor MED/HOSP/THUIS</li>
+          </ul>
+        </div>
+        <div class="callout">
+          <b>Positionering</b>
+          V1 is de motor en datalaag. De volledige versie is de architectuur.  
+          <span class="badge">gefaseerd</span> <span class="badge">bestuurbaar</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="small">Extra: <a href="governance.html" style="text-decoration:underline">Governance & GDPR</a> · <a href="wireframes.html" style="text-decoration:underline">Wireframes</a></div>
+      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+    </div>
+  </div>
+</body>
+</html>
