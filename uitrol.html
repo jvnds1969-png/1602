@@ -1,222 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zorgstart v1 – Uitroltijdslijn</title>
-
-<style>
-body{
-  margin:0;
-  font-family:system-ui, -apple-system, sans-serif;
-  background:#0b1020;
-  color:#f5f7ff;
-}
-
-header{
-  padding:70px 40px;
-  background:linear-gradient(135deg,#ff6b6b,#7c5cff);
-}
-
-header h1{
-  margin:0;
-  font-size:38px;
-}
-
-header p{
-  margin-top:12px;
-  font-size:18px;
-  opacity:.9;
-}
-
-.section{
-  max-width:1200px;
-  margin:auto;
-  padding:60px 40px;
-}
-
-.timeline{
-  position:relative;
-  margin-top:60px;
-  padding-left:40px;
-  border-left:4px solid #7c5cff;
-}
-
-.milestone{
-  margin-bottom:60px;
-  position:relative;
-}
-
-.milestone::before{
-  content:"";
-  position:absolute;
-  left:-14px;
-  top:6px;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  background:#ff6b6b;
-}
-
-.date{
-  font-weight:700;
-  font-size:16px;
-  color:#ff6b6b;
-}
-
-.card{
-  margin-top:15px;
-  background:#111729;
-  padding:30px;
-  border-radius:18px;
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.card h2{
-  margin-top:0;
-}
-
-.kpi{
-  margin-top:15px;
-  padding:15px;
-  background:rgba(124,92,255,.12);
-  border-radius:12px;
-}
-
-.result{
-  margin-top:15px;
-  padding:15px;
-  background:rgba(255,107,107,.12);
-  border-radius:12px;
-}
-
-footer{
-  text-align:center;
-  padding:40px;
-  opacity:.6;
-}
-</style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zorgstart — Uitrolstrategie</title>
+    <meta name="description" content="Versnelde uitrolstrategie Zorgstart v1: van ontwikkeling naar piloot, opschaling en provinciale uitbreiding." />
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-
-<header>
-  <h1>Zorgstart v1 – Versnelde Uitrolstrategie</h1>
-  <p>Startdatum: 23 februari 2026 • Focus: CROP-thuisbeslissingen</p>
-</header>
- <div class="wrap">
-    <div class="topbar">
-      <div class="topbar-inner">
+<div class="topbar">
+    <div class="topbar-inner">
         <div class="brand">
-          <span class="dot"></span>
-          <span>Zorgstart</span>
-          <span class="badge">Uitrol</span>
+            <span class="dot"></span>
+            <span>Zorgstart</span>
+            <span class="badge">Uitrol</span>
         </div>
         <nav>
-          <a class="navlink" href="index.html">Overzicht</a>
-          <a class="navlink" href="strategy.html">Analyse</a>
-          <a class="navlink" href="v1.html">Versie 1</a>
-          <a class="navlink" href="journey.html">Journey</a>
-          <a class="navlink" href="roadmap.html">Roadmap</a>
-          <a class="navlink" href="board.html">Board</a>
-          <a class="navlink" href="governance.html">Governance</a>
-          <a class="navlink" href="wireframes.html">Wireframes</a>
-          <a class="navlink" href="pitch.html">Pitch</a>
-          <a class="navlink" href="uitrol.html">Uitrol</a>
-          <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+            <a class="navlink" href="index.html">Overzicht</a>
+            <a class="navlink" href="strategy.html">Analyse</a>
+            <a class="navlink" href="v1.html">Versie 1</a>
+            <a class="navlink" href="journey.html">Journey</a>
+            <a class="navlink" href="roadmap.html">Roadmap</a>
+            <a class="navlink" href="board.html">Board</a>
+            <a class="navlink" href="governance.html">Governance</a>
+            <a class="navlink" href="wireframes.html">Wireframes</a>
+            <a class="navlink" href="pitch.html">Pitch</a>
+            <a class="navlink" href="uitrol.html">Uitrol</a>
+            <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
         </nav>
-      </div>
     </div>
-<div class="section">
-
-<div class="timeline">
-
-  <div class="milestone">
-    <div class="date">23/02/2026 – 23/04/2026</div>
-    <div class="card">
-      <h2>Fase 0 – Ontwikkeling (8 weken)</h2>
-      <ul>
-        <li>Ontslagbrief-scraping via OnePatient</li>
-        <li>Taakengine (thuiszorg, hulpmiddelen, medicatie, afspraken, attesten)</li>
-        <li>Statusworkflow + audit trail</li>
-        <li>Dashboard sociale dienst</li>
-      </ul>
-      <div class="result">
-        <strong>Resultaat:</strong> Werkende MVP klaar voor live piloot in 2 ziekenhuizen.
-      </div>
-    </div>
-  </div>
-
-  <div class="milestone">
-    <div class="date">24/04/2026 – 31/07/2026</div>
-    <div class="card">
-      <h2>Fase 1 – Parallelle piloot (ZAS + VITAZ)</h2>
-      <ul>
-        <li>1 campus per netwerk</li>
-        <li>Geriatrie + interne geneeskunde</li>
-        <li>Enkel CROP-thuisprofielen</li>
-        <li>80–120 patiënten totaal</li>
-      </ul>
-      <div class="kpi">
-        <strong>Metingen:</strong><br>
-        • Tijd tussen “medisch klaar” en ontslag<br>
-        • Open taken bij ontslag<br>
-        • Telefonische correcties binnen 72u<br>
-        • 30-dagen heropname
-      </div>
-      <div class="result">
-        <strong>Verwachte impact:</strong><br>
-        • -0,3 tot -0,7 ligdag<br>
-        • -25% last-minute ontslaginterventies<br>
-        • >70% adoptie in CROP-thuisgroep
-      </div>
-    </div>
-  </div>
-
-  <div class="milestone">
-    <div class="date">01/08/2026 – 30/11/2026</div>
-    <div class="card">
-      <h2>Fase 2 – Opschaling binnen beide netwerken</h2>
-      <ul>
-        <li>Meer afdelingen (orthopedie)</li>
-        <li>Extra sites</li>
-        <li>Automatische Zorgstart-trigger bij CROP-thuisbeslissing</li>
-        <li>Structurele integratie in ontslagoverleg</li>
-      </ul>
-      <div class="result">
-        <strong>Verwachte impact:</strong><br>
-        • Structurele daling ligduur CROP-thuisprofielen<br>
-        • Gestandaardiseerde taakuitvoering<br>
-        • Auditbare uitstroomdata
-      </div>
-    </div>
-  </div>
-
-  <div class="milestone">
-    <div class="date">Vanaf 01/12/2026</div>
-    <div class="card">
-      <h2>Fase 3 – Provinciale uitbreiding</h2>
-      <ul>
-        <li>Start in 1 bijkomend ziekenhuis met bestaande triagestructuur</li>
-        <li>Zorgstart positioneren als uitvoeringslaag</li>
-        <li>Geen nieuw beslissingssysteem introduceren</li>
-      </ul>
-      <div class="result">
-        <strong>Doel tegen Q1 2027:</strong><br>
-        • 3 actieve ziekenhuizen<br>
-        • Recurrente licentie-inkomsten<br>
-        • Basis voor uitbreiding naar volledige versie
-      </div>
-    </div>
-  </div>
-
 </div>
 
+<div class="wrap">
+    <section class="hero reveal" id="top">
+        <div class="hero-inner">
+            <div>
+                <div class="pill">
+                    <span class="dot"></span>
+                    <span>Versnelde uitrolstrategie</span>
+                    <span class="badge">v1 → live</span>
+                </div>
+
+                <h1>Zorgstart v1 — Uitroltijdslijn</h1>
+                <p class="sub">
+                    Startdatum: 23 februari 2026. Focus: CROP-thuisbeslissingen.
+                    Van ontwikkeling naar piloot, opschaling en provinciale uitbreiding.
+                </p>
+                <div class="chiprow">
+                    <span class="chip">CROP-thuisprofielen</span>
+                    <span class="chip">ZAS + VITAZ</span>
+                    <span class="chip">meetbare impact</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fase 0 -->
+    <section class="panel reveal">
+        <div class="head">
+            <div class="title"><span class="swatch brand"></span> Fase 0 — Ontwikkeling (8 weken)</div>
+            <div class="date-label" style="font-size:13px;color:var(--muted);">23/02/2026 – 23/04/2026</div>
+        </div>
+        <ul>
+            <li>Ontslagbrief-scraping via OnePatient</li>
+            <li>Taakengine (thuiszorg, hulpmiddelen, medicatie, afspraken, attesten)</li>
+            <li>Statusworkflow + audit trail</li>
+            <li>Dashboard sociale dienst</li>
+        </ul>
+        <div class="callout" style="margin-top:10px">
+            <b>Resultaat:</b> Werkende MVP klaar voor live piloot in 2 ziekenhuizen.
+        </div>
+    </section>
+
+    <!-- Fase 1 -->
+    <section class="panel reveal">
+        <div class="head">
+            <div class="title"><span class="swatch accent"></span> Fase 1 — Parallelle piloot (ZAS + VITAZ)</div>
+            <div class="date-label" style="font-size:13px;color:var(--muted);">24/04/2026 – 31/07/2026</div>
+        </div>
+        <ul>
+            <li>1 campus per netwerk</li>
+            <li>Geriatrie + interne geneeskunde</li>
+            <li>Enkel CROP-thuisprofielen</li>
+            <li>80–120 patiënten totaal</li>
+        </ul>
+
+        <div class="callout" style="margin-top:10px">
+            <p><b>Metingen:</b></p>
+            <ul style="margin:4px 0 0 0;padding-left:18px">
+                <li>Tijd tussen “medisch klaar” en ontslag</li>
+                <li>Open taken bij ontslag</li>
+                <li>Telefonische correcties binnen 72u</li>
+                <li>30-dagen heropname</li>
+            </ul>
+        </div>
+
+        <div class="callout" style="margin-top:10px">
+            <p><b>Verwachte impact:</b></p>
+            <ul style="margin:4px 0 0 0;padding-left:18px">
+                <li>-0,3 tot -0,7 ligdag</li>
+                <li>-25% last-minute ontslaginterventies</li>
+                <li>&gt;70% adoptie in CROP-thuisgroep</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Fase 2 -->
+    <section class="panel reveal">
+        <div class="head">
+            <div class="title"><span class="swatch accent"></span> Fase 2 — Opschaling binnen beide netwerken</div>
+            <div class="date-label" style="font-size:13px;color:var(--muted);">01/08/2026 – 30/11/2026</div>
+        </div>
+        <ul>
+            <li>Meer afdelingen (orthopedie)</li>
+            <li>Extra sites</li>
+            <li>Automatische Zorgstart-trigger bij CROP-thuisbeslissing</li>
+            <li>Structurele integratie in ontslagoverleg</li>
+        </ul>
+
+        <div class="callout" style="margin-top:10px">
+            <p><b>Verwachte impact:</b></p>
+            <ul style="margin:4px 0 0 0;padding-left:18px">
+                <li>Structurele daling ligduur CROP-thuisprofielen</li>
+                <li>Gestandaardiseerde taakuitvoering</li>
+                <li>Auditbare uitstroomdata</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Fase 3 -->
+    <section class="panel reveal">
+        <div class="head">
+            <div class="title"><span class="swatch brand"></span> Fase 3 — Provinciale uitbreiding</div>
+            <div class="date-label" style="font-size:13px;color:var(--muted);">Vanaf 01/12/2026</div>
+        </div>
+        <ul>
+            <li>Start in 1 bijkomend ziekenhuis met bestaande triagestructuur</li>
+            <li>Zorgstart positioneren als uitvoeringslaag</li>
+            <li>Geen nieuw beslissingssysteem introduceren</li>
+        </ul>
+
+        <div class="callout" style="margin-top:10px">
+            <p><b>Doel tegen Q1 2027:</b></p>
+            <ul style="margin:4px 0 0 0;padding-left:18px">
+                <li>3 actieve ziekenhuizen</li>
+                <li>Recurrente licentie-inkomsten</li>
+                <li>Basis voor uitbreiding naar volledige versie</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="footer reveal">
+        <div>Extra: <a href="verdienmodel.html">Verdienmodel</a> &middot; <a href="roadmap.html">Roadmap</a></div>
+        <div class="small"><a href="index.html">← Terug naar Home</a></div>
+    </div>
 </div>
 
-<footer>
-Zorgstart v1 – Digitale uitvoeringsmotor voor CROP-thuisprofielen
-</footer>
-
+<script>
+    const p=location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('.navlink').forEach(a=>{
+        if(a.getAttribute('href')===p) a.classList.add('active');
+    });
+    const els=Array.from(document.querySelectorAll('.reveal'));
+    const io=new IntersectionObserver(entries=>{
+        entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12});
+    els.forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
