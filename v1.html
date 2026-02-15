@@ -8,121 +8,443 @@
 
   <style>
     :root{
-      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
-      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
-      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --bg:#f5f7fa;
+      --bg-soft:#ffffff;
+      --border:#dde3eb;
+      --border-strong:#c6d0dd;
+      --text:#1b2430;
+      --muted:#5c6b7c;
+      --muted-soft:#7b8ba0;
+
+      --brand:#1faacd;
+      --brand-dark:#115f73;
+      --accent:#4caf50;
+      --bad:#e53935;
+
+      --shadow:0 14px 40px rgba(15,35,52,.12);
+      --shadow2:0 8px 20px rgba(15,35,52,.10);
+
+      --r:14px;
+      --r2:12px;
+
       --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:var(--sans); color:var(--text);
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
       background:
-        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
-        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
-        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+        radial-gradient(1100px 700px at 12% 5%, rgba(31,170,205,.06), transparent 60%),
+        radial-gradient(900px 650px at 82% 10%, rgba(78,122,154,.08), transparent 60%),
+        linear-gradient(180deg,#f8fbff 0%,var(--bg) 40%,#eef2f8 100%);
       overflow-x:hidden;
     }
-    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
-    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
-    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
-    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
-    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
-    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
-    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
-    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
-    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
-    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
-    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
-    .title{display:flex; align-items:center; gap:10px; font-weight:900}
-    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
-    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
-    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
-    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
-    .content{padding:14px}
-    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
-    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
-    .card{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:16px; padding:14px; box-shadow:var(--shadow2)}
-    .card h3{margin:0 0 6px; font-size:15px}
-    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
-    .callout{border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10); padding:12px 12px; border-radius:16px; box-shadow:var(--shadow2)}
-    .callout b{display:block; margin-bottom:6px}
-    .steps{display:grid; gap:10px}
-    .step{display:flex; gap:12px; align-items:flex-start; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:12px; border-radius:16px}
-    .num{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;font-weight:900;background:rgba(93,214,255,.12);border:1px solid rgba(93,214,255,.22)}
-    .step b{display:block; margin-bottom:4px}
-    .mini{font-size:12.5px; color:var(--muted); line-height:1.45}
-    .table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); box-shadow:var(--shadow2)}
-    .table th,.table td{padding:12px 12px; border-bottom:1px solid rgba(255,255,255,.08); text-align:left; font-size:13.5px; vertical-align:top}
-    .table th{background:rgba(255,255,255,.06); font-weight:900}
-    .table tr:last-child td{border-bottom:none}
-    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
-    .chip{border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:4px 8px; border-radius:999px; font-size:12px; color:var(--muted); font-weight:900}
-    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .small{font-size:12.5px}
+
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 64px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(248,251,255,.95), rgba(248,251,255,.9));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:var(--max); margin:0 auto;
+      padding:10px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .dot{
+      width:18px;height:18px;border-radius:999px;
+      background:
+        radial-gradient(circle at 30% 30%,#ffffff,transparent 65%),
+        linear-gradient(135deg,var(--brand),#4e7a9a);
+      box-shadow: 0 0 0 4px rgba(31,170,205,.18);
+      border:1px solid rgba(17,95,115,.20);
+    }
+    .badge{
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f3f7fc;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    nav{
+      display:flex; gap:6px; flex-wrap:wrap; align-items:center;
+    }
+    .navlink{
+      color:var(--muted-soft);
+      text-decoration:none;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid transparent;
+      background: transparent;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      font-weight:600;
+      font-size:13px;
+    }
+    .navlink:hover{
+      color:var(--brand-dark);
+      background: rgba(31,170,205,.06);
+      border-color: rgba(31,170,205,.25);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding:20px 18px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px;
+      background:
+        radial-gradient(closest-side at 12% 20%, rgba(31,170,205,.10), transparent 65%),
+        radial-gradient(closest-side at 82% 30%, rgba(78,122,154,.12), transparent 65%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .hero-inner{
+      position:relative; z-index:1;
+      display:grid; gap:10px;
+    }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 11px;
+      border:1px solid var(--border);
+      background: rgba(248,251,255,.95);
+      border-radius:999px;
+      width:fit-content;
+      color:var(--muted-soft);
+      font-weight:600;
+      font-size:13px;
+    }
+    .pill .badge{background:#ffffff;}
+    h1{
+      margin:8px 0 6px;
+      font-size:clamp(24px,2.8vw,34px);
+      letter-spacing:-.02em;
+      line-height:1.15;
+      color:var(--brand-dark);
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:900px;
+      line-height:1.6;
+    }
+
+    /* Panel */
+    .panel{
+      margin-top:16px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .head{
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      flex-wrap:wrap;
+      background:linear-gradient(90deg,#f7fafc,#eef3f9);
+    }
+    .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:750;
+      font-size:15px;
+      color:var(--brand-dark);
+      letter-spacing:-.01em;
+    }
+    .swatch{
+      width:10px;height:10px;border-radius:999px;
+      background:#cad6e6;
+      outline:1px solid rgba(198,208,221,.9);
+    }
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand-dark))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#66bb6a)}
+    .head .badge{background:#ffffff;}
+
+    .content{
+      padding:14px 16px 16px;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media(max-width:980px){
+      .grid2{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background:#f9fbff;
+      border-radius:12px;
+      padding:12px 13px;
+      box-shadow:var(--shadow2);
+    }
+    .card h3{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .list{
+      margin:6px 0 0 18px;
+      padding:0;
+      color:var(--muted-soft);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .list li{margin:3px 0}
+
+    .callout{
+      border:1px solid rgba(31,170,205,.35);
+      background:#f2f8fd;
+      padding:11px 12px;
+      border-radius:12px;
+      box-shadow:var(--shadow2);
+      font-size:13px;
+      color:var(--brand-dark);
+    }
+    .callout b{display:block;margin-bottom:4px}
+
+    /* Steps */
+    .steps{
+      display:grid;
+      gap:8px;
+    }
+    .step{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      border:1px solid var(--border);
+      background:#f7fbff;
+      padding:9px 10px;
+      border-radius:12px;
+      box-shadow:var(--shadow2);
+    }
+    .num{
+      width:30px;height:30px;border-radius:10px;
+      display:grid;place-items:center;
+      font-weight:800;
+      font-size:13px;
+      background:rgba(31,170,205,.10);
+      border:1px solid rgba(31,170,205,.35);
+      color:var(--brand-dark);
+      font-family:var(--mono);
+    }
+    .mini{
+      font-size:12.5px;
+      color:var(--muted-soft);
+      line-height:1.45;
+      margin-top:2px;
+    }
+
+    .chips{
+      display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;
+    }
+    .chip{
+      border:1px solid var(--border);
+      background:#f5f8fd;
+      padding:4px 8px;
+      border-radius:999px;
+      font-size:11px;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    /* Table */
+    .table{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#f9fbff;
+      box-shadow:var(--shadow2);
+      font-size:13px;
+    }
+    .table th,
+    .table td{
+      padding:10px 11px;
+      border-bottom:1px solid var(--border);
+      text-align:left;
+      vertical-align:top;
+    }
+    .table th{
+      background:#f3f7fc;
+      font-weight:700;
+      color:var(--brand-dark);
+    }
+    .table tr:last-child td{
+      border-bottom:none;
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:18px;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      border-radius:16px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      box-shadow:var(--shadow2);
+    }
+    .small{font-size:12.5px;color:var(--muted-soft)}
+    .footer a{
+      color:var(--muted-soft);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(162,177,195,.9);
+    }
+    .footer a:hover{
+      color:var(--brand-dark);
+      border-bottom-color:rgba(31,170,205,.8);
+    }
   </style>
 </head>
 
 <body>
-  <div class="grid" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="topbar">
-      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">V1</span></div>
-      <nav>
-        <a class="navlink" href="index.html">Home</a>
-        <a class="navlink" href="strategy.html">Strategie</a>
-        <a class="navlink" href="journey.html">Patiëntjourney</a>
-        <a class="navlink" href="roadmap.html">Roadmap</a>
-      </nav>
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Zorgstart</span>
+          <span class="badge">V1</span>
+        </div>
+        <nav>
+          <a class="navlink" href="index.html">Home</a>
+          <a class="navlink" href="strategy.html">Strategie</a>
+          <a class="navlink" href="journey.html">Patiëntjourney</a>
+          <a class="navlink" href="roadmap.html">Roadmap</a>
+        </nav>
+      </div>
     </div>
 
     <section class="hero">
       <div class="hero-inner">
-        <div class="pill"><span class="dot"></span><span>Zorgstart V1 — Discharge Task Engine</span><span class="badge">actief & verdedigbaar</span></div>
-        <h1>V1 ontlast sociale dienst en maakt stopper “THUIS” planbaar</h1>
+        <div class="pill">
+          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+          <span>Zorgstart V1 — Discharge Task Engine</span>
+          <span class="badge">actief & verdedigbaar</span>
+        </div>
+        <h1>V1 ontlast sociale dienst en maakt stopper “THUIS” planbaar.</h1>
         <p class="sub">
-          V1 automatiseert de administratieve triage van ontslagbrieven (met bronverwijzingen), laat sociale dienst valideren,
-          en publiceert gestructureerde taken naar Flexizorg — met terugkoppeling van invulling.
+          V1 automatiseert de administratieve triage van ontslagbrieven (met bronverwijzingen), laat de sociale dienst valideren
+          en publiceert gestructureerde taken naar Flexizorg, mét terugkoppeling van invulling.
         </p>
       </div>
     </section>
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>Wat V1 doet — end-to-end flow</span><span class="badge">POC → MVP</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>Wat V1 doet — end-to-end flow</span>
+          <span class="badge">POC → MVP</span>
+        </div>
         <div class="badge">upload → extract → propose → review → publish</div>
       </div>
 
       <div class="content grid2">
         <div class="steps">
-          <div class="step"><div class="num">1</div><div><b>Secure upload / mailbox</b><div class="mini">PDF/DOCX, virus-scan, metadata, versleutelde opslag.</div></div></div>
-          <div class="step"><div class="num">2</div><div><b>Document Intelligence (OCR + structuur)</b><div class="mini">Tekst & layout, ook bij scans.</div></div></div>
-          <div class="step"><div class="num">3</div><div><b>AI taakvoorstel met evidence</b><div class="mini">Strikte JSON-output: taak + discipline + urgentie + frequentie (indien aanwezig) + bronpassages + confidence.</div></div></div>
-          <div class="step"><div class="num">4</div><div><b>Review & approve (sociale dienst)</b><div class="mini">Human-in-the-loop: aanpassen, toevoegen, verwijderen. Audit trail “wie keurde wat goed”.</div></div></div>
-          <div class="step"><div class="num">5</div><div><b>Draft publicatie op Flexizorg</b><div class="mini">Taken verschijnen per discipline; professionals tekenen in. Status terug naar Zorgstart.</div></div></div>
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <b>Secure upload / mailbox</b>
+              <div class="mini">PDF/DOCX, virusscan, metadata, versleutelde opslag.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <b>Document intelligence (OCR + structuur)</b>
+              <div class="mini">Tekst en layout, ook bij scans.</div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <b>AI-takenvoorstel met evidence</b>
+              <div class="mini">
+                Strikte JSON-output: taak, discipline, urgentie, frequentie (indien aanwezig),
+                bronpassages en confidence.
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">4</div>
+            <div>
+              <b>Review & approve (sociale dienst)</b>
+              <div class="mini">
+                Human-in-the-loop: aanpassen, toevoegen, verwijderen.
+                Audit trail “wie keurde wat goed”.
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="num">5</div>
+            <div>
+              <b>Draft-publicatie op Flexizorg</b>
+              <div class="mini">
+                Taken verschijnen per discipline; professionals tekenen in.
+                Status keert terug naar Zorgstart.
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="callout">
           <b>Waarom dit direct impact heeft</b>
           V1 pakt het traagste en foutgevoeligste deel van de keten aan: de vertaling van vrije tekst naar uitvoerbare opdrachten.
           <ul class="list">
-            <li>30–60% minder triage-tijd (afhankelijk van startpunt)</li>
-            <li>snellere publicatie → snellere invulling → minder niet-medische ligdagen</li>
-            <li>uniforme output → minder vergeten acties</li>
-            <li>audit trail → governance voor directie/CMO</li>
+            <li>30–60% minder triage-tijd (afhankelijk van startpunt).</li>
+            <li>Snellere publicatie → snellere invulling → minder niet-medische ligdagen.</li>
+            <li>Uniforme output → minder vergeten acties.</li>
+            <li>Audit trail → governance voor directie en CMO.</li>
           </ul>
           <div class="chips">
-            <span class="chip">decision support</span><span class="chip">human approval required</span><span class="chip">meetbaar</span>
+            <span class="chip">decision support</span>
+            <span class="chip">human approval required</span>
+            <span class="chip">meetbaar</span>
           </div>
         </div>
       </div>
@@ -130,27 +452,31 @@
 
     <section class="panel" id="when">
       <div class="head">
-        <div class="title"><span class="swatch accent"></span><span>Wanneer V1 ingezet wordt</span><span class="badge">moment in keten</span></div>
+        <div class="title">
+          <span class="swatch accent"></span>
+          <span>Wanneer V1 ingezet wordt</span>
+          <span class="badge">moment in keten</span>
+        </div>
         <div class="badge">reactief → semi-proactief</div>
       </div>
 
       <div class="content grid2">
         <div class="card">
           <h3>Scenario A — reactief (klassiek)</h3>
-          <p>Ontslagbrief komt binnen op/na ontslagbeslissing.</p>
+          <p>Ontslagbrief komt binnen op of na de ontslagbeslissing.</p>
           <ul class="list">
-            <li>V1 versnelt triage en publicatie</li>
-            <li>reduceert niet-medische ligdagen</li>
-            <li>maakt status “THUIS” zichtbaar</li>
+            <li>V1 versnelt triage en publicatie.</li>
+            <li>Reduceert niet-medische ligdagen.</li>
+            <li>Maakt status “THUIS” zichtbaar.</li>
           </ul>
         </div>
         <div class="card">
           <h3>Scenario B — semi-proactief (beter)</h3>
-          <p>Preliminaire discharge info wordt vroeger gedeeld.</p>
+          <p>Preliminaire ontslaginfo wordt vroeger gedeeld.</p>
           <ul class="list">
-            <li>voorlopig takenpakket</li>
-            <li>vroeg starten met matching</li>
-            <li>ontslagmoment wordt uitvoeringsmoment</li>
+            <li>Voorlopig takenpakket.</li>
+            <li>Vroeger starten met matching.</li>
+            <li>Ontslagmoment wordt uitvoeringsmoment.</li>
           </ul>
         </div>
       </div>
@@ -158,24 +484,39 @@
 
     <section class="panel" id="ui">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>Hoe het platform eruit ziet (V1)</span><span class="badge">professioneel & simpel</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>Hoe het platform eruit ziet (V1)</span>
+          <span class="badge">professioneel & simpel</span>
+        </div>
         <div class="badge">cockpit sociale dienst</div>
       </div>
       <div class="content grid2">
         <div class="card">
           <h3>Scherm 1 — Inbox / Cases</h3>
           <p>Overzicht met status: “in verwerking”, “review nodig”, “gepubliceerd”, “(deels) ingevuld”.</p>
-          <div class="chips"><span class="chip">afdeling</span><span class="chip">doorlooptijd</span><span class="chip">prioriteit</span></div>
+          <div class="chips">
+            <span class="chip">afdeling</span>
+            <span class="chip">doorlooptijd</span>
+            <span class="chip">prioriteit</span>
+          </div>
         </div>
         <div class="card">
           <h3>Scherm 2 — Review (split view)</h3>
-          <p>Links: ontslagbrief (viewer). Rechts: extracties + taken met bronverwijzingen & confidence.</p>
-          <div class="chips"><span class="chip">evidence</span><span class="chip">edit</span><span class="chip">approve</span></div>
+          <p>Links: ontslagbrief (viewer). Rechts: extracties en taken met bronverwijzingen en confidence.</p>
+          <div class="chips">
+            <span class="chip">evidence</span>
+            <span class="chip">edit</span>
+            <span class="chip">approve</span>
+          </div>
         </div>
         <div class="card">
-          <h3>Scherm 3 — Publish & Follow-up</h3>
-          <p>Publicatie naar Flexizorg (draft) + terugkoppeling: #kandidaten, status, ingevuld/niet ingevuld.</p>
-          <div class="chips"><span class="chip">time-to-fill</span><span class="chip">match status</span></div>
+          <h3>Scherm 3 — Publish & follow-up</h3>
+          <p>Publicatie naar Flexizorg (draft) + terugkoppeling: aantal kandidaten, status, ingevuld/niet ingevuld.</p>
+          <div class="chips">
+            <span class="chip">time-to-fill</span>
+            <span class="chip">match status</span>
+          </div>
         </div>
         <div class="callout">
           <b>Ketenstatus “light” (V1)</b>
@@ -187,29 +528,56 @@
 
     <section class="panel" id="kpi">
       <div class="head">
-        <div class="title"><span class="swatch accent"></span><span>Wat je meteen kan meten (KPI’s)</span><span class="badge">CMO & directie</span></div>
+        <div class="title">
+          <span class="swatch accent"></span>
+          <span>Wat je meteen kan meten (KPI’s)</span>
+          <span class="badge">CMO & directie</span>
+        </div>
         <div class="badge">impact zichtbaar</div>
       </div>
       <div class="content">
         <table class="table" aria-label="KPI's">
           <tr><th>KPI</th><th>Waarom belangrijk</th></tr>
-          <tr><td>Tijd upload → takenvoorstel</td><td>technische throughput, basis voor schaalbaarheid</td></tr>
-          <tr><td>Tijd voorstel → approve</td><td>triage-efficiëntie sociale dienst</td></tr>
-          <tr><td>Tijd approve → publicatie Flexizorg</td><td>doorlooptijd richting keten</td></tr>
-          <tr><td>Acceptatiegraad AI (aantal edits)</td><td>kwaliteit & trainingsfeedback</td></tr>
-          <tr><td>Fill-rate per discipline</td><td>transmurale capaciteit en matching</td></tr>
-          <tr><td>Time-to-fill</td><td>beddenhuis-impact (hoe snel is keten rond?)</td></tr>
+          <tr>
+            <td>Tijd upload → takenvoorstel</td>
+            <td>Technische throughput, basis voor schaalbaarheid.</td>
+          </tr>
+          <tr>
+            <td>Tijd voorstel → approve</td>
+            <td>Triage-efficiëntie sociale dienst.</td>
+          </tr>
+          <tr>
+            <td>Tijd approve → publicatie Flexizorg</td>
+            <td>Doorlooptijd richting keten.</td>
+          </tr>
+          <tr>
+            <td>Acceptatiegraad AI (aantal edits)</td>
+            <td>Kwaliteit en trainingsfeedback.</td>
+          </tr>
+          <tr>
+            <td>Fill-rate per discipline</td>
+            <td>Transmurale capaciteit en matching.</td>
+          </tr>
+          <tr>
+            <td>Time-to-fill</td>
+            <td>Beddenhuis-impact: hoe snel is de keten rond?</td>
+          </tr>
         </table>
         <div class="callout" style="margin-top:14px">
-          <b>Directie-taal</b>
-          V1 is een “ontstopper”: minder administratieve tijd, sneller planbaar ontslag, meer voorspelbaarheid in beddenhuis.
+          <b>Directietaal</b>
+          V1 is een ontstopper: minder administratieve tijd, sneller planbaar ontslag en meer voorspelbaarheid in het beddenhuis.
         </div>
       </div>
     </section>
 
     <div class="footer">
-      <div class="small">Volgende: <a href="journey.html" style="text-decoration:underline">Patiëntjourney</a> — impact in een realistische casus.</div>
-      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+      <div class="small">
+        Volgende:
+        <a href="journey.html">Patiëntjourney</a> — impact in een realistische casus.
+      </div>
+      <div class="small">
+        <a href="index.html">← Terug naar Home</a>
+      </div>
     </div>
   </div>
 </body>
