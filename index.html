@@ -1,98 +1,221 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<zorgstartNota version="1.0" datum="2026-02-16" audience="Erwin" thema="Zorgstart — ontslagversnelling & matching">
-  <meta>
-    <auteurs>
-      <auteur naam="Kristof Schutyser" rol="Strategie & model" />
-      <auteur naam="Stef Biesemans" rol="Proces & CROP" />
-      <auteur naam="Jan Avonds" rol="Coördinatie & implementatie" />
-    </auteurs>
-    <context>
-      <organisatie naam="ZAS & VITAZ" domein="Sociale dienst / ontslag" />
-      <doel>Voorbereiding vergadering: gezamenlijke richting bepalen voor de inzet van Zorgstart en V1 (AI-ondersteunde ontslagbrief → takenpakket → Flexizorg).</doel>
-    </context>
-  </meta>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zorgstart – Ontslagversnelling & Matching</title>
 
-  <executiveSummary>
-    <kernboodschap>
-      Zorgstart biedt een schaalbaar antwoord op de structurele ontslagdruk: het verschuift de sociale dienst van administratieve triage naar complex casemanagement,
-      versnelt de publicatie van zorgtaken en maakt de matching met eerstelijnscapaciteit realtime en transparanter.
-    </kernboodschap>
-    <waaromNu>
-      Verkorte ligduren, hogere complexiteit, bottlenecks in gezinszorg en sterk variabele ontslagdocumentatie creëren een kloof tussen “medisch ontslagbaar” en “sociaal haalbaar”.
-      V1 pakt dit pragmatisch aan bij de ontslagbrief: administratieve triage versnellen met human-in-the-loop controle.
-    </waaromNu>
-  </executiveSummary>
+<style>
+:root{
+  --primary:#0C3C60;
+  --accent:#1BA6A6;
+  --soft:#F4F7FA;
+  --dark:#1E2A35;
+  --success:#2E8B57;
+}
 
-  <inzichten>
-    <pijnpunten>
-      <punt id="P1">Geen formele normering van de sociale dienst → capaciteitsdruk bij stijgende complexiteit.</punt>
-      <punt id="P2">Bottlenecks in de eerste lijn (vooral gezinszorg) vertragen ontslag en verhogen de stress.</punt>
-      <punt id="P3">Interne druk om sneller te ontslaan (artsen/verpleegkundigen) botst met sociale haalbaarheid.</punt>
-      <punt id="P4">Informatieoverdracht is niet uniform: ontslagbrieven verschillen sterk, sociale context ontbreekt vaak.</punt>
-      <punt id="P5">Onzekerheid over capaciteit en competenties in de eerste lijn (“is er hulp of niet?”).</punt>
-    </pijnpunten>
+body{
+  margin:0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:var(--soft);
+  color:var(--dark);
+}
 
-    <kansen>
-      <kans id="K1">Standaardisatie van intake en triage: minder knip- en plakwerk, meer tijd voor mensgerichte begeleiding.</kans>
-      <kans id="K2">CROP als instroom- en triagemotor, met Zorgstart als transmurale laag (matching + planbaarheid) rond de grijze zone.</kans>
-      <kans id="K3">Een dynamisch matchingplatform met realtime zicht op beschikbaarheid, expertise en regionale dekking.</kans>
-      <kans id="K4">Betere meetbaarheid: doorlooptijd, triagetijd, fill-rate, correcties en heropnamesignalen.</kans>
-    </kansen>
-  </inzichten>
+.hero{
+  background:linear-gradient(120deg,var(--primary),#184F7A);
+  color:white;
+  padding:80px 20px;
+  text-align:center;
+}
 
-  <strategie>
-    <niveau index="1" naam="Operationele optimalisatie sociale dienst">
-      <doel>30–60% minder administratieve triagetijd via standaardisatie en digitalisering (human-in-the-loop).</doel>
-      <impact>FTE verschuift van uitvoerend-administratief werk naar adviserend en complex casemanagement.</impact>
-      <bewijsvoering>Meten via tijdsregistratie triage, correctielog en doorlooptijd tot publicatie.</bewijsvoering>
-    </niveau>
+.hero h1{
+  font-size:42px;
+  margin-bottom:15px;
+}
 
-    <niveau index="2" naam="Automatisering CROP & strategische instroom">
-      <doel>Automatische beslissingslogica voor de grijze zone: betere selectie en hogere zorgcomplexiteit in het portfolio.</doel>
-      <randvoorwaarde>Positioneer Zorgstart aanvullend op CROP: Zorgstart = transmurale matching + planbaar zorgpakket.</randvoorwaarde>
-    </niveau>
+.hero p{
+  font-size:18px;
+  max-width:700px;
+  margin:auto;
+  opacity:0.9;
+}
 
-    <niveau index="3" naam="Zorgstart als dynamisch matchingplatform">
-      <doel>Realtime matching van zorgvraag en zorgaanbod (beschikbaarheid, competenties, specialisatie, regio).</doel>
-      <output>Meer transparantie voor de sociale dienst, minder telefonie en een kortere ‘time-to-care’.</output>
-    </niveau>
+.section{
+  padding:70px 10%;
+}
 
-    <niveau index="4" naam="Patiëntwaarde via optimalisatie van zorgplannen">
-      <doel>Meer patiëntgerichtheid, continuïteit en transparantie door het zorgplan te vertalen naar begrijpbare acties en de juiste zorgverleners.</doel>
-      <opmerking>Fase na bewezen V1-impact; uitbreiding zodra operations stabiel (‘op rails’) zijn.</opmerking>
-    </niveau>
-  </strategie>
+.section h2{
+  font-size:28px;
+  margin-bottom:30px;
+  color:var(--primary);
+}
 
-  <v1>
-    <definitie>V1 = ontslagbrief → extractie → AI-taakvoorstel met bronverwijzingen → review/goedkeuring door de sociale dienst → draft-publicatie in Flexizorg.</definitie>
-    <positionering>Geen vervanging van het sociaal werk, maar wel ontlasting van administratieve triage en versnelling van de ontslagflow.</positionering>
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
 
-    <kpis>
-      <kpi naam="Triage-tijd" eenheid="min/dossier" target="30–60% reductie" />
-      <kpi naam="Doorlooptijd tot publicatie" eenheid="uren" target="sneller en voorspelbaar" />
-      <kpi naam="Acceptatiegraad AI-voorstel" eenheid="%" target="≥70% met beperkte edits" />
-      <kpi naam="Aantal correcties" eenheid="#/dossier" target="dalend na de feedbackloop" />
-      <kpi naam="Fill-rate Flexizorg" eenheid="%" target="stijgend" />
-    </kpis>
+.card{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.06);
+  transition:0.3s;
+}
 
-    <pilotScope>
-      <afdeling voorkeur="ja">Geriatrie</afdeling>
-      <afdeling>Revalidatie</afdeling>
-      <afdeling>Orthopedie (gepland)</afdeling>
-      <nietStartenBij>Spoed (te veel variatie en chaos in de startfase)</nietStartenBij>
-      <dataset grootte="30–50">Representatieve ontslagbrieven, inclusief moeilijke scans.</dataset>
-    </pilotScope>
-  </v1>
+.card:hover{
+  transform:translateY(-4px);
+}
 
-  <beslissingenVoorMorgen>
-    <vraag id="Q1">Welke pilootafdeling kiezen we (1 afdeling, 4–6 weken)?</vraag>
-    <vraag id="Q2">Wie is eigenaar van de reviewstap (sociale dienst) en wie is SPOC?</vraag>
-    <vraag id="Q3">Welke KPI’s zijn ‘must-have’ voor go/no-go?</vraag>
-    <vraag id="Q4">Welke randvoorwaarden rond privacy en consent zijn nodig voor de pilootdata?</vraag>
-  </beslissingenVoorMorgen>
+.card h3{
+  margin-top:0;
+  color:var(--primary);
+}
 
-  <callToAction>
-    <actie>Akkoord over pilootscope, KPI’s en planning (POC → MVP → V1).</actie>
-    <actie>Afspraak: demonstratie met 3–5 realistische (geanonimiseerde) ontslagbrieven en het resulterende takenpakket.</actie>
-  </callToAction>
-</zorgstartNota>
+.badge{
+  display:inline-block;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  background:var(--accent);
+  color:white;
+  margin-bottom:10px;
+}
+
+.kpi{
+  background:var(--success);
+  color:white;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.timeline{
+  border-left:4px solid var(--accent);
+  padding-left:25px;
+}
+
+.timeline div{
+  margin-bottom:30px;
+}
+
+.cta{
+  background:var(--primary);
+  color:white;
+  text-align:center;
+  padding:60px 20px;
+}
+
+.cta h2{
+  margin-bottom:20px;
+  color:white;
+}
+
+button{
+  padding:12px 24px;
+  border:none;
+  border-radius:8px;
+  background:var(--accent);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <h1>Zorgstart</h1>
+  <p>Een schaalbaar model voor ontslagversnelling en realtime matching tussen ziekenhuis en eerste lijn.</p>
+</section>
+
+<section class="section">
+  <h2>Executive Summary</h2>
+  <div class="card">
+    <div class="badge">Kernboodschap</div>
+    <p>Zorgstart verschuift de sociale dienst van administratieve triage naar complex casemanagement.
+    Ontslag wordt sneller publiceerbaar en matching met eerstelijnscapaciteit gebeurt transparant en realtime.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Structurele Pijnpunten</h2>
+  <div class="card-grid">
+    <div class="card"><h3>Capaciteitsdruk</h3><p>Geen formele normering, stijgende complexiteit.</p></div>
+    <div class="card"><h3>Bottlenecks</h3><p>Gezinszorg vertraagt ontslag.</p></div>
+    <div class="card"><h3>Interne druk</h3><p>Medisch ontslagbaar ≠ sociaal haalbaar.</p></div>
+    <div class="card"><h3>Variabele documentatie</h3><p>Ontslagbrieven zijn niet uniform.</p></div>
+    <div class="card"><h3>Onzekerheid capaciteit</h3><p>Geen realtime zicht op beschikbaarheid.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Strategische Antwoorden</h2>
+  <div class="timeline">
+    <div>
+      <h3>1. Operationele optimalisatie</h3>
+      <p>30–60% minder triagetijd via standaardisatie en AI met human-in-the-loop.</p>
+    </div>
+    <div>
+      <h3>2. CROP + Zorgstart</h3>
+      <p>CROP = instroom. Zorgstart = transmurale matching en planbaarheid.</p>
+    </div>
+    <div>
+      <h3>3. Dynamisch Matchingplatform</h3>
+      <p>Realtime zicht op expertise, beschikbaarheid en regio.</p>
+    </div>
+    <div>
+      <h3>4. Patiëntwaarde</h3>
+      <p>Zorgplan vertaald naar begrijpbare acties met juiste zorgverleners.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>V1 – Praktische Start</h2>
+  <div class="card">
+    <div class="badge">Definitie</div>
+    <p>Ontslagbrief → AI-extractie → taakvoorstel met bronverwijzingen → review sociale dienst → publicatie in Flexizorg.</p>
+  </div>
+</section>
+
+<section class="section">
+  <h2>KPI’s Piloot</h2>
+  <div class="card-grid">
+    <div class="kpi"><h3>Triage-tijd</h3><p>−30–60%</p></div>
+    <div class="kpi"><h3>Acceptatie AI</h3><p>≥70%</p></div>
+    <div class="kpi"><h3>Fill-rate</h3><p>Stijgend</p></div>
+    <div class="kpi"><h3>Correcties</h3><p>Dalend</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Pilootscope</h2>
+  <div class="card-grid">
+    <div class="card"><h3>Start</h3><p>Geriatrie (voorkeur)</p></div>
+    <div class="card"><h3>Uitbreiding</h3><p>Revalidatie & Orthopedie</p></div>
+    <div class="card"><h3>Niet starten bij</h3><p>Spoed (te variabel)</p></div>
+    <div class="card"><h3>Dataset</h3><p>30–50 ontslagbrieven</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Beslissingen Morgen</h2>
+  <div class="card-grid">
+    <div class="card"><h3>Pilootafdeling?</h3></div>
+    <div class="card"><h3>Review-eigenaar?</h3></div>
+    <div class="card"><h3>Must-have KPI’s?</h3></div>
+    <div class="card"><h3>Privacy & Consent?</h3></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Volgende Stap</h2>
+  <p>Akkoord over scope, KPI’s en planning (POC → MVP → V1)</p>
+  <button>Demo plannen</button>
+</section>
+
+</body>
+</html>
