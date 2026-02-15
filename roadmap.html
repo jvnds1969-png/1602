@@ -8,100 +8,335 @@
 
   <style>
     :root{
-      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
-      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
-      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --bg:#f5f7fa;
+      --bg-soft:#ffffff;
+      --border:#dde3eb;
+      --border-strong:#c6d0dd;
+      --text:#1b2430;
+      --muted:#5c6b7c;
+      --muted-soft:#7b8ba0;
+
+      --brand:#1faacd;
+      --brand-dark:#115f73;
+      --accent:#4caf50;
+
+      --shadow:0 14px 40px rgba(15,35,52,.12);
+      --shadow2:0 8px 20px rgba(15,35,52,.10);
+
+      --r:14px;
+      --r2:12px;
+
       --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:var(--sans); color:var(--text);
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
       background:
-        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
-        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
-        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+        radial-gradient(1100px 700px at 12% 5%, rgba(31,170,205,.06), transparent 60%),
+        radial-gradient(900px 650px at 82% 10%, rgba(78,122,154,.08), transparent 60%),
+        linear-gradient(180deg,#f8fbff 0%,var(--bg) 40%,#eef2f8 100%);
       overflow-x:hidden;
     }
-    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
-    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
-    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
-    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
-    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
-    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
-    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
-    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
-    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
-    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
-    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
-    .title{display:flex; align-items:center; gap:10px; font-weight:900}
-    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
-    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
-    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
-    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
-    .content{padding:14px}
-    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
-    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
-    .card{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:16px; padding:14px; box-shadow:var(--shadow2)}
-    .card h3{margin:0 0 6px; font-size:15px}
-    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
-    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
-    .callout{border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10); padding:12px 12px; border-radius:16px; box-shadow:var(--shadow2)}
-    .callout b{display:block; margin-bottom:6px}
-    .road{display:grid; gap:10px}
-    .milestone{
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      border-radius:16px;
-      padding:12px;
+
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 64px}
+
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(248,251,255,.95), rgba(248,251,255,.9));
+      border-bottom:1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width:var(--max); margin:0 auto;
+      padding:10px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .dot{
+      width:18px;height:18px;border-radius:999px;
+      background:
+        radial-gradient(circle at 30% 30%,#ffffff,transparent 65%),
+        linear-gradient(135deg,var(--brand),#4e7a9a);
+      box-shadow: 0 0 0 4px rgba(31,170,205,.18);
+      border:1px solid rgba(17,95,115,.20);
+    }
+    .badge{
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f3f7fc;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    nav{
+      display:flex; gap:6px; flex-wrap:wrap; align-items:center;
+    }
+    .navlink{
+      color:var(--muted-soft);
+      text-decoration:none;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid transparent;
+      background: transparent;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      font-weight:600;
+      font-size:13px;
+    }
+    .navlink:hover{
+      color:var(--brand-dark);
+      background: rgba(31,170,205,.06);
+      border-color: rgba(31,170,205,.25);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
+      padding:20px 18px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px;
+      background:
+        radial-gradient(closest-side at 12% 20%, rgba(31,170,205,.10), transparent 65%),
+        radial-gradient(closest-side at 82% 30%, rgba(78,122,154,.12), transparent 65%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .hero-inner{
+      position:relative; z-index:1;
+      display:grid; gap:10px;
+    }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 11px;
+      border:1px solid var(--border);
+      background: rgba(248,251,255,.95);
+      border-radius:999px;
+      width:fit-content;
+      color:var(--muted-soft);
+      font-weight:600;
+      font-size:13px;
+    }
+    .pill .badge{background:#ffffff;}
+    h1{
+      margin:8px 0 6px;
+      font-size:clamp(24px,2.8vw,34px);
+      letter-spacing:-.02em;
+      line-height:1.15;
+      color:var(--brand-dark);
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:900px;
+      line-height:1.6;
+    }
+
+    /* Panel */
+    .panel{
+      margin-top:16px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .head{
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      flex-wrap:wrap;
+      background:linear-gradient(90deg,#f7fafc,#eef3f9);
+    }
+    .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:750;
+      font-size:15px;
+      color:var(--brand-dark);
+      letter-spacing:-.01em;
+    }
+    .swatch{
+      width:10px;height:10px;border-radius:999px;
+      background:#cad6e6;
+      outline:1px solid rgba(198,208,221,.9);
+    }
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand-dark))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#66bb6a)}
+    .head .badge{background:#ffffff;}
+
+    .content{
+      padding:14px 16px 16px;
+    }
+
+    .grid2{
       display:grid;
-      gap:6px;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+    @media(max-width:980px){
+      .grid2{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid var(--border);
+      background:#f9fbff;
+      border-radius:12px;
+      padding:12px 13px;
       box-shadow:var(--shadow2);
     }
-    .milestone .k{font-family:var(--mono); font-size:12px; color:var(--muted)}
-    .milestone .h{font-weight:900}
-    .milestone .d{color:var(--muted); font-size:13.5px; line-height:1.5}
-    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .small{font-size:12.5px}
+    .card h3{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    .list{
+      margin:6px 0 0 18px;
+      padding:0;
+      color:var(--muted-soft);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .list li{margin:3px 0}
+
+    .callout{
+      border:1px solid rgba(31,170,205,.35);
+      background:#f2f8fd;
+      padding:11px 12px;
+      border-radius:12px;
+      box-shadow:var(--shadow2);
+      font-size:13px;
+      color:var(--brand-dark);
+    }
+    .callout b{display:block;margin-bottom:4px}
+
+    /* Roadmap blocks */
+    .road{
+      display:grid;
+      gap:8px;
+    }
+    .milestone{
+      border:1px solid var(--border);
+      background:#f7fbff;
+      border-radius:12px;
+      padding:10px 11px;
+      display:grid;
+      gap:4px;
+      box-shadow:var(--shadow2);
+    }
+    .milestone .k{
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted-soft);
+    }
+    .milestone .h{
+      font-weight:750;
+      font-size:13.5px;
+      color:var(--brand-dark);
+    }
+    .milestone .d{
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+
+    /* Footer */
+    .footer{
+      margin-top:18px;
+      padding:10px 14px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      border-radius:16px;
+      color:var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      box-shadow:var(--shadow2);
+    }
+    .small{font-size:12.5px;color:var(--muted-soft)}
+    .footer a{
+      color:var(--muted-soft);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(162,177,195,.9);
+    }
+    .footer a:hover{
+      color:var(--brand-dark);
+      border-bottom-color:rgba(31,170,205,.8);
+    }
   </style>
 </head>
 
 <body>
-  <div class="grid" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="topbar">
-      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Roadmap</span></div>
-      <nav>
-        <a class="navlink" href="index.html">Home</a>
-        <a class="navlink" href="strategy.html">Strategie</a>
-        <a class="navlink" href="v1.html">Zorgstart V1</a>
-        <a class="navlink" href="journey.html">Patiëntjourney</a>
-      </nav>
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Zorgstart</span>
+          <span class="badge">roadmap</span>
+        </div>
+        <nav>
+          <a class="navlink" href="index.html">Home</a>
+          <a class="navlink" href="strategy.html">Strategie</a>
+          <a class="navlink" href="v1.html">Zorgstart V1</a>
+          <a class="navlink" href="journey.html">Patiëntjourney</a>
+        </nav>
+      </div>
     </div>
 
     <section class="hero">
       <div class="hero-inner">
-        <div class="pill"><span class="dot"></span><span>Van V1 naar volledige Zorgstart</span><span class="badge">probleemgebieden → bundels → plan</span></div>
-        <h1>Van takenlijst naar geïntegreerd zorgplan — inclusief medicatieschema en patiëntvertaling</h1>
+        <div class="pill">
+          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+          <span>Van V1 naar volledige Zorgstart</span>
+          <span class="badge">probleemgebieden → bundels → plan</span>
+        </div>
+        <h1>Van takenlijst naar geïntegreerd zorgplan — inclusief medicatieschema en patiëntvertaling.</h1>
         <p class="sub">
           V1 is de administratieve motor. De volledige versie bouwt daarop voort met klinische structuur (probleemgebieden),
-          evidence-based zorgbundels, een geïntegreerd zorgplan en een begrijpelijke “vertaling naar de patiënt”.
+          evidence-based zorgbundels, een geïntegreerd zorgplan en een begrijpelijke vertaling naar de patiënt.
         </p>
       </div>
     </section>
 
     <section class="panel">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>De logische groeilijn</span><span class="badge">architectuur</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>De logische groeilijn</span>
+          <span class="badge">architectuur</span>
+        </div>
         <div class="badge">beheersbaar & schaalbaar</div>
       </div>
       <div class="content grid2">
@@ -109,37 +344,37 @@
           <div class="milestone">
             <div class="k">FASE 1</div>
             <div class="h">V1 — Discharge Task Engine</div>
-            <div class="d">Ontslagbrief → taken → review → Flexizorg + feedback. (data foundation)</div>
+            <div class="d">Ontslagbrief → taken → review → Flexizorg + feedback. (datafoundation)</div>
           </div>
           <div class="milestone">
             <div class="k">FASE 2</div>
             <div class="h">Probleemgebieden</div>
-            <div class="d">Classificatie van tekst/taken naar een vaste taxonomie (bv. 16 domeinen) + confidence + evidence.</div>
+            <div class="d">Classificatie van tekst/taken naar een vaste taxonomie (bv. 16 domeinen) met confidence en evidence.</div>
           </div>
           <div class="milestone">
             <div class="k">FASE 3</div>
             <div class="h">Zorgbundels</div>
-            <div class="d">Per probleemgebied: gestandaardiseerde bundels met interventies (rollen, timing, minimumset + optioneel).</div>
+            <div class="d">Per probleemgebied gestandaardiseerde bundels met interventies (rollen, timing, minimumset + optioneel).</div>
           </div>
           <div class="milestone">
             <div class="k">FASE 4</div>
             <div class="h">Geïntegreerd zorgplan</div>
-            <div class="d">Bundels + taken + hulpmiddelen + afspraken + verantwoordelijken in één plan; ketenstatus per onderdeel.</div>
+            <div class="d">Bundels, taken, hulpmiddelen, afspraken en verantwoordelijken in één plan; ketenstatus per onderdeel.</div>
           </div>
           <div class="milestone">
             <div class="k">FASE 5</div>
             <div class="h">Medicatieschema (gestructureerd)</div>
-            <div class="d">Extractie/normalisatie; koppeling aan taken (toediening, monitoring, educatie) + risico’s (polyfarmacie).</div>
+            <div class="d">Extractie/normalisatie, koppeling aan taken (toediening, monitoring, educatie) en risicofocus (polyfarmacie).</div>
           </div>
           <div class="milestone">
             <div class="k">FASE 6</div>
             <div class="h">Patiëntvertaling (“Uw zorg thuis”)</div>
-            <div class="d">Eenvoudige taal, planning, wie-komt-wanneer, waarschuwingstekens, contactpunten, verwachtingen.</div>
+            <div class="d">Eenvoudige taal, planning, wie-komt-wanneer, alarmsymptomen, contactpunten en verwachtingen.</div>
           </div>
           <div class="milestone">
             <div class="k">FASE 7</div>
             <div class="h">Volwaardige ketenmonitor (GO/NO-GO)</div>
-            <div class="d">MED/HOSP/THUIS stoppers live + escalatiepaden + rapportering (doorstroom, veiligheid, heropname-indicatoren).</div>
+            <div class="d">MED/HOSP/THUIS-stoppers live, escalatiepaden en rapportering (doorstroom, veiligheid, heropname-indicatoren).</div>
           </div>
         </div>
 
@@ -148,9 +383,9 @@
           Elke fase bouwt voort op dezelfde kern: <b>evidence</b>, <b>audit trail</b>, <b>human approval</b> en <b>meetbaarheid</b>.
           Zo blijft het bestuurbaar voor ziekenhuisdirectie én acceptabel voor het werkveld.
           <ul class="list" style="margin-top:10px">
-            <li>V1 = directe ROI via tijd en doorlooptijd</li>
-            <li>V2–V4 = kwaliteits- en veiligheidswinst (klinische structuur)</li>
-            <li>V5–V7 = patiëntwaarde + governance + netwerkimpact</li>
+            <li>V1 = directe ROI via tijd en doorlooptijd.</li>
+            <li>V2–V4 = kwaliteits- en veiligheidswinst (klinische structuur).</li>
+            <li>V5–V7 = patiëntwaarde, governance en netwerkimpact.</li>
           </ul>
         </div>
       </div>
@@ -158,7 +393,11 @@
 
     <section class="panel" id="whatitlookslike">
       <div class="head">
-        <div class="title"><span class="swatch accent"></span><span>Hoe de volledige versie eruit ziet (concept)</span><span class="badge">zorgplan</span></div>
+        <div class="title">
+          <span class="swatch accent"></span>
+          <span>Hoe de volledige versie eruit ziet (concept)</span>
+          <span class="badge">zorgplan</span>
+        </div>
         <div class="badge">probleemgebieden → bundels → taken</div>
       </div>
 
@@ -167,11 +406,11 @@
           <h3>Professioneel zorgplan (voor keten)</h3>
           <p>Een plan met tabbladen:</p>
           <ul class="list">
-            <li><b>Probleemgebieden</b> (bv. Mobiliteit, Valrisico, Wondzorg, Medicatiebeheer, Cognitie, Voeding, …)</li>
-            <li><b>Zorgbundels</b> per probleemgebied (standaard + maatwerk)</li>
-            <li><b>Taken</b> per discipline (met status, eigenaar, timing)</li>
-            <li><b>Medicatieschema</b> (gestructureerd + opvolgtaken)</li>
-            <li><b>Afspraken & hulpmiddelen</b> (levering/plaatsing/controle)</li>
+            <li><b>Probleemgebieden</b> (bv. Mobiliteit, Valrisico, Wondzorg, Medicatiebeheer, Cognitie, Voeding, …).</li>
+            <li><b>Zorgbundels</b> per probleemgebied (standaard + maatwerk).</li>
+            <li><b>Taken</b> per discipline (met status, eigenaar, timing).</li>
+            <li><b>Medicatieschema</b> (gestructureerd + opvolgtaken).</li>
+            <li><b>Afspraken & hulpmiddelen</b> (levering, plaatsing, controle).</li>
           </ul>
         </div>
 
@@ -179,19 +418,25 @@
           <h3>Patiëntplan (“Uw zorg thuis”)</h3>
           <p>Een vertaalslag in begrijpelijke taal:</p>
           <ul class="list">
-            <li>wat gebeurt er de komende dagen?</li>
-            <li>wie komt wanneer?</li>
-            <li>waarop moet u letten (alarmsymptomen)?</li>
-            <li>contactpunten en afspraken</li>
-            <li>medicatie: eenvoudig schema</li>
+            <li>Wat gebeurt er de komende dagen?</li>
+            <li>Wie komt wanneer?</li>
+            <li>Waarop moet u letten (alarmsymptomen)?</li>
+            <li>Contactpunten en afspraken.</li>
+            <li>Medicatie: eenvoudig schema.</li>
           </ul>
         </div>
       </div>
     </section>
 
     <div class="footer">
-      <div class="small">Terug naar: <a href="v1.html" style="text-decoration:underline">V1</a> of <a href="strategy.html" style="text-decoration:underline">Strategie</a></div>
-      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+      <div class="small">
+        Terug naar:
+        <a href="v1.html">V1</a> of
+        <a href="strategy.html">Strategie</a>
+      </div>
+      <div class="small">
+        <a href="index.html">← Terug naar Home</a>
+      </div>
     </div>
   </div>
 </body>
