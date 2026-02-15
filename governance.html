@@ -148,4 +148,210 @@
     h1{
       margin:8px 0 6px;
       font-size:clamp(24px,2.8vw,34px);
-      le
+            letter-spacing:-.02em;
+      line-height:1.06
+    }
+    .sub{
+      margin:0;
+      color:var(--muted-soft);
+      font-size:15.5px;
+      line-height:1.55;
+      max-width:980px
+    }
+    .panel{
+      margin-top:16px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden
+    }
+    .head{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap
+    }
+    .title{display:flex; align-items:center; gap:10px; font-weight:800}
+    .swatch{width:10px;height:10px;border-radius:999px;background:var(--border);outline:1px solid var(--border)}
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand-dark))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--bg);color:var(--muted-soft);font-weight:700}
+    .content{padding:14px}
+    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
+    .card{
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:16px;
+      padding:14px;
+      box-shadow:var(--shadow2)
+    }
+    .card h3{margin:0 0 6px; font-size:15px}
+    .card p{margin:0; color:var(--muted-soft); font-size:13.5px; line-height:1.5}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted-soft); font-size:13.5px; line-height:1.65}
+    .callout{
+      border:1px solid rgba(31,170,205,.30);
+      background:rgba(31,170,205,.06);
+      padding:12px;
+      border-radius:16px;
+      box-shadow:var(--shadow2)
+    }
+    .callout b{display:block; margin-bottom:6px}
+    .table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:16px; border:1px solid var(--border); background:var(--bg-soft); box-shadow:var(--shadow2)}
+    .table th,.table td{padding:12px; border-bottom:1px solid var(--border); text-align:left; font-size:13.5px; vertical-align:top}
+    .table th{background:var(--bg); font-weight:700}
+    .table tr:last-child td{border-bottom:none}
+    .footer{
+      margin-top:18px;
+      padding:14px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:16px;
+      color:var(--muted-soft);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap
+    }
+    .small{font-size:12.5px}
+    .mono{font-family:var(--mono)}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Zorgstart</span>
+          <span class="badge">governance</span>
+        </div>
+        <nav>
+            <a class="navlink" href="index.html">Overzicht</a>
+            <a class="navlink" href="strategy.html">Analyse</a>
+            <a class="navlink" href="v1.html">Versie 1</a>
+            <a class="navlink" href="journey.html">Journey</a>
+            <a class="navlink" href="roadmap.html">Roadmap</a>
+            <a class="navlink" href="board.html">Board</a>
+            <a class="navlink" href="governance.html">Governance</a>
+            <a class="navlink" href="wireframes.html">Wireframes</a>
+            <a class="navlink" href="pitch.html">Pitch</a>
+        </nav>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="pill">
+          <span class="badge">Governance &amp; compliance</span>
+          <span>decision support</span>
+        </div>
+        <h1>Veilig, traceerbaar en menselijk: AI als beslissingsondersteuning</h1>
+        <p class="sub">Zorgstart is ontworpen als <strong>decision support</strong> met verplichte menselijke goedkeuring. Elke output is herleidbaar naar bronpassages (evidence), met audit trail en rolgebaseerde toegang.</p>
+      </div>
+    </section>
+
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span> Kernprincipes</div>
+        <span class="badge">privacy-by-design</span>
+      </div>
+      <div class="content">
+        <div class="grid2">
+          <div class="card">
+            <h3>Human-in-the-loop (verplicht)</h3>
+            <ul class="list">
+              <li>AI doet voorstel, mens beslist</li>
+              <li>sociale dienst keurt goed / past aan</li>
+              <li>geen publicatie naar Flexizorg zonder approval</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Evidence &amp; transparantie</h3>
+            <ul class="list">
+              <li>elke taak heeft bronverwijzing (highlight in document)</li>
+              <li>confidence-score + fouttypes worden gelogd</li>
+              <li>audit trail &ldquo;wie wijzigde wat, wanneer, waarom&rdquo;</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch accent"></span> Toegangsbeheer &amp; dataminimalisatie</div>
+        <span class="badge">RBAC &middot; retentie</span>
+      </div>
+      <div class="content">
+        <table class="table">
+          <tr><th>Control</th><th>Inrichting (V1)</th></tr>
+          <tr><td>RBAC (rollen)</td><td>sociale dienst (review/approve), admin (beheer), auditors (read-only), integratie-service (publish)</td></tr>
+          <tr><td>Dataminimalisatie</td><td>enkel noodzakelijke velden; case-id/pseudoniem waar mogelijk</td></tr>
+          <tr><td>Encryptie</td><td>versleutelde opslag &amp; transport (at rest + in transit)</td></tr>
+          <tr><td>Retentie</td><td>instelbare bewaartermijnen; automatische clean-up</td></tr>
+          <tr><td>Logging</td><td>toegang, exports, approvals, wijzigingen en publicaties</td></tr>
+          <tr><td>DLP/Exports</td><td>beperken downloads; watermarks/trace bij export (optioneel)</td></tr>
+        </table>
+        <div class="callout" style="margin-top:14px">
+          <b>Praktische &ldquo;CMO-taal&rdquo;</b>
+          &ldquo;De AI mag adviseren, nooit beslissen. Het platform is traceerbaar, auditbaar en af te bakenen per rol.&rdquo;
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch"></span> Risico&rsquo;s &amp; mitigatie</div>
+        <span class="badge">realistisch</span>
+      </div>
+      <div class="content">
+        <table class="table">
+          <tr><th>Risico</th><th>Mitigatie</th></tr>
+          <tr><td>Foutieve taakinterpretatie</td><td>confidence drempels; &ldquo;no task without evidence&rdquo;; review verplicht; feedbackloop</td></tr>
+          <tr><td>Documentvariatie (scans)</td><td>OCR + layout; representatieve set testen; fouttypes expliciet monitoren</td></tr>
+          <tr><td>Weerstand in werkveld</td><td>positioneren als ontlasting; start met 1 afdeling; snelle successen tonen (KPI&rsquo;s)</td></tr>
+          <tr><td>GDPR-onzekerheid</td><td>DPIA-spoor, verwerkingsregister, contracten, retentie, RBAC en logging</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span> Audit trail &mdash; wat wordt gelogd?</div>
+        <span class="badge">minimum viable governance</span>
+      </div>
+      <div class="content">
+        <div class="card">
+          <h3>Voorbeeld logevents</h3>
+          <ul class="list">
+            <li>CASE_CREATED</li>
+            <li>DOCUMENT_UPLOADED</li>
+            <li>OCR_COMPLETED</li>
+            <li>AI_PROPOSAL_GENERATED</li>
+            <li>TASK_EDITED / TASK_ADDED / TASK_REMOVED</li>
+            <li>CASE_APPROVED</li>
+            <li>FLEXIZORG_DRAFT_PUBLISHED</li>
+            <li>FLEXIZORG_STATUS_UPDATED</li>
+          </ul>
+        </div>
+        <div class="callout" style="margin-top:14px">
+          <b>Waarom dit belangrijk is</b>
+          Dit maakt Zorgstart niet alleen effici&euml;nt, maar ook <strong>bestuurbaar</strong> &mdash; essentieel voor ziekenhuisdirectie en CMO.
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="small">Volgende: <a href="wireframes.html">Wireframes</a> (visuele schermen)</span>
+      <span class="small"><a href="index.html">&larr; terug naar Overzicht</a></span>
+    </div>
+
+  </div>
+</body>
+</html>
