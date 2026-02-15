@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zorgstart — Roadmap naar volledige versie</title>
+  <meta name="description" content="Roadmap: V1 task engine naar probleemgebieden, zorgbundels, geïntegreerd zorgplan, medicatieschema en patiëntvertaling." />
+
+  <style>
+    :root{
+      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
+      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
+      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:var(--sans); color:var(--text);
+      background:
+        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
+        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
+        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
+    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
+    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
+    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
+    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
+    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
+    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
+    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
+    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
+    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
+    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
+    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
+    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+    .title{display:flex; align-items:center; gap:10px; font-weight:900}
+    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
+    .content{padding:14px}
+    .grid2{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:980px){.grid2{grid-template-columns:1fr 1fr}}
+    .card{border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:16px; padding:14px; box-shadow:var(--shadow2)}
+    .card h3{margin:0 0 6px; font-size:15px}
+    .card p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.5}
+    .list{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
+    .callout{border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10); padding:12px 12px; border-radius:16px; box-shadow:var(--shadow2)}
+    .callout b{display:block; margin-bottom:6px}
+    .road{display:grid; gap:10px}
+    .milestone{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:12px;
+      display:grid;
+      gap:6px;
+      box-shadow:var(--shadow2);
+    }
+    .milestone .k{font-family:var(--mono); font-size:12px; color:var(--muted)}
+    .milestone .h{font-weight:900}
+    .milestone .d{color:var(--muted); font-size:13.5px; line-height:1.5}
+    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+    .small{font-size:12.5px}
+  </style>
+</head>
+
+<body>
+  <div class="grid" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Roadmap</span></div>
+      <nav>
+        <a class="navlink" href="index.html">Home</a>
+        <a class="navlink" href="strategy.html">Strategie</a>
+        <a class="navlink" href="v1.html">Zorgstart V1</a>
+        <a class="navlink" href="journey.html">Patiëntjourney</a>
+      </nav>
+    </div>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="pill"><span class="dot"></span><span>Van V1 naar volledige Zorgstart</span><span class="badge">probleemgebieden → bundels → plan</span></div>
+        <h1>Van takenlijst naar geïntegreerd zorgplan — inclusief medicatieschema en patiëntvertaling</h1>
+        <p class="sub">
+          V1 is de administratieve motor. De volledige versie bouwt daarop voort met klinische structuur (probleemgebieden),
+          evidence-based zorgbundels, een geïntegreerd zorgplan en een begrijpelijke “vertaling naar de patiënt”.
+        </p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span><span>De logische groeilijn</span><span class="badge">architectuur</span></div>
+        <div class="badge">beheersbaar & schaalbaar</div>
+      </div>
+      <div class="content grid2">
+        <div class="road">
+          <div class="milestone">
+            <div class="k">FASE 1</div>
+            <div class="h">V1 — Discharge Task Engine</div>
+            <div class="d">Ontslagbrief → taken → review → Flexizorg + feedback. (data foundation)</div>
+          </div>
+          <div class="milestone">
+            <div class="k">FASE 2</div>
+            <div class="h">Probleemgebieden</div>
+            <div class="d">Classificatie van tekst/taken naar een vaste taxonomie (bv. 16 domeinen) + confidence + evidence.</div>
+          </div>
+          <div class="milestone">
+            <div class="k">FASE 3</div>
+            <div class="h">Zorgbundels</div>
+            <div class="d">Per probleemgebied: gestandaardiseerde bundels met interventies (rollen, timing, minimumset + optioneel).</div>
+          </div>
+          <div class="milestone">
+            <div class="k">FASE 4</div>
+            <div class="h">Geïntegreerd zorgplan</div>
+            <div class="d">Bundels + taken + hulpmiddelen + afspraken + verantwoordelijken in één plan; ketenstatus per onderdeel.</div>
+          </div>
+          <div class="milestone">
+            <div class="k">FASE 5</div>
+            <div class="h">Medicatieschema (gestructureerd)</div>
+            <div class="d">Extractie/normalisatie; koppeling aan taken (toediening, monitoring, educatie) + risico’s (polyfarmacie).</div>
+          </div>
+          <div class="milestone">
+            <div class="k">FASE 6</div>
+            <div class="h">Patiëntvertaling (“Uw zorg thuis”)</div>
+            <div class="d">Eenvoudige taal, planning, wie-komt-wanneer, waarschuwingstekens, contactpunten, verwachtingen.</div>
+          </div>
+          <div class="milestone">
+            <div class="k">FASE 7</div>
+            <div class="h">Volwaardige ketenmonitor (GO/NO-GO)</div>
+            <div class="d">MED/HOSP/THUIS stoppers live + escalatiepaden + rapportering (doorstroom, veiligheid, heropname-indicatoren).</div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <b>Strategisch voordeel</b>
+          Elke fase bouwt voort op dezelfde kern: <b>evidence</b>, <b>audit trail</b>, <b>human approval</b> en <b>meetbaarheid</b>.
+          Zo blijft het bestuurbaar voor ziekenhuisdirectie én acceptabel voor het werkveld.
+          <ul class="list" style="margin-top:10px">
+            <li>V1 = directe ROI via tijd en doorlooptijd</li>
+            <li>V2–V4 = kwaliteits- en veiligheidswinst (klinische structuur)</li>
+            <li>V5–V7 = patiëntwaarde + governance + netwerkimpact</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="whatitlookslike">
+      <div class="head">
+        <div class="title"><span class="swatch accent"></span><span>Hoe de volledige versie eruit ziet (concept)</span><span class="badge">zorgplan</span></div>
+        <div class="badge">probleemgebieden → bundels → taken</div>
+      </div>
+
+      <div class="content grid2">
+        <div class="card">
+          <h3>Professioneel zorgplan (voor keten)</h3>
+          <p>Een plan met tabbladen:</p>
+          <ul class="list">
+            <li><b>Probleemgebieden</b> (bv. Mobiliteit, Valrisico, Wondzorg, Medicatiebeheer, Cognitie, Voeding, …)</li>
+            <li><b>Zorgbundels</b> per probleemgebied (standaard + maatwerk)</li>
+            <li><b>Taken</b> per discipline (met status, eigenaar, timing)</li>
+            <li><b>Medicatieschema</b> (gestructureerd + opvolgtaken)</li>
+            <li><b>Afspraken & hulpmiddelen</b> (levering/plaatsing/controle)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Patiëntplan (“Uw zorg thuis”)</h3>
+          <p>Een vertaalslag in begrijpelijke taal:</p>
+          <ul class="list">
+            <li>wat gebeurt er de komende dagen?</li>
+            <li>wie komt wanneer?</li>
+            <li>waarop moet u letten (alarmsymptomen)?</li>
+            <li>contactpunten en afspraken</li>
+            <li>medicatie: eenvoudig schema</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div class="small">Terug naar: <a href="v1.html" style="text-decoration:underline">V1</a> of <a href="strategy.html" style="text-decoration:underline">Strategie</a></div>
+      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+    </div>
+  </div>
+</body>
+</html>
