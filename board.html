@@ -1,199 +1,177 @@
 <!doctype html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zorgstart — Board onepager</title>
-  <meta name="description" content="Zorgstart Board onepager: probleem, oplossing, impact, KPI’s, fasering, risico’s." />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Zorgstart — Board onepager</title>
+    <meta name="description" content="Zorgstart Board onepager: probleem, oplossing, impact, KPI's, fasering, risico's." />
 
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
 <body>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="brand">
-          <span class="dot"></span>
-          <span>Zorgstart</span>
-          <span class="badge">board</span>
-        </div>
-        <nav>
-                                  <a class="navlink" href="index.html">Overzicht</a>
-            <a class="navlink" href="strategy.html">Analyse</a>
-            <a class="navlink" href="v1.html">Versie 1</a>
-            <a class="navlink" href="journey.html">Journey</a>
-            <a class="navlink" href="roadmap.html">Roadmap</a>
-            <a class="navlink" href="board.html">Board</a>
-            <a class="navlink" href="governance.html">Governance</a>
-            <a class="navlink" href="wireframes.html">Wireframes</a>
-            <a class="navlink" href="pitch.html">Pitch</a>
-                      <a class="navlink" href="uitrol.html">Uitrol</a>
-                      <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
-        </nav>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Zorgstart</span>
+        <span class="badge">board</span>
       </div>
-    </div>
-
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="pill">
-          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
-          <span>Board onepager</span>
-          <span class="badge">1 pagina</span>
-        </div>
-        <h1>Zorgstart = ketensturing voor veilig en sneller ontslag.</h1>
-        <p class="sub">
-          Niet-medische ligdagen en last-minute ketenstress ontstaan wanneer “THUIS” te laat zichtbaar wordt.
-          Zorgstart maakt de ontslagketen planbaar via uniforme taken, matching en een meetbare status.
-        </p>
-        <div class="chiprow">
-          <span class="chip">beddenhuis-impact</span>
-          <span class="chip">veiligheid</span>
-          <span class="chip">audit trail</span>
-          <span class="chip">human-in-the-loop</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="head">
-        <div class="title">
-          <span class="swatch brand"></span>
-          <span>Het probleem</span>
-        </div>
-        <div class="badge">structureel · transmuraal</div>
-      </div>
-      <div class="content grid2">
-        <div class="card">
-          <h3>Waarom ontslagen vertraging oplopen?</h3>
-          <ul class="list">
-            <li>geen normering sociale dienst, stijgende complexiteit</li>
-            <li>geen uniforme overdracht (vrije tekst, variatie)</li>
-            <li>capaciteitsonzekerheid eerste lijn (gezinszorg, thuisverpleging, kine, hulpmiddelen)</li>
-            <li>weekenddruk → “te laat in beeld”</li>
-          </ul>
-        </div>
-        <div class="callout">
-          <b>Het echte mechanisme</b>
-          Ontslag is een ketenbeslissing: <b>MED · HOSP · THUIS</b>.  
-          De grootste variatie zit in <b>THUIS</b> (beschikbaarheid en organisatie).
-        </div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="head">
-        <div class="title">
-          <span class="swatch accent"></span>
-          <span>De oplossing (V1 actief)</span>
-        </div>
-        <div class="badge">snelle ROI</div>
-      </div>
-      <div class="content grid2">
-        <div class="card">
-          <h3>Zorgstart V1 — Discharge Task Engine</h3>
-          <p>
-            AI zet ontslagbrieven om naar gestructureerde taken per discipline, met evidence.
-            De sociale dienst valideert. Taken worden gepubliceerd naar Flexizorg met statusfeedback.
-          </p>
-          <ul class="list">
-            <li>minder knip- en plakwerk</li>
-            <li>snellere publicatie</li>
-            <li>uniforme output</li>
-            <li>audit trail</li>
-          </ul>
-        </div>
-        <div class="callout">
-          <b>Wat dit oplevert</b>
-          Snellere time-to-arrange en time-to-fill → minder niet-medische ligdagen en minder ketenstress.
-        </div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="head">
-        <div class="title">
-          <span class="swatch brand"></span>
-          <span>KPI’s (meetbaar in V1)</span>
-        </div>
-        <div class="badge">CMO-proof</div>
-      </div>
-      <div class="content kpis">
-        <div class="kpi">
-          <div>
-            <b>Tijd upload → takenvoorstel</b>
-            <div class="meta">technische throughput, schaalbaarheid</div>
-          </div>
-          <span class="badge">efficiency</span>
-        </div>
-        <div class="kpi">
-          <div>
-            <b>Tijd voorstel → approve</b>
-            <div class="meta">triage-efficiëntie sociale dienst</div>
-          </div>
-          <span class="badge">workflow</span>
-        </div>
-        <div class="kpi">
-          <div>
-            <b>Time-to-fill per discipline</b>
-            <div class="meta">ketencapaciteit en invulling</div>
-          </div>
-          <span class="badge">keten</span>
-        </div>
-        <div class="kpi">
-          <div>
-            <b>% edits op AI-voorstel</b>
-            <div class="meta">kwaliteit, training, governance</div>
-          </div>
-          <span class="badge">quality</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel">
-      <div class="head">
-        <div class="title">
-          <span class="swatch accent"></span>
-          <span>Groeipad (zonder te oversellen)</span>
-        </div>
-        <div class="badge">V2+</div>
-      </div>
-      <div class="content grid2">
-        <div class="card">
-          <h3>Van V1 naar volledige Zorgstart</h3>
-          <ul class="list">
-            <li>probleemgebieden (taxonomie) → zorgbundels</li>
-            <li>geïntegreerd zorgplan incl. medicatieschema</li>
-            <li>patiëntvertaling (“Uw zorg thuis”)</li>
-            <li>ketenmonitor MED/HOSP/THUIS</li>
-          </ul>
-        </div>
-        <div class="callout">
-          <b>Positionering</b>
-          V1 is de motor en datalaag. De volledige versie is de architectuur.  
-          <span class="badge">gefaseerd</span> <span class="badge">bestuurbaar</span>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      <div class="small">
-        Extra:
-        <a href="governance.html">Governance & GDPR</a> ·
-        <a href="wireframes.html">Wireframes</a>
-      </div>
-      <div class="small">
-        <a href="index.html">← Terug naar Home</a>
-      </div>
+      <nav>
+        <a class="navlink" href="index.html">Overzicht</a>
+        <a class="navlink" href="strategy.html">Analyse</a>
+        <a class="navlink" href="v1.html">Versie 1</a>
+        <a class="navlink" href="journey.html">Journey</a>
+        <a class="navlink" href="roadmap.html">Roadmap</a>
+        <a class="navlink" href="board.html">Board</a>
+        <a class="navlink" href="governance.html">Governance</a>
+        <a class="navlink" href="wireframes.html">Wireframes</a>
+        <a class="navlink" href="pitch.html">Pitch</a>
+        <a class="navlink" href="uitrol.html">Uitrol</a>
+        <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+      </nav>
     </div>
   </div>
-  <script>
-    const p=location.pathname.split('/').pop()||'index.html';
-    document.querySelectorAll('.navlink').forEach(a=>{
-      if(a.getAttribute('href')===p) a.classList.add('active');
-    });
-    document.querySelectorAll('section').forEach(s=>s.classList.add('reveal'));
-  </script>
 
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="pill">
+        <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+        <span>Board onepager</span>
+        <span class="badge">1 pagina</span>
+      </div>
+      <h1>Zorgstart = ketensturing voor veilig en sneller ontslag.</h1>
+      <p class="sub">
+        Niet-medische ligdagen en last-minute ketenstress ontstaan wanneer "THUIS" te laat zichtbaar wordt.
+        Zorgstart maakt de ontslagketen planbaar via uniforme taken, matching en een meetbare status.
+      </p>
+      <div class="chiprow">
+        <span class="chip">beddenhuis-impact</span>
+        <span class="chip">veiligheid</span>
+        <span class="chip">audit trail</span>
+        <span class="chip">human-in-the-loop</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch bad"></span> Het probleem</div>
+      </div>
+      <div class="body">
+        <div class="chips"><span class="chip">structureel · transmuraal</span></div>
+        <h3>Waarom ontslagen vertraging oplopen?</h3>
+        <ul>
+          <li>geen normering sociale dienst, stijgende complexiteit</li>
+          <li>geen uniforme overdracht (vrije tekst, variatie)</li>
+          <li>capaciteitsonzekerheid eerste lijn (gezinszorg, thuisverpleging, kine, hulpmiddelen)</li>
+          <li>weekenddruk → "te laat in beeld"</li>
+        </ul>
+        <div class="callout" style="margin-top:10px">
+          <p><b>Het echte mechanisme</b> Ontslag is een ketenbeslissing: <b>MED · HOSP · THUIS</b>. De grootste variatie zit in <b>THUIS</b> (beschikbaarheid en organisatie).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch accent"></span> De oplossing (V1 actief)</div>
+      </div>
+      <div class="body">
+        <div class="chips"><span class="chip">snelle ROI</span></div>
+        <h3>Zorgstart V1 — Discharge Task Engine</h3>
+        <p>AI zet ontslagbrieven om naar gestructureerde taken per discipline, met evidence. De sociale dienst valideert. Taken worden gepubliceerd naar Flexizorg met statusfeedback.</p>
+        <ul>
+          <li>minder knip- en plakwerk</li>
+          <li>snellere publicatie</li>
+          <li>uniforme output</li>
+          <li>audit trail</li>
+        </ul>
+        <div class="callout" style="margin-top:10px">
+          <p><b>Wat dit oplevert</b> Snellere time-to-arrange en time-to-fill → minder niet-medische ligdagen en minder ketenstress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span> KPI's (meetbaar in V1)</div>
+      </div>
+      <div class="body">
+        <div class="chips"><span class="chip">CMO-proof</span></div>
+        <div class="kpis" style="margin-top:12px">
+          <div class="kpi">
+            <span class="label">Tijd upload → takenvoorstel</span>
+            <span class="hint">technische throughput, schaalbaarheid</span>
+            <span class="badge">efficiency</span>
+          </div>
+          <div class="kpi">
+            <span class="label">Tijd voorstel → approve</span>
+            <span class="hint">triage-efficiëntie sociale dienst</span>
+            <span class="badge">workflow</span>
+          </div>
+          <div class="kpi">
+            <span class="label">Time-to-fill per discipline</span>
+            <span class="hint">ketencapaciteit en invulling</span>
+            <span class="badge">keten</span>
+          </div>
+          <div class="kpi">
+            <span class="label">% edits op AI-voorstel</span>
+            <span class="hint">kwaliteit, training, governance</span>
+            <span class="badge">quality</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="panel">
+      <div class="head">
+        <div class="title"><span class="swatch brand"></span> Groeipad (zonder te oversellen)</div>
+      </div>
+      <div class="body">
+        <div class="chips"><span class="chip">V2+</span></div>
+        <h3>Van V1 naar volledige Zorgstart</h3>
+        <ul>
+          <li>probleemgebieden (taxonomie) → zorgbundels</li>
+          <li>geïntegreerd zorgplan incl. medicatieschema</li>
+          <li>patiëntvertaling ("Uw zorg thuis")</li>
+          <li>ketenmonitor MED/HOSP/THUIS</li>
+        </ul>
+        <div class="callout" style="margin-top:10px">
+          <p><b>Positionering</b> V1 is de motor en datalaag. De volledige versie is de architectuur.</p>
+          <div class="chips" style="margin-top:6px">
+            <span class="chip">gefaseerd</span>
+            <span class="chip">bestuurbaar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer reveal">
+    <div>Extra: <a href="governance.html">Governance & GDPR</a> · <a href="wireframes.html">Wireframes</a></div>
+    <div class="small"><a href="index.html">← Terug naar Home</a></div>
+  </div>
+</div>
+
+<script>
+const p=location.pathname.split('/').pop()||'index.html';
+document.querySelectorAll('.navlink').forEach(a=>{
+  if(a.getAttribute('href')===p) a.classList.add('active');
+});
+const els=Array.from(document.querySelectorAll('.reveal'));
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+els.forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
