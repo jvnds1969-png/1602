@@ -2,38 +2,40 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Zorgstart — Wireframes (V1 + richting volledige versie)</title>
   <meta name="description" content="Wireframes: Inbox, Review split view, Taken/Publish, Dashboard, en preview van Probleemgebieden/Bundels/Zorgplan." />
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <div class="topbar">
-      <div class="topbar-inner">
-        <div class="brand">
-          <span class="dot"></span>
-          <span>Zorgstart</span>
-          <span class="badge">wireframes</span>
-        </div>
-        <nav>
-                      <a class="navlink" href="index.html">Overzicht</a>
-            <a class="navlink" href="strategy.html">Analyse</a>
-            <a class="navlink" href="v1.html">Versie 1</a>
-            <a class="navlink" href="journey.html">Journey</a>
-            <a class="navlink" href="roadmap.html">Roadmap</a>
-            <a class="navlink" href="governance.html">Governance</a>
-            <a class="navlink" href="wireframes.html">Wireframes</a>
-            <a class="navlink" href="pitch.html">Pitch</a>
-                      <a class="navlink" href="uitrol.html">Uitrol</a>
-                      <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
-        </nav>
-      </div>
-    </div>
-  
-<div class="wrap">
 
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Zorgstart</span>
+        <span class="badge">wireframes</span>
+      </div>
+      <nav aria-label="Hoofdnavigatie">
+        <a class="navlink" href="index.html">Overzicht</a>
+        <a class="navlink" href="strategy.html">Analyse</a>
+        <a class="navlink" href="v1.html">Versie 1</a>
+        <a class="navlink" href="journey.html">Journey</a>
+        <a class="navlink" href="roadmap.html">Roadmap</a>
+        <a class="navlink" href="governance.html">Governance</a>
+        <a class="navlink" href="wireframes.html">Wireframes</a>
+        <a class="navlink" href="pitch.html">Pitch</a>
+        <a class="navlink" href="uitrol.html">Uitrol</a>
+        <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- HERO -->
     <section class="hero">
       <div class="hero-inner">
         <div class="pill">
@@ -48,24 +50,28 @@
       </div>
     </section>
 
-    <section class="panel">
+    <!-- PANEL -->
+    <section class="panel" aria-label="Wireframes panel">
       <div class="head">
         <div class="title">
           <span class="swatch brand"></span>
           <span>Schermen</span>
         </div>
-        <div class="tabs" id="tabs">
-          <span class="tab active" data-screen="inbox">Inbox</span>
-          <span class="tab" data-screen="review">Review</span>
-          <span class="tab" data-screen="publish">Publish</span>
-          <span class="tab" data-screen="dash">Dashboard</span>
-          <span class="tab" data-screen="full">Volledige versie (preview)</span>
+
+        <!-- TABS -->
+        <div class="tabs" id="tabs" role="tablist" aria-label="Wireframe tabs">
+          <button class="tab active" type="button" role="tab" aria-selected="true" aria-controls="inbox" data-screen="inbox">Inbox</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="review" data-screen="review">Review</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="publish" data-screen="publish">Publish</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="dash" data-screen="dash">Dashboard</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="full" data-screen="full">Volledige versie (preview)</button>
         </div>
       </div>
 
       <div class="content">
+
         <!-- INBOX -->
-        <div class="screen active" id="inbox">
+        <div class="screen active" id="inbox" role="tabpanel" aria-labelledby="tab-inbox">
           <div class="frame">
             <div class="framebar">
               <b>Inbox — Cases</b>
@@ -100,6 +106,7 @@
                   <span class="pill2 good">thuis groen</span>
                 </div>
               </div>
+
               <div class="box">
                 <h3>Snelle KPI’s</h3>
                 <div class="row">
@@ -129,7 +136,7 @@
         </div>
 
         <!-- REVIEW -->
-        <div class="screen" id="review">
+        <div class="screen" id="review" role="tabpanel">
           <div class="frame">
             <div class="framebar">
               <b>Review — split view</b>
@@ -138,10 +145,12 @@
                 <button class="btn" type="button">Approve</button>
               </div>
             </div>
+
             <div class="layout">
               <div class="box">
                 <h3>Document viewer</h3>
                 <div class="muted">PDF links met highlights (evidence) per taak.</div>
+
                 <div class="row">
                   <div>
                     <b>Highlighted passage</b>
@@ -157,8 +166,10 @@
                   <span class="pill2">evidence</span>
                 </div>
               </div>
+
               <div class="box">
                 <h3>AI-voorstel → taken</h3>
+
                 <div class="row">
                   <div>
                     <b>Wondzorg</b>
@@ -187,6 +198,7 @@
                   </div>
                   <span class="pill2 warn">0.78</span>
                 </div>
+
                 <div class="muted" style="margin-top:8px">
                   Bewerken, toevoegen, verwijderen; approve is verplicht voor publicatie.
                 </div>
@@ -196,7 +208,7 @@
         </div>
 
         <!-- PUBLISH -->
-        <div class="screen" id="publish">
+        <div class="screen" id="publish" role="tabpanel">
           <div class="frame">
             <div class="framebar">
               <b>Publish & follow-up</b>
@@ -205,6 +217,7 @@
                 <button class="btn" type="button">Herinnering</button>
               </div>
             </div>
+
             <div class="layout">
               <div class="box">
                 <h3>Ketenstatus (V1 light)</h3>
@@ -230,6 +243,7 @@
                   <span class="pill2 warn">oranje</span>
                 </div>
               </div>
+
               <div class="box">
                 <h3>Flexizorg-status</h3>
                 <div class="row">
@@ -259,7 +273,7 @@
         </div>
 
         <!-- DASH -->
-        <div class="screen" id="dash">
+        <div class="screen" id="dash" role="tabpanel">
           <div class="frame">
             <div class="framebar">
               <b>Dashboard — beddenhuisimpact</b>
@@ -269,6 +283,7 @@
                 <button class="btn" type="button">Export</button>
               </div>
             </div>
+
             <div class="layout">
               <div class="box">
                 <h3>Kern-KPI’s</h3>
@@ -294,6 +309,7 @@
                   <span class="pill2 warn">22%</span>
                 </div>
               </div>
+
               <div class="box">
                 <h3>THUIS-stoppers</h3>
                 <div class="row">
@@ -312,7 +328,7 @@
         </div>
 
         <!-- FULL PREVIEW -->
-        <div class="screen" id="full">
+        <div class="screen" id="full" role="tabpanel">
           <div class="frame">
             <div class="framebar">
               <b>Volledige versie (preview) — Probleemgebieden → bundels → zorgplan</b>
@@ -321,6 +337,7 @@
                 <button class="btn" type="button">Patiëntversie</button>
               </div>
             </div>
+
             <div class="layout">
               <div class="box">
                 <h3>Probleemgebieden (voorbeeld)</h3>
@@ -353,6 +370,7 @@
                   <span class="pill2 good">actief</span>
                 </div>
               </div>
+
               <div class="box">
                 <h3>Uw zorg thuis (patiëntvertaling)</h3>
                 <div class="muted">
@@ -372,36 +390,41 @@
           </div>
         </div>
 
-      </div>
+      </div><!-- /content -->
     </section>
 
     <div class="footer">
       <div class="small">Tip: gebruik dit als demo in directie, en klik door de tabs.</div>
-      <div class="small">
-        <a href="index.html">← Terug naar Home</a>
-      </div>
+      <div class="small"><a href="index.html">← Terug naar Home</a></div>
     </div>
-  </div>
+
+  </div><!-- /wrap -->
 
   <script>
+    // Tabs → screens
     const tabs = Array.from(document.querySelectorAll('.tab'));
     const screens = Array.from(document.querySelectorAll('.screen'));
-    tabs.forEach(t => t.addEventListener('click', () => {
-      tabs.forEach(x => x.classList.remove('active'));
-      screens.forEach(s => s.classList.remove('active'));
-      t.classList.add('active');
-      const id = t.dataset.screen;
-      const screen = document.getElementById(id);
-      if (screen) screen.classList.add('active');
+
+    function activate(id){
+      tabs.forEach(t=>{
+        const active = t.dataset.screen === id;
+        t.classList.toggle('active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      screens.forEach(s=>s.classList.toggle('active', s.id === id));
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }));
-  </script>
-  <script>
-    const p=location.pathname.split('/').pop()||'index.html';
-    document.querySelectorAll('.navlink').forEach(a=>{
-      if(a.getAttribute('href')===p) a.classList.add('active');
+    }
+
+    tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.screen)));
+
+    // Mark current nav item
+    const p = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    document.querySelectorAll('.navlink').forEach(a => {
+      if ((a.getAttribute('href') || '').toLowerCase() === p) a.classList.add('active');
     });
-    document.querySelectorAll('section').forEach(s=>s.classList.add('reveal'));
+
+    // Optional: add reveal class (safe even if CSS has none)
+    document.querySelectorAll('section').forEach(s => s.classList.add('reveal'));
   </script>
 
 </body>
