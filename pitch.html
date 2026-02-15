@@ -6,148 +6,410 @@
   <title>Zorgstart — Directie pitch (3 minuten)</title>
   <meta name="description" content="3-minuten directiepitch voor Zorgstart: probleem, oplossing V1, ketenbeslissing, KPI’s, roadmap, call-to-action." />
 
+  <!-- Zelfde ziekenhuisstijl als andere pagina's -->
   <style>
     :root{
-      --bg:#0b1220; --bg2:#070b14; --stroke:rgba(255,255,255,.14); --grid:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.92); --muted:rgba(255,255,255,.72);
-      --brand:#5dd6ff; --brand2:#7c5cff; --accent:#ffd166; --good:#48d597; --bad:#ff6b6b;
-      --r:18px; --shadow:0 14px 50px rgba(0,0,0,.45); --shadow2:0 10px 30px rgba(0,0,0,.35);
+      --bg:#f5f7fa;
+      --bg-soft:#ffffff;
+      --border:#dde3eb;
+      --border-strong:#c6d0dd;
+      --text:#1b2430;
+      --muted:#5c6b7c;
+      --muted-soft:#7b8ba0;
+
+      --brand:#1faacd;
+      --brand-dark:#115f73;
+      --accent:#4caf50;
+      --bad:#e53935;
+      --info:#4e7a9a;
+
+      --shadow:0 14px 40px rgba(15,35,52,.12);
+      --shadow2:0 8px 20px rgba(15,35,52,.10);
+
+      --r:14px;
+      --r2:12px;
+
       --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
       --sans:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      --max:1180px;
     }
+
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      margin:0; font-family:var(--sans); color:var(--text);
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
       background:
-        radial-gradient(1100px 700px at 15% 5%, rgba(93,214,255,.18), transparent 60%),
-        radial-gradient(900px 650px at 85% 12%, rgba(124,92,255,.20), transparent 62%),
-        radial-gradient(900px 700px at 30% 90%, rgba(255,209,102,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2) 0%, var(--bg) 40%, var(--bg2) 100%);
+        radial-gradient(1100px 700px at 12% 5%, rgba(31,170,205,.06), transparent 60%),
+        radial-gradient(900px 650px at 82% 10%, rgba(78,122,154,.08), transparent 60%),
+        linear-gradient(180deg,#f8fbff 0%,var(--bg) 40%,#eef2f8 100%);
       overflow-x:hidden;
     }
-    .grid{position:fixed; inset:0; background-image:linear-gradient(to right, var(--grid) 1px, transparent 1px),linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size:48px 48px; mask-image: radial-gradient(closest-side at 50% 35%, rgba(0,0,0,.65), transparent 85%); pointer-events:none; opacity:.55;}
+
     a{color:inherit; text-decoration:none}
-    .wrap{max-width:1180px;margin:0 auto;padding:26px 18px 80px}
 
-    /* topbar */
-    .topbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 14px; border:1px solid var(--stroke); background:rgba(255,255,255,.04); border-radius:16px; box-shadow:var(--shadow2); backdrop-filter: blur(10px);}
-    .brand{display:flex; align-items:center; gap:10px; font-weight:900}
-    .dot{width:10px;height:10px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));box-shadow:0 0 0 6px rgba(93,214,255,.12)}
-    nav{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
-    .navlink{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:800;font-size:13px;transition:transform .15s ease,border-color .15s ease,background .15s ease;}
-    .navlink:hover{transform:translateY(-1px); border-color:rgba(93,214,255,.35); background:rgba(255,255,255,.06)}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px 18px 64px}
 
-    /* hero */
-    .hero{margin-top:18px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)); border-radius:22px; box-shadow:var(--shadow); overflow:hidden; position:relative; padding:20px 18px}
-    .hero::before{content:""; position:absolute; inset:-120px; background: radial-gradient(closest-side at 18% 20%, rgba(93,214,255,.18), transparent 60%), radial-gradient(closest-side at 82% 30%, rgba(124,92,255,.20), transparent 62%), radial-gradient(closest-side at 50% 90%, rgba(255,209,102,.12), transparent 60%); pointer-events:none;}
-    .hero-inner{position:relative; z-index:1; display:grid; gap:10px}
-    .pill{display:inline-flex; gap:10px; align-items:center; padding:8px 12px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.12); border-radius:999px; width:fit-content; color:var(--muted); font-weight:900; font-size:13px}
-    h1{margin:0; font-size:clamp(26px,3.0vw,40px); letter-spacing:-.02em; line-height:1.06}
-    .sub{margin:0; color:var(--muted); font-size:15.5px; line-height:1.55; max-width:980px}
-    .chiprow{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
-    .chip{border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:4px 8px; border-radius:999px; font-size:12px; color:var(--muted); font-weight:900}
-
-    /* panel */
-    .panel{margin-top:16px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.04)); border-radius:var(--r); box-shadow:var(--shadow); overflow:hidden}
-    .head{padding:14px 16px; border-bottom:1px solid rgba(255,255,255,.08); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
-    .title{display:flex; align-items:center; gap:10px; font-weight:900}
-    .swatch{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.22);outline:1px solid rgba(255,255,255,.10)}
-    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand2))}
-    .swatch.accent{background:linear-gradient(135deg,var(--accent),#ff9f1c)}
-    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.14);color:var(--muted);font-weight:900}
-    .content{padding:14px}
-
-    /* slide-like blocks */
-    .slides{display:grid; grid-template-columns:1fr; gap:14px}
-    @media(min-width:980px){.slides{grid-template-columns:1fr 1fr}}
-    .slide{
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.12);
-      border-radius:18px;
-      box-shadow:var(--shadow2);
-      overflow:hidden;
-      position:relative;
-      min-height:240px;
+    /* Topbar */
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(248,251,255,.95), rgba(248,251,255,.9));
+      border-bottom:1px solid var(--border);
     }
-    .slide::before{
-      content:"";
-      position:absolute; inset:-80px;
+    .topbar-inner{
+      max-width:var(--max); margin:0 auto;
+      padding:10px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:800; letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .dot{
+      width:18px;height:18px;border-radius:999px;
       background:
-        radial-gradient(closest-side at 18% 18%, rgba(93,214,255,.10), transparent 60%),
-        radial-gradient(closest-side at 82% 28%, rgba(124,92,255,.10), transparent 62%),
-        radial-gradient(closest-side at 55% 90%, rgba(255,209,102,.08), transparent 60%);
+        radial-gradient(circle at 30% 30%,#ffffff,transparent 65%),
+        linear-gradient(135deg,var(--brand),#4e7a9a);
+      box-shadow: 0 0 0 4px rgba(31,170,205,.18);
+      border:1px solid rgba(17,95,115,.20);
+    }
+    .badge{
+      font-size:11px;
+      padding:3px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f3f7fc;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    nav{
+      display:flex; gap:6px; flex-wrap:wrap; align-items:center;
+    }
+    .navlink{
+      color:var(--muted-soft);
+      text-decoration:none;
+      padding:7px 11px;
+      border-radius:999px;
+      border:1px solid transparent;
+      background: transparent;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease, color .12s ease;
+      font-weight:600;
+      font-size:13px;
+    }
+    .navlink:hover{
+      color:var(--brand-dark);
+      background: rgba(31,170,205,.06);
+      border-color: rgba(31,170,205,.25);
+      transform: translateY(-1px);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:var(--bg-soft);
+      box-shadow:var(--shadow);
+      padding:20px 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute; inset:-120px;
+      background:
+        radial-gradient(closest-side at 12% 20%, rgba(31,170,205,.10), transparent 65%),
+        radial-gradient(closest-side at 82% 30%, rgba(78,122,154,.12), transparent 65%);
       pointer-events:none;
       opacity:.9;
     }
-    .slide-inner{position:relative; z-index:1; padding:14px}
-    .slide-top{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-bottom:10px}
-    .step{font-family:var(--mono); font-size:12px; padding:3px 8px; border-radius:999px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); color:rgba(255,255,255,.82)}
-    .timer{font-family:var(--mono); font-size:12px; color:var(--muted)}
-    .slide h3{margin:0 0 8px; font-size:16px; letter-spacing:-.01em}
-    .slide p{margin:0; color:var(--muted); font-size:13.5px; line-height:1.55}
-    .bullets{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:13.5px; line-height:1.65}
-    .keyline{margin-top:12px; padding:10px 12px; border-radius:16px; border:1px solid rgba(93,214,255,.30); background:rgba(93,214,255,.10)}
-    .keyline b{display:block; margin-bottom:4px}
+    .hero-inner{
+      position:relative; z-index:1;
+      display:grid; gap:10px;
+    }
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      padding:7px 11px;
+      border:1px solid var(--border);
+      background: rgba(248,251,255,.95);
+      border-radius:999px;
+      width:fit-content;
+      color:var(--muted-soft);
+      font-weight:600;
+      font-size:13px;
+    }
+    .pill .badge{
+      background:#ffffff;
+    }
+    h1{
+      margin:8px 0 6px;
+      font-size:clamp(24px,2.8vw,34px);
+      letter-spacing:-.02em;
+      line-height:1.15;
+      color:var(--brand-dark);
+    }
+    .sub{
+      margin:0;
+      color:var(--muted);
+      font-size:15px;
+      max-width:900px;
+      line-height:1.6;
+    }
+    .chiprow{
+      display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;
+    }
+    .chip{
+      border:1px solid var(--border);
+      background:#f5f8fd;
+      padding:4px 8px;
+      border-radius:999px;
+      font-size:11px;
+      color:var(--muted-soft);
+      font-weight:700;
+      text-transform:uppercase;
+    }
+
+    /* Panel */
+    .panel{
+      margin-top:16px;
+      border:1px solid var(--border);
+      background:var(--bg-soft);
+      border-radius:var(--r);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .head{
+      padding:12px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+      flex-wrap:wrap;
+      background:linear-gradient(90deg,#f7fafc,#eef3f9);
+    }
+    .title{
+      display:flex; align-items:center; gap:10px;
+      font-weight:750;
+      font-size:15px;
+      color:var(--brand-dark);
+      letter-spacing:-.01em;
+    }
+    .swatch{
+      width:10px;height:10px;border-radius:999px;
+      background:#cad6e6;
+      outline:1px solid rgba(198,208,221,.9);
+    }
+    .swatch.brand{background:linear-gradient(135deg,var(--brand),var(--brand-dark))}
+    .swatch.accent{background:linear-gradient(135deg,var(--accent),#66bb6a)}
+
+    .head .badge{
+      background:#ffffff;
+    }
+
+    .content{
+      padding:14px 16px 16px;
+    }
+
+    /* Slides layout */
+    .row2{
+      display:grid; grid-template-columns:1.2fr .8fr; gap:14px;
+    }
+    @media(max-width:980px){
+      .row2{grid-template-columns:1fr}
+    }
+
+    .slides{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+
+    .slide{
+      border:1px solid var(--border);
+      background:#f9fbff;
+      border-radius:16px;
+      box-shadow:var(--shadow2);
+      position:relative;
+      cursor:pointer;
+    }
+    .slide-inner{
+      position:relative;
+      padding:12px 13px 13px;
+    }
+    .slide-top{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:8px;
+    }
+    .step{
+      font-family:var(--mono);
+      font-size:11px;
+      padding:3px 7px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      color:var(--muted-soft);
+    }
+    .timer{
+      font-family:var(--mono);
+      font-size:11px;
+      color:var(--muted-soft);
+    }
+    .slide h3{
+      margin:0 0 6px;
+      font-size:14px;
+      letter-spacing:-.01em;
+      color:var(--brand-dark);
+    }
+    .slide p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+    .bullets{
+      margin:8px 0 0 18px;
+      padding:0;
+      color:var(--muted-soft);
+      font-size:13px;
+      line-height:1.6;
+    }
+    .bullets li{margin:3px 0}
+    .keyline{
+      margin-top:10px;
+      padding:8px 10px;
+      border-radius:12px;
+      border:1px solid rgba(31,170,205,.35);
+      background:#f2f8fd;
+      font-size:12.5px;
+      color:var(--brand-dark);
+    }
+    .keyline b{display:block;margin-bottom:2px}
+
+    /* Notes */
+    .notes{
+      border:1px solid var(--border);
+      background:#ffffff;
+      border-radius:16px;
+      box-shadow:var(--shadow2);
+      padding:12px 13px 13px;
+    }
+    .notes h3{
+      margin:0 0 8px;
+      font-size:14px;
+      color:var(--brand-dark);
+    }
+    .mono{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    .mono .label{color:var(--muted-soft)}
+
+    .kbd{
+      font-family:var(--mono);
+      font-size:11px;
+      padding:2px 7px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#f3f7fc;
+      color:var(--muted-soft);
+    }
+
+    /* CTA blok */
     .cta{
       display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
-      padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:18px; box-shadow:var(--shadow2)
+      padding:12px 13px;
+      border:1px solid var(--border);
+      background:#f7fbff;
+      border-radius:14px;
+      box-shadow:var(--shadow2);
+      margin-top:4px;
     }
     .btn{
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.05);
-      color:var(--text);
-      padding:10px 12px;border-radius:12px;cursor:pointer;
-      transition:transform .15s ease,background .15s ease,border-color .15s ease;
+      border:1px solid var(--border);
+      background:#ffffff;
+      color:var(--brand-dark);
+      padding:8px 11px;
+      border-radius:999px;
+      cursor:pointer;
+      transition:transform .12s ease,background .12s ease,border-color .12s ease, box-shadow .12s ease;
       box-shadow:var(--shadow2);
-      font-weight:900;letter-spacing:.01em
+      font-weight:700;
+      letter-spacing:.01em;
+      font-size:13px;
     }
-    .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.08);border-color:rgba(93,214,255,.35)}
-    .btn:active{transform:translateY(0) scale(.99)}
-    .footer{margin-top:18px; padding:14px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.14); border-radius:16px; color:var(--muted); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
-    .small{font-size:12.5px}
+    .btn:hover{
+      transform:translateY(-1px);
+      background:#f3f7fc;
+      border-color:rgba(31,170,205,.35);
+      box-shadow:0 10px 24px rgba(15,35,52,.12);
+    }
 
-    /* notes */
-    .notes{
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(0,0,0,.12);
-      border-radius:18px;
+    .footer{
+      margin-top:18px;
+      border:1px solid var(--border);
+      background:#ffffff;
+      border-radius:var(--r);
+      padding:10px 14px;
+      color:var(--muted);
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
       box-shadow:var(--shadow2);
-      padding:14px;
     }
-    .notes h3{margin:0 0 10px; font-size:15px}
-    .notes .mono{font-family:var(--mono); font-size:12.5px; color:rgba(255,255,255,.82); line-height:1.6}
-    .notes .mono .label{color:var(--muted)}
-    .kbd{font-family:var(--mono); font-size:12px; opacity:.85; padding:2px 8px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:rgba(0,0,0,.18)}
-    .row2{display:grid; grid-template-columns:1fr; gap:14px}
-    @media(min-width:980px){.row2{grid-template-columns:1.2fr .8fr}}
+    .small{font-size:12.5px;color:var(--muted-soft)}
+    .footer a{
+      color:var(--muted-soft);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(162,177,195,.9);
+    }
+    .footer a:hover{
+      color:var(--brand-dark);
+      border-bottom-color:rgba(31,170,205,.8);
+    }
+
+    /* Reveal (optioneel, voor consistentie) */
+    .reveal{opacity:0;transform:translateY(8px);transition:opacity .45s ease, transform .45s ease;}
+    .reveal.in{opacity:1;transform:translateY(0);}
   </style>
 </head>
 
 <body>
-  <div class="grid" aria-hidden="true"></div>
-
   <div class="wrap">
     <div class="topbar">
-      <div class="brand"><span class="dot"></span><span>Zorgstart</span><span class="badge">Pitch</span></div>
-      <nav>
-        <a class="navlink" href="index.html">Home</a>
-        <a class="navlink" href="board.html">Board</a>
-        <a class="navlink" href="strategy.html">Strategie</a>
-        <a class="navlink" href="v1.html">V1</a>
-        <a class="navlink" href="journey.html">Journey</a>
-        <a class="navlink" href="roadmap.html">Roadmap</a>
-        <a class="navlink" href="governance.html">Governance</a>
-        <a class="navlink" href="wireframes.html">Wireframes</a>
-      </nav>
+      <div class="topbar-inner">
+        <div class="brand">
+          <span class="dot"></span>
+          <span>Zorgstart</span>
+          <span class="badge">pitch</span>
+        </div>
+        <nav>
+          <a class="navlink" href="index.html">Home</a>
+          <a class="navlink" href="board.html">Board</a>
+          <a class="navlink" href="strategy.html">Strategie</a>
+          <a class="navlink" href="v1.html">V1</a>
+          <a class="navlink" href="journey.html">Journey</a>
+          <a class="navlink" href="roadmap.html">Roadmap</a>
+          <a class="navlink" href="governance.html">Governance</a>
+          <a class="navlink" href="wireframes.html">Wireframes</a>
+        </nav>
+      </div>
     </div>
 
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero-inner">
-        <div class="pill"><span class="dot"></span><span>Directie pitch</span><span class="badge">± 3 minuten</span></div>
-        <h1>Ontslag is een ketenbeslissing — Zorgstart maakt de keten planbaar</h1>
+        <div class="pill">
+          <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
+          <span>Directie pitch</span>
+          <span class="badge">± 3 minuten</span>
+        </div>
+        <h1>Ontslag is een ketenbeslissing — Zorgstart maakt de keten planbaar.</h1>
         <p class="sub">
           De bottlenecks zitten zelden in motivatie of expertise, maar in het te laat zichtbaar worden van <b>THUIS</b>.
-          Zorgstart V1 pakt vandaag al het grootste “verlies”: ongestructureerde discharge info → trage ketenacties.
+          Zorgstart V1 pakt vandaag al het grootste verlies: ongestructureerde ontslaginformatie → trage ketenacties.
         </p>
         <div class="chiprow">
           <span class="chip">beddenhuis-impact</span>
@@ -159,9 +421,12 @@
       </div>
     </section>
 
-    <section class="panel">
+    <section class="panel reveal">
       <div class="head">
-        <div class="title"><span class="swatch brand"></span><span>Pitch in 6 “slides”</span></div>
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span>Pitch in 6 “slides”</span>
+        </div>
         <div class="badge"><span class="kbd">klik</span> om speaker-notes te tonen</div>
       </div>
 
@@ -178,7 +443,7 @@
               <h3>De realiteit: ontslag = MED + HOSP + THUIS</h3>
               <p>
                 Niet-medische ligdagen ontstaan wanneer <b>THUIS</b> pas laat in beeld komt
-                (capaciteit gezinszorg, thuisvpk, kine, hulpmiddelen, mantelzorg).
+                (capaciteit gezinszorg, thuisverpleging, kinesitherapie, hulpmiddelen, mantelzorg).
               </p>
               <ul class="bullets">
                 <li>complexiteit ↑, normering sociale dienst ontbreekt</li>
@@ -187,7 +452,7 @@
               </ul>
               <div class="keyline">
                 <b>Key message</b>
-                Als THUIS niet planbaar is, wordt beddenhuis onvoorspelbaar.
+                Als THUIS niet planbaar is, wordt het beddenhuis onvoorspelbaar.
               </div>
             </div>
           </article>
@@ -202,7 +467,7 @@
               <h3>CROP is nuttig, maar niet voldoende</h3>
               <p>
                 CROP optimaliseert <b>revalidatie-instroom</b> (pathologie-gedreven),
-                maar adresseert niet de sociale/keten-uitvoerbaarheid.
+                maar adresseert niet de sociale en keten-uitvoerbaarheid.
               </p>
               <ul class="bullets">
                 <li>CROP = medisch triagepad</li>
@@ -222,20 +487,20 @@
                 <span class="step">SLIDE 3</span>
                 <span class="timer">1:00–1:40</span>
               </div>
-              <h3>Wat V1 vandaag al doet: discharge → taken (met evidence)</h3>
+              <h3>Wat V1 vandaag al doet: ontslag → taken (met evidence)</h3>
               <p>
-                Zorgstart V1 (geactiveerd) zet ontslagbrieven automatisch om naar een
-                <b>gestructureerd takenpakket per discipline</b>. Sociale dienst valideert.
+                Zorgstart V1 zet ontslagbrieven automatisch om naar een
+                <b>gestructureerd takenpakket per discipline</b>. De sociale dienst valideert.
               </p>
               <ul class="bullets">
-                <li>minder knip/plakwerk, snellere publicatie</li>
+                <li>minder knip- en plakwerk, snellere publicatie</li>
                 <li>uniforme output, minder vergeten acties</li>
                 <li>audit trail: wie keurde wat goed, wanneer</li>
                 <li>publicatie naar Flexizorg (draft → ingevuld)</li>
               </ul>
               <div class="keyline">
                 <b>Key message</b>
-                V1 maakt de keten sneller “actief” en meetbaar, zonder risico: mens beslist.
+                V1 maakt de keten sneller actief en meetbaar, zonder risico: mens beslist.
               </div>
             </div>
           </article>
@@ -249,14 +514,14 @@
               </div>
               <h3>De winst in beddenhuis-termen (KPI’s)</h3>
               <p>
-                V1 levert meteen KPI’s die directie/CMO wil zien: doorlooptijd,
-                invulling en “open stoppers”.
+                V1 levert KPI’s die directie en CMO willen zien: doorlooptijd,
+                invulling en open stoppers.
               </p>
               <ul class="bullets">
                 <li>upload → takenvoorstel</li>
                 <li>voorstel → approve (sociale dienst)</li>
                 <li>time-to-fill per discipline</li>
-                <li>% edits (kwaliteit & governance)</li>
+                <li>% edits (kwaliteit en governance)</li>
               </ul>
               <div class="keyline">
                 <b>Key message</b>
@@ -272,15 +537,15 @@
                 <span class="step">SLIDE 5</span>
                 <span class="timer">2:10–2:40</span>
               </div>
-              <h3>Waarom dit “past” in het interfederaal casemanagement</h3>
+              <h3>Waarom dit past bij interfederaal casemanagement</h3>
               <p>
                 Het vroegere model werkte (neutrale coördinatie, vroege detectie, transmuraal),
-                maar was personeels-afhankelijk. Zorgstart digitaliseert dit schaalbaar.
+                maar was personeelsafhankelijk. Zorgstart digitaliseert dit schaalbaar.
               </p>
               <ul class="bullets">
                 <li>decision support + human-in-the-loop</li>
-                <li>triage/matching wordt proces, niet persoonsafhankelijk</li>
-                <li>basis voor probleemgebieden/bundels/zorgplan (V2+)</li>
+                <li>triage en matching worden proces, niet persoonsafhankelijk</li>
+                <li>basis voor probleemgebieden, bundels en zorgplan (V2+)</li>
               </ul>
               <div class="keyline">
                 <b>Key message</b>
@@ -299,26 +564,25 @@
               <h3>Wat we maandag vragen (helder, klein, bestuurbaar)</h3>
               <p>
                 Geen “IT-project”, maar een gefaseerde keteninterventie. Start beperkt,
-                bewijs impact, schaal gecontroleerd.
+                bewijs impact, schaal gecontroleerd op.
               </p>
               <ul class="bullets">
-                <li>pilot-afdeling + dataset (30–50 ontslagbrieven)</li>
+                <li>pilotafdeling + dataset (30–50 ontslagbrieven)</li>
                 <li>POC: end-to-end flow (upload → propose → approve → draft Flexizorg)</li>
                 <li>afspraken rond governance en KPI-rapport</li>
               </ul>
               <div class="keyline">
                 <b>Call-to-action</b>
-                Laat ons V1 bewijzen op doorlooptijd + time-to-fill + open stoppers.
+                Laat ons V1 bewijzen op doorlooptijd, time-to-fill en open stoppers.
               </div>
             </div>
           </article>
         </div>
 
-        <!-- Speaker notes -->
         <aside class="notes" id="notes">
           <h3>Speaker-notes (klik op een slide)</h3>
           <div class="mono" id="noteBody">
-            <div><span class="label">Tip:</span> gebruik dit als spreektekst met Erwin. Het is “directietaal”: keten, KPI’s, risico’s, governance.</div>
+            <div><span class="label">Tip:</span> gebruik dit als spreektekst met Erwin. Het is directietaal: keten, KPI’s, risico’s, governance.</div>
           </div>
         </aside>
       </div>
@@ -327,13 +591,13 @@
         <div class="cta">
           <div>
             <b>1 zin om af te sluiten</b>
-            <div class="small" style="color:var(--muted); margin-top:6px">
+            <div class="small" style="margin-top:4px">
               “Zorgstart maakt THUIS vroeg zichtbaar en uitvoerbaar — en dat is de snelste weg naar een planbaar beddenhuis.”
             </div>
           </div>
-          <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <div style="display:flex; gap:8px; flex-wrap:wrap">
             <button class="btn" id="printBtn">Print / PDF</button>
-            <a class="btn" href="board.html">Open Board onepager</a>
+            <a class="btn" href="board.html">Open Board-onepager</a>
             <a class="btn" href="wireframes.html">Open Wireframes</a>
           </div>
         </div>
@@ -341,8 +605,8 @@
     </section>
 
     <div class="footer">
-      <div class="small">Extra: voeg deze pagina toe aan je nav als <b>pitch.html</b>.</div>
-      <div class="small"><a href="index.html" style="text-decoration:underline">← terug naar Home</a></div>
+      <div class="small">Extra: voeg deze pagina toe aan je navigatie als <b>pitch.html</b>.</div>
+      <div class="small"><a href="index.html">← Terug naar Home</a></div>
     </div>
   </div>
 
@@ -359,7 +623,7 @@
         "Zorgstart is de transmurale laag bovenop CROP: uitvoerbaarheid en matching."
       ],
       n3: [
-        "V1 is een concrete, snelle bouwsteen: discharge letter → taken per discipline.",
+        "V1 is een concrete, snelle bouwsteen: ontslagbrief → taken per discipline.",
         "Benadruk evidence + audit trail + human-in-the-loop: AI beslist niet.",
         "Link met Flexizorg: sneller posten, sneller invullen, status terug."
       ],
@@ -383,18 +647,26 @@
     const noteBody = document.getElementById('noteBody');
     const slides = Array.from(document.querySelectorAll('.slide'));
     slides.forEach(slide => {
-      slide.style.cursor = 'pointer';
       slide.addEventListener('click', () => {
         const k = slide.dataset.note;
         const lines = noteMap[k] || [];
         noteBody.innerHTML = lines.map(x => `<div>• ${x}</div>`).join("") || "<div>Geen notes.</div>";
         slides.forEach(s => s.style.outline = 'none');
-        slide.style.outline = '2px solid rgba(93,214,255,.35)';
+        slide.style.outline = '2px solid rgba(31,170,205,.45)';
         slide.style.outlineOffset = '-2px';
       });
     });
 
     document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+    // Optionele reveal
+    const els = Array.from(document.querySelectorAll('.reveal'));
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    els.forEach(el=>io.observe(el));
   </script>
 </body>
 </html>
