@@ -19,17 +19,17 @@
         <span>Zorgstart</span>
         <span class="kbd">Analyse</span>
       </div>
-      <nav class="nav" aria-label="Hoofdnavigatie">
-              <a href="index.html">Overzicht</a>
-        <a href="strategy.html">Analyse</a>
-        <a href="v1.html">Versie 1</a>
-        <a href="journey.html">Patiëntjourney</a>
-        <a href="roadmap.html">Roadmap</a>
-              <a href="board.html">Board</a>
-        <a href="governance.html">Governance</a>
-              <a href="wireframes.html">Wireframes</a>
-        <a href="pitch.html">Pitch</a>
-      </nav>
+      <nav>
+                <a class="navlink" href="index.html">Overzicht</a>
+                <a class="navlink" href="strategy.html">Analyse</a>
+                <a class="navlink" href="v1.html">Versie 1</a>
+                <a class="navlink" href="journey.html">Journey</a>
+                <a class="navlink" href="roadmap.html">Roadmap</a>
+                <a class="navlink" href="board.html">Board</a>
+                <a class="navlink" href="governance.html">Governance</a>
+                <a class="navlink" href="wireframes.html">Wireframes</a>
+                <a class="navlink" href="pitch.html">Pitch</a>
+              </nav>
     </div>
   </div>
 
@@ -256,5 +256,12 @@
     }, {threshold:0.12});
     els.forEach(el => io.observe(el));
   </script>
+  <script>
+    const p=location.pathname.split('/').pop()||'index.html';
+    document.querySelectorAll('.navlink').forEach(a=>{
+      if(a.getAttribute('href')===p) a.classList.add('active');
+    });
+  </script>
+
 </body>
 </html>
