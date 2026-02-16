@@ -1,23 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zorgstart — Wireframes (V1 + richting volledige versie)</title>
-  <meta name="description" content="Wireframes: Inbox, Review split view, Taken/Publish, Dashboard, en preview van Probleemgebieden/Bundels/Zorgplan." />
+  <title>Zorgstart — Wireframes (V1 + volledige versie)</title>
+  <meta name="description" content="Klikbare wireframes: Inbox, Review split view, Publish, Dashboard en preview van Probleemgebieden/Bundels/Zorgplan." />
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
   <!-- TOPBAR -->
-  <div class="topbar">
+  <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
         <span class="dot"></span>
         <span>Zorgstart</span>
         <span class="badge">wireframes</span>
       </div>
+
       <nav aria-label="Hoofdnavigatie">
         <a class="navlink" href="index.html">Overzicht</a>
         <a class="navlink" href="strategy.html">Analyse</a>
@@ -31,28 +31,28 @@
         <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
       </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="wrap">
+  <main class="wrap">
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-inner">
         <div class="pill">
           <span class="dot" style="width:10px;height:10px;box-shadow:0 0 0 3px rgba(31,170,205,.18);"></span>
           <span>Wireframes (klikbaar)</span>
           <span class="badge">demo-look</span>
         </div>
-        <h1>Zo kan Zorgstart eruitzien — V1 én preview van de volledige versie.</h1>
+        <h1 id="hero-title">Zo kan Zorgstart eruitzien — V1 én preview van de volledige versie.</h1>
         <p class="sub">
-          Dit zijn “screens” die je kan tonen alsof het een demo is: inbox → review → publish → dashboard → preview van probleemgebieden, bundels en zorgplan.
+          Dit is een klikbare demo-flow: inbox → review → publish → dashboard → preview van probleemgebieden, bundels en zorgplan.
         </p>
       </div>
     </section>
 
     <!-- PANEL -->
-    <section class="panel" aria-label="Wireframes panel">
-      <div class="head">
+    <section class="panel" aria-label="Wireframes">
+      <header class="head">
         <div class="title">
           <span class="swatch brand"></span>
           <span>Schermen</span>
@@ -60,30 +60,42 @@
 
         <!-- TABS -->
         <div class="tabs" id="tabs" role="tablist" aria-label="Wireframe tabs">
-          <button class="tab active" type="button" role="tab" aria-selected="true" aria-controls="inbox" data-screen="inbox">Inbox</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="review" data-screen="review">Review</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="publish" data-screen="publish">Publish</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="dash" data-screen="dash">Dashboard</button>
-          <button class="tab" type="button" role="tab" aria-selected="false" aria-controls="full" data-screen="full">Volledige versie (preview)</button>
+          <button class="tab active" id="tab-inbox" type="button" role="tab" aria-selected="true" aria-controls="inbox" data-screen="inbox">
+            Inbox
+          </button>
+          <button class="tab" id="tab-review" type="button" role="tab" aria-selected="false" aria-controls="review" data-screen="review">
+            Review
+          </button>
+          <button class="tab" id="tab-publish" type="button" role="tab" aria-selected="false" aria-controls="publish" data-screen="publish">
+            Publish
+          </button>
+          <button class="tab" id="tab-dash" type="button" role="tab" aria-selected="false" aria-controls="dash" data-screen="dash">
+            Dashboard
+          </button>
+          <button class="tab" id="tab-full" type="button" role="tab" aria-selected="false" aria-controls="full" data-screen="full">
+            Volledige versie (preview)
+          </button>
         </div>
-      </div>
+      </header>
 
       <div class="content">
 
         <!-- INBOX -->
-        <div class="screen active" id="inbox" role="tabpanel" aria-labelledby="tab-inbox">
+        <section class="screen active" id="inbox" role="tabpanel" aria-labelledby="tab-inbox">
           <div class="frame">
-            <div class="framebar">
+            <header class="framebar">
               <b>Inbox — Cases</b>
-              <div style="display:flex; gap:6px; flex-wrap:wrap">
+              <div class="frame-actions">
                 <button class="btn" type="button">+ Upload</button>
                 <button class="btn" type="button">Filter</button>
                 <button class="btn" type="button">Rapport</button>
               </div>
-            </div>
+            </header>
+
             <div class="layout">
-              <div class="box">
+              <article class="box">
                 <h3>Vandaag</h3>
+
                 <div class="row">
                   <div>
                     <b>Case #1048</b>
@@ -91,6 +103,7 @@
                   </div>
                   <span class="pill2 warn">review nodig</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Case #1051</b>
@@ -98,6 +111,7 @@
                   </div>
                   <span class="pill2 warn">in verwerking</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Case #1039</b>
@@ -105,10 +119,11 @@
                   </div>
                   <span class="pill2 good">thuis groen</span>
                 </div>
-              </div>
+              </article>
 
-              <div class="box">
+              <article class="box">
                 <h3>Snelle KPI’s</h3>
+
                 <div class="row">
                   <div>
                     <b>Median upload → voorstel</b>
@@ -116,6 +131,7 @@
                   </div>
                   <span class="pill2 good">6 min</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Median voorstel → approve</b>
@@ -123,6 +139,7 @@
                   </div>
                   <span class="pill2 good">14 min</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Open THUIS-stoppers</b>
@@ -130,26 +147,26 @@
                   </div>
                   <span class="pill2 bad">8</span>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- REVIEW -->
-        <div class="screen" id="review" role="tabpanel">
+        <section class="screen" id="review" role="tabpanel" aria-labelledby="tab-review">
           <div class="frame">
-            <div class="framebar">
+            <header class="framebar">
               <b>Review — split view</b>
-              <div style="display:flex; gap:6px; flex-wrap:wrap">
+              <div class="frame-actions">
                 <button class="btn" type="button">Opslaan</button>
                 <button class="btn" type="button">Approve</button>
               </div>
-            </div>
+            </header>
 
             <div class="layout">
-              <div class="box">
+              <article class="box">
                 <h3>Document viewer</h3>
-                <div class="muted">PDF links met highlights (evidence) per taak.</div>
+                <p class="muted">PDF-links met highlights (evidence) per taak.</p>
 
                 <div class="row">
                   <div>
@@ -158,6 +175,7 @@
                   </div>
                   <span class="pill2">evidence</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Highlighted passage</b>
@@ -165,9 +183,9 @@
                   </div>
                   <span class="pill2">evidence</span>
                 </div>
-              </div>
+              </article>
 
-              <div class="box">
+              <article class="box">
                 <h3>AI-voorstel → taken</h3>
 
                 <div class="row">
@@ -177,6 +195,7 @@
                   </div>
                   <span class="pill2 good">0.92</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Mobilisatie</b>
@@ -184,6 +203,7 @@
                   </div>
                   <span class="pill2 good">0.88</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Valpreventie</b>
@@ -191,6 +211,7 @@
                   </div>
                   <span class="pill2 warn">0.74</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Medicatie-opvolging</b>
@@ -199,28 +220,29 @@
                   <span class="pill2 warn">0.78</span>
                 </div>
 
-                <div class="muted" style="margin-top:8px">
+                <p class="muted" style="margin-top:8px">
                   Bewerken, toevoegen, verwijderen; approve is verplicht voor publicatie.
-                </div>
-              </div>
+                </p>
+              </article>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- PUBLISH -->
-        <div class="screen" id="publish" role="tabpanel">
+        <section class="screen" id="publish" role="tabpanel" aria-labelledby="tab-publish">
           <div class="frame">
-            <div class="framebar">
-              <b>Publish & follow-up</b>
-              <div style="display:flex; gap:6px; flex-wrap:wrap">
+            <header class="framebar">
+              <b>Publish &amp; follow-up</b>
+              <div class="frame-actions">
                 <button class="btn" type="button">Publiceer (draft)</button>
                 <button class="btn" type="button">Herinnering</button>
               </div>
-            </div>
+            </header>
 
             <div class="layout">
-              <div class="box">
+              <article class="box">
                 <h3>Ketenstatus (V1 light)</h3>
+
                 <div class="row">
                   <div>
                     <b>MED</b>
@@ -228,6 +250,7 @@
                   </div>
                   <span class="pill2 good">groen</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>HOSP</b>
@@ -235,6 +258,7 @@
                   </div>
                   <span class="pill2 warn">oranje</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>THUIS</b>
@@ -242,10 +266,11 @@
                   </div>
                   <span class="pill2 warn">oranje</span>
                 </div>
-              </div>
+              </article>
 
-              <div class="box">
+              <article class="box">
                 <h3>Flexizorg-status</h3>
+
                 <div class="row">
                   <div>
                     <b>Thuisverpleegkundige</b>
@@ -253,6 +278,7 @@
                   </div>
                   <span class="pill2 good">ingepland</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Kinesist</b>
@@ -260,6 +286,7 @@
                   </div>
                   <span class="pill2 good">ingepland</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Ergotherapeut</b>
@@ -267,26 +294,27 @@
                   </div>
                   <span class="pill2 bad">open</span>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- DASH -->
-        <div class="screen" id="dash" role="tabpanel">
+        <!-- DASHBOARD -->
+        <section class="screen" id="dash" role="tabpanel" aria-labelledby="tab-dash">
           <div class="frame">
-            <div class="framebar">
+            <header class="framebar">
               <b>Dashboard — beddenhuisimpact</b>
-              <div style="display:flex; gap:6px; flex-wrap:wrap">
+              <div class="frame-actions">
                 <button class="btn" type="button">Per afdeling</button>
                 <button class="btn" type="button">Per discipline</button>
                 <button class="btn" type="button">Export</button>
               </div>
-            </div>
+            </header>
 
             <div class="layout">
-              <div class="box">
+              <article class="box">
                 <h3>Kern-KPI’s</h3>
+
                 <div class="row">
                   <div>
                     <b>Doorlooptijd upload → publish</b>
@@ -294,6 +322,7 @@
                   </div>
                   <span class="pill2 good">24 min</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Time-to-fill</b>
@@ -301,17 +330,19 @@
                   </div>
                   <span class="pill2 warn">8 u</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>% AI-edits</b>
-                    <div class="muted">kwaliteit & learning</div>
+                    <div class="muted">kwaliteit &amp; learning</div>
                   </div>
                   <span class="pill2 warn">22%</span>
                 </div>
-              </div>
+              </article>
 
-              <div class="box">
+              <article class="box">
                 <h3>THUIS-stoppers</h3>
+
                 <div class="row">
                   <div>
                     <b>Open taken</b>
@@ -319,28 +350,30 @@
                   </div>
                   <span class="pill2 bad">ergo · gezinszorg · hulpmiddelen</span>
                 </div>
-                <div class="muted" style="margin-top:8px">
+
+                <p class="muted" style="margin-top:8px">
                   Input voor ketenoverleg, portfolio en contractering.
-                </div>
-              </div>
+                </p>
+              </article>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- FULL PREVIEW -->
-        <div class="screen" id="full" role="tabpanel">
+        <section class="screen" id="full" role="tabpanel" aria-labelledby="tab-full">
           <div class="frame">
-            <div class="framebar">
+            <header class="framebar">
               <b>Volledige versie (preview) — Probleemgebieden → bundels → zorgplan</b>
-              <div style="display:flex; gap:6px; flex-wrap:wrap">
+              <div class="frame-actions">
                 <button class="btn" type="button">Zorgplan</button>
                 <button class="btn" type="button">Patiëntversie</button>
               </div>
-            </div>
+            </header>
 
             <div class="layout">
-              <div class="box">
+              <article class="box">
                 <h3>Probleemgebieden (voorbeeld)</h3>
+
                 <div class="row">
                   <div>
                     <b>Mobiliteit</b>
@@ -348,6 +381,7 @@
                   </div>
                   <span class="pill2 warn">bundel</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Valrisico</b>
@@ -355,6 +389,7 @@
                   </div>
                   <span class="pill2 warn">bundel</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Medicatiebeheer</b>
@@ -362,6 +397,7 @@
                   </div>
                   <span class="pill2 warn">schema</span>
                 </div>
+
                 <div class="row">
                   <div>
                     <b>Wondzorg</b>
@@ -369,15 +405,16 @@
                   </div>
                   <span class="pill2 good">actief</span>
                 </div>
-              </div>
+              </article>
 
-              <div class="box">
+              <article class="box">
                 <h3>Uw zorg thuis (patiëntvertaling)</h3>
-                <div class="muted">
+                <p class="muted">
                   “Vanaf uw thuiskomst komt een verpleegkundige 3× per week voor uw wonde.
                   Een kinesist helpt u 2× per week met stappen. Uw medicatie wordt samen met u overlopen.
                   Bij koorts, roodheid of toenemende pijn contacteer …”
-                </div>
+                </p>
+
                 <div class="row" style="margin-top:8px">
                   <div>
                     <b>Contact</b>
@@ -385,46 +422,57 @@
                   </div>
                   <span class="pill2">1 klik</span>
                 </div>
-              </div>
+              </article>
             </div>
           </div>
-        </div>
+        </section>
 
       </div><!-- /content -->
     </section>
 
-    <div class="footer">
+    <footer class="footer">
       <div class="small">Tip: gebruik dit als demo in directie, en klik door de tabs.</div>
       <div class="small"><a href="index.html">← Terug naar Home</a></div>
-    </div>
+    </footer>
 
-  </div><!-- /wrap -->
+  </main>
 
   <script>
     // Tabs → screens
     const tabs = Array.from(document.querySelectorAll('.tab'));
     const screens = Array.from(document.querySelectorAll('.screen'));
 
-    function activate(id){
-      tabs.forEach(t=>{
-        const active = t.dataset.screen === id;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', active ? 'true' : 'false');
+    function activate(id) {
+      tabs.forEach(tab => {
+        const isActive = tab.dataset.screen === id;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
       });
-      screens.forEach(s=>s.classList.toggle('active', s.id === id));
+
+      screens.forEach(screen => {
+        screen.classList.toggle('active', screen.id === id);
+      });
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.screen)));
-
-    // Mark current nav item
-    const p = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    document.querySelectorAll('.navlink').forEach(a => {
-      if ((a.getAttribute('href') || '').toLowerCase() === p) a.classList.add('active');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activate(tab.dataset.screen));
     });
 
-    // Optional: add reveal class (safe even if CSS has none)
-    document.querySelectorAll('section').forEach(s => s.classList.add('reveal'));
+    // Markeer huidige nav-item
+    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    document.querySelectorAll('.navlink').forEach(link => {
+      const href = (link.getAttribute('href') || '').toLowerCase();
+      if (href === current) {
+        link.classList.add('active');
+      }
+    });
+
+    // Optioneel: reveal class
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('reveal');
+    });
   </script>
 
 </body>
