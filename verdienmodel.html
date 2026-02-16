@@ -9,6 +9,8 @@
 </head>
 <body>
   <div class="wrap">
+
+    <!-- TOPBAR -->
     <div class="topbar">
       <div class="topbar-inner">
         <div class="brand">
@@ -16,7 +18,7 @@
           <span>Zorgstart</span>
           <span class="badge">Verdienmodel</span>
         </div>
-        <nav>
+        <nav aria-label="Hoofdnavigatie">
           <a class="navlink" href="index.html">Overzicht</a>
           <a class="navlink" href="strategy.html">Analyse</a>
           <a class="navlink" href="v1.html">Versie 1</a>
@@ -24,13 +26,15 @@
           <a class="navlink" href="roadmap.html">Roadmap</a>
           <a class="navlink" href="governance.html">Governance</a>
           <a class="navlink" href="wireframes.html">Wireframes</a>
-                      <a class="navlink" href="matching.html">Matching</a>
+          <a class="navlink" href="matching.html">Matching</a>
           <a class="navlink" href="pitch.html">Pitch</a>
           <a class="navlink" href="uitrol.html">Uitrol</a>
           <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+        </nav>
       </div>
     </div>
 
+    <!-- HERO -->
     <section class="hero reveal">
       <div class="hero-inner">
         <div class="pill">
@@ -45,6 +49,7 @@
       </div>
     </section>
 
+    <!-- V1 -->
     <section class="panel reveal">
       <div class="head">
         <div class="title"><span class="swatch brand"></span> Verdienmodel V1</div>
@@ -61,28 +66,83 @@
             </ul>
             <div class="callout" style="margin-top:12px">
               <strong>Business case</strong>
-              <p> ligdag reductie = duidelijke positieve business case voor elk ziekenhuis.</p>
+              <p>Ligdagreductie = duidelijke positieve business case voor elk ziekenhuis én het bredere zorgsysteem.</p>
             </div>
           </div>
           <div class="card">
             <h3>Waardepropositie V1</h3>
             <ul>
-              <li>Snellere doorstroom , daling ligdagen</li>
+              <li>Snellere doorstroom, daling ligdagen</li>
               <li>Minder last-minute ontslagstress</li>
               <li>Minder heropnames door volledige taakoverdracht</li>
               <li>Volledige audit trail voor governance</li>
             </ul>
           </div>
         </div>
+
         <div class="kpis" style="margin-top:14px">
           <div class="kpi"><div class="label">Licentie</div><div class="value">€? k</div><div class="hint">per site / jaar</div></div>
           <div class="kpi"><div class="label">Per ontslag</div><div class="value">€20–30</div><div class="hint">CROP-thuisprofiel</div></div>
           <div class="kpi"><div class="label">Ligdagwinst</div><div class="value">−0,3 dag</div><div class="hint">= positieve ROI</div></div>
-          <div class="kpi"><div class="label">Break-even</div><div class="value"><6 mnd(?)</div><div class="hint">na live start</div></div>
+          <div class="kpi"><div class="label">Break-even</div><div class="value">&lt; 6 mnd (?)</div><div class="hint">na live start</div></div>
         </div>
       </div>
     </section>
 
+    <!-- PAYOR IMPACT (NEW) -->
+    <section class="panel reveal">
+      <div class="head">
+        <div class="title"><span class="swatch accent"></span> Impact op financiers</div>
+        <span class="badge">macro + actuarieel</span>
+      </div>
+
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>1) Verplichte ziekteverzekering (mutualiteiten)</h3>
+            <p class="small" style="margin-top:-6px;opacity:.86">
+              Kortere ligduur is doorgaans kostenbesparend, mits kwaliteitsvolle opvolging en het vermijden van heropnames.
+            </p>
+            <ul>
+              <li><b>Financieringslogica:</b> ziekenhuiszorg via BMF + honoraria; vergoeding is vaak forfaitair per pathologie (APR-DRG) en niet louter per ligdag.</li>
+              <li><b>Macro-effect:</b> extra ligdagen genereren niet automatisch meer inkomsten, maar wel extra kosten voor de ziekteverzekering.</li>
+              <li><b>Beleidsfit:</b> sluit aan bij doelmatigheidsprincipe en stimulansen rond daghospitalisatie, transmurale zorg en “hospital at home”.</li>
+              <li><b>Randvoorwaarden:</b> geen pure kostverschuiving naar ambulante setting + heropnames vermijden (anders neutraliseert het voordeel).</li>
+            </ul>
+            <div class="callout" style="margin-top:12px">
+              <strong>Conclusie</strong>
+              <p>Onder de huidige financieringsstructuur is een kortere hospitalisatie doorgaans financieel gunstig voor de ziekteverzekering.</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>2) Private hospitalisatieverzekeringen</h3>
+            <p class="small" style="margin-top:-6px;opacity:.86">
+              Minder ligdagen = lagere uitkering per schadedossier, met aandacht voor pre- en posthospitalisatiekosten.
+            </p>
+            <ul>
+              <li><b>Kostendrijvers:</b> kamer- en verblijfskosten, ereloonsupplementen en aanverwante medische uitgaven per opname.</li>
+              <li><b>Actuarieel effect:</b> structureel kortere opnames verlagen de gemiddelde kost per verzekerde en verbeteren de schade-ratio.</li>
+              <li><b>Poliscontext:</b> kostenbeheersing kan enkel binnen de contractueel vastgelegde dekking.</li>
+              <li><b>Randvoorwaarden:</b> mogelijke verschuiving naar pre-/posthospitalisatie (vaak mee gedekt) moet bewaakt worden.</li>
+            </ul>
+            <div class="callout" style="margin-top:12px">
+              <strong>Conclusie</strong>
+              <p>Een efficiënte en verkorte hospitalisatieduur is in de regel financieel gunstig voor de private hospitalisatieverzekeraar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:14px">
+          <strong>Wat Zorgstart hier “verkoopbaar” maakt</strong>
+          <p>
+            Niet enkel “sneller ontslag”, maar <b>gecontroleerd sneller ontslag</b>: taakoverdracht + audit trail + opvolging (V2) om heropnames te beperken en kostverschuiving te vermijden.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- V2+ -->
     <section class="panel reveal">
       <div class="head">
         <div class="title"><span class="swatch accent"></span> Volledige versie (V2+)</div>
@@ -103,12 +163,13 @@
             <h3>Module 2 — Coördinatie door Nurseline</h3>
             <p>Transmurale opvolging per patiënt</p>
             <ul>
-              <li>Per-patiënt fee model - wie betaalt? </li>
+              <li>Per-patiënt fee model — wie betaalt?</li>
               <li>Proactieve monitoring na ontslag</li>
               <li>Integratie met eerste lijn</li>
             </ul>
           </div>
         </div>
+
         <div class="grid2" style="margin-top:14px">
           <div class="card">
             <h3>Module 3 — Matching / Flexizorg</h3>
@@ -127,6 +188,7 @@
             </ul>
           </div>
         </div>
+
         <div class="callout" style="margin-top:14px">
           <strong>Strategie</strong>
           <p>V1 opent de deur in ziekenhuizen. V2+ bouwt recurrent ecosysteeminkomen via modules, data en transmurale matching.</p>
@@ -134,6 +196,7 @@
       </div>
     </section>
 
+    <!-- FOOTER -->
     <div class="footer reveal">
       <div>
         <b>Zorgstart</b> — van ontslagtaak naar zorgplatform
@@ -148,18 +211,25 @@
         <a href="index.html">← Home</a>
       </div>
     </div>
+
   </div>
 
   <script>
-    const p=location.pathname.split('/').pop()||'index.html';
-    document.querySelectorAll('.navlink').forEach(a=>{
-      if(a.getAttribute('href')===p) a.classList.add('active');
+    const p = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.navlink').forEach(a => {
+      if (a.getAttribute('href') === p) a.classList.add('active');
     });
-    const els=Array.from(document.querySelectorAll('.reveal'));
-    const io=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-    },{threshold:.12});
-    els.forEach(el=>io.observe(el));
+
+    const els = Array.from(document.querySelectorAll('.reveal'));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: .12 });
+    els.forEach(el => io.observe(el));
   </script>
 </body>
 </html>
