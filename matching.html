@@ -1,229 +1,321 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Zorgstart — Flexizorg v2 & Matching</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zorgstart — Flexizorg v2 & Matching</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="topbar">
+  <!-- TOPBAR -->
+  <header class="topbar">
     <div class="topbar-inner">
-        <div class="brand">
-            <span class="dot"></span>
-            <span>Zorgstart</span>
-            <span class="badge">Matching</span>
-        </div>
-        <nav>
-            <a class="navlink" href="index.html">Overzicht</a>
-            <a class="navlink" href="strategy.html">Analyse</a>
-            <a class="navlink" href="v1.html">Versie 1</a>
-            <a class="navlink" href="journey.html">Journey</a>
-            <a class="navlink" href="roadmap.html">Roadmap</a>
-            <a class="navlink" href="governance.html">Governance</a>
-            <a class="navlink" href="wireframes.html">Wireframes</a>
-            <a class="navlink" href="pitch.html">Pitch</a>
-            <a class="navlink" href="uitrol.html">Uitrol</a>
-            <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
-                        <a class="navlink" href="matching.html">Matching</a>
-        </nav>
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Zorgstart</span>
+        <span class="badge">Matching</span>
+      </div>
+      <nav aria-label="Hoofdnavigatie">
+        <a class="navlink" href="index.html">Overzicht</a>
+        <a class="navlink" href="strategy.html">Analyse</a>
+        <a class="navlink" href="v1.html">Versie 1</a>
+        <a class="navlink" href="journey.html">Journey</a>
+        <a class="navlink" href="roadmap.html">Roadmap</a>
+        <a class="navlink" href="governance.html">Governance</a>
+        <a class="navlink" href="wireframes.html">Wireframes</a>
+        <a class="navlink" href="pitch.html">Pitch</a>
+        <a class="navlink" href="uitrol.html">Uitrol</a>
+        <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+        <a class="navlink" href="matching.html">Matching</a>
+      </nav>
     </div>
-</div>
+  </header>
 
-<div class="wrap">
-    <!-- Hero / executive intro -->
-    <section class="hero reveal" id="top">
-        <div class="hero-inner">
-            <div>
-                <div class="pill">
-                    <span class="dot"></span>
-                    <span><b><a href="matching.html">Flexizorg</a> v2</b> — van inschrijven naar ecosysteem</span>
-                    <span class="badge">matching intelligence</span>
-                </div>
+  <main class="wrap">
 
-                <h1><a href="matching.html">Flexizorg</a> v2: Van reactief naar aanbod-gestuurd matching platform</h1>
-                <p class="sub">
-                    <a href="matching.html">Flexizorg</a> v2 is een platform waar zorgverleners, welzijnswerkers en commerciële partners zich permanent kunnen "plaatsen" met rijke labels (taal, cultuur, specialiteit, regio, modaliteit), zodat matching voorspelbaar, auditbaar en schaalbaar wordt — en Zorgstart-taken rechtstreeks kunnen doorstromen naar uitvoerders.
-                </p>
+    <!-- HERO / EXEC INTRO -->
+    <section class="hero reveal" id="top" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <div class="pill">
+            <span class="dot"></span>
+            <span><b><a href="matching.html">Flexizorg</a> v2</b> — van inschrijven naar ecosysteem</span>
+            <span class="badge">matching intelligence</span>
+          </div>
 
-                <div class="hero-actions">
-                    <a href="#v1-vs-v2" class="primary">v1 vs v2 vergelijking</a>
-                    <a href="#architecture" class="secondary">Architectuur in 3 lagen</a>
-                    <a href="#labels" class="secondary">Label taxonomie</a>
-                </div>
-            </div>
+          <h1 id="hero-title">
+            <a href="matching.html">Flexizorg</a> v2: Van reactief naar aanbod-gestuurd matching platform
+          </h1>
+
+          <p class="sub">
+            <a href="matching.html">Flexizorg</a> v2 is een platform waar zorgverleners, welzijnswerkers en commerciële partners zich permanent kunnen "plaatsen" met rijke labels
+            (taal, cultuur, specialiteit, regio, modaliteit), zodat matching voorspelbaar, auditbaar en schaalbaar wordt — en Zorgstart-taken rechtstreeks kunnen
+            doorstromen naar uitvoerders.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#v1-vs-v2" class="primary">v1 vs v2 vergelijking</a>
+            <a href="#architecture" class="secondary">Architectuur in 3 lagen</a>
+            <a href="#labels" class="secondary">Label taxonomie</a>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- v1 vs v2 comparison -->
-    <section id="v1-vs-v2" class="panel">
-        <h2><a href="matching.html">Flexizorg</a> v1 vs v2: van reactief naar proactief</h2>
+    <!-- V1 VS V2 -->
+    <section id="v1-vs-v2" class="panel reveal" aria-labelledby="v1v2-title">
+      <header class="head">
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span id="v1v2-title"><a href="matching.html">Flexizorg</a> v1 vs v2: van reactief naar proactief</span>
+        </div>
+      </header>
+
+      <div class="content">
         <div class="grid-2">
-            <div class="box">
-                <h3><a href="matching.html">Flexizorg</a> v1 (huidig model)</h3>
-                <p><b>Kernmechanisme:</b> Een aanvraag komt binnen; beschikbare profielen schrijven in; selectie gebeurt op basis van beschikbaarheid en basisinfo.</p>
-                <p><b>Sterktes:</b> Snel en eenvoudig, laagdrempelig voor zorgverleners, goed voor acute "gaten".</p>
-                <p><b>Beperkingen:</b> Reactief en weinig voorspellend, beperkte nuance in matchkwaliteit, weinig structurele "capacity intelligence".</p>
-            </div>
-            <div class="box">
-                <h3><a href="matching.html">Flexizorg</a> v2 (doelmodel)</h3>
-                <p><b>Kernmechanisme:</b> Alle profielen staan permanent "op de kaart" met rijke labels. Het platform matcht vraag ↔ aanbod op hard & soft constraints.</p>
-                <p><b>Wat dit ontgrendelt:</b> Betere matchkwaliteit (taal/cultuur/specialiteit/modaliteit), snellere opstart (auto-shortlist, auto-notify), auditbare keuzes + transparantie.</p>
-                <p><b>Essentieel principe:</b> Labels zijn bewijsbaar. Upload/verificatie voorkomt "rommelmarkt" en beschermt zorgkwaliteit.</p>
-            </div>
+          <article class="box">
+            <h3><a href="matching.html">Flexizorg</a> v1 (huidig model)</h3>
+            <p><b>Kernmechanisme:</b> Een aanvraag komt binnen; beschikbare profielen schrijven in; selectie gebeurt op basis van beschikbaarheid en basisinfo.</p>
+            <p><b>Sterktes:</b> Snel en eenvoudig, laagdrempelig voor zorgverleners, goed voor acute "gaten".</p>
+            <p><b>Beperkingen:</b> Reactief en weinig voorspellend, beperkte nuance in matchkwaliteit, weinig structurele "capacity intelligence".</p>
+          </article>
+
+          <article class="box">
+            <h3><a href="matching.html">Flexizorg</a> v2 (doelmodel)</h3>
+            <p><b>Kernmechanisme:</b> Alle profielen staan permanent "op de kaart" met rijke labels. Het platform matcht vraag ↔ aanbod op hard &amp; soft constraints.</p>
+            <p><b>Wat dit ontgrendelt:</b> Betere matchkwaliteit (taal/cultuur/specialiteit/modaliteit), snellere opstart (auto-shortlist, auto-notify), auditbare keuzes + transparantie.</p>
+            <p><b>Essentieel principe:</b> Labels zijn bewijsbaar. Upload/verificatie voorkomt "rommelmarkt" en beschermt zorgkwaliteit.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Architecture in 3 layers -->
-    <section id="architecture">
-        <h2>Architectuur in 3 lagen</h2>
+    <!-- ARCHITECTUUR -->
+    <section id="architecture" class="panel reveal" aria-labelledby="arch-title">
+      <header class="head">
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span id="arch-title">Architectuur in 3 lagen</span>
+        </div>
+      </header>
+
+      <div class="content">
         <p class="sub">Zo hou je het schaalbaar en bestuurbaar.</p>
         <div class="grid-3">
-            <div class="box">
-                <span class="badge">Laag 1</span>
-                <h3>Profielen & Labels</h3>
-                <p>Verifieerbare kenmerken: bevoegdheden, beschikbaarheid, regio, modaliteit, taal/cultuur, specialiteiten, tools, kwaliteit.</p>
-            </div>
-            <div class="box">
-                <span class="badge">Laag 2</span>
-                <h3>Matching Engine</h3>
-                <p>Matchscore op basis van hard constraints (must-have) en soft constraints (best-fit), met uitleg "waarom deze match?".</p>
-            </div>
-            <div class="box">
-                <span class="badge">Laag 3</span>
-                <h3>Orchestratie (Zorgstart → uitvoering)</h3>
-                <p>Taken vanuit ziekenhuis/keten worden automatisch omgezet naar concrete uitvoerders (zorg, welzijn, partners) met SLA's.</p>
-            </div>
+          <article class="box">
+            <span class="badge">Laag 1</span>
+            <h3>Profielen &amp; Labels</h3>
+            <p>Verifieerbare kenmerken: bevoegdheden, beschikbaarheid, regio, modaliteit, taal/cultuur, specialiteiten, tools, kwaliteit.</p>
+          </article>
+
+          <article class="box">
+            <span class="badge">Laag 2</span>
+            <h3>Matching Engine</h3>
+            <p>Matchscore op basis van hard constraints (must-have) en soft constraints (best-fit), met uitleg "waarom deze match?".</p>
+          </article>
+
+          <article class="box">
+            <span class="badge">Laag 3</span>
+            <h3>Orchestratie (Zorgstart → uitvoering)</h3>
+            <p>Taken vanuit ziekenhuis/keten worden automatisch omgezet naar concrete uitvoerders (zorg, welzijn, partners) met SLA's.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Label taxonomy -->
-    <section id="labels">
-        <h2>Labels: compacte taxonomie (6 blokken)</h2>
+    <!-- LABEL TAXONOMIE -->
+    <section id="labels" class="panel reveal" aria-labelledby="labels-title">
+      <header class="head">
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span id="labels-title">Labels: compacte taxonomie (6 blokken)</span>
+        </div>
+      </header>
+
+      <div class="content">
         <p class="sub">Rijk genoeg voor matching, maar beheersbaar in governance.</p>
         <div class="grid-2">
-            <div class="box">
-                <h3>1) Wie ben ik?</h3>
-                <ul>
-                    <li>Rol / beroep</li>
-                    <li>Erkenning / RIZIV-nummer</li>
-                    <li>Verzekeringen</li>
-                    <li>Ervaring (jaren)</li>
-                </ul>
-            </div>
-            <div class="box">
-                <h3>2) Waar & wanneer?</h3>
-                <ul>
-                    <li>Regio / postcodes</li>
-                    <li>Beschikbaarheid</li>
-                    <li>Nacht / weekend</li>
-                    <li>Mobiliteit (km, auto/OV)</li>
-                </ul>
-            </div>
-            <div class="box">
-                <h3>3) Wat kan ik?</h3>
-                <ul>
-                    <li>Specialiteit (bv. wondzorg)</li>
-                    <li>Doelgroepen (geriatrie, pediatrie)</li>
-                    <li>Handelingen / bevoegdheden</li>
-                    <li>Acute inzetbaarheid</li>
-                </ul>
-            </div>
-            <div class="box">
-                <h3>4) Hoe werk ik?</h3>
-                <ul>
-                    <li>Modaliteit (huis/praktijk/digitaal)</li>
-                    <li>Tools & EPD-vaardig</li>
-                    <li>Rapportage-voorkeur</li>
-                    <li>SLA bereidheid</li>
-                </ul>
-            </div>
-            <div class="box">
-                <h3>5) Mens & context</h3>
-                <ul>
-                    <li>Taalniveau</li>
-                    <li>Culturele affiniteiten</li>
-                    <li>Communicatiestijl</li>
-                    <li>Continuïteitsvoorkeur</li>
-                </ul>
-            </div>
-            <div class="box">
-                <h3>6) Kwaliteit</h3>
-                <ul>
-                    <li>Opleidingsbadges</li>
-                    <li>Reviews/ratings</li>
-                    <li>Preferred provider</li>
-                    <li>Audit / compliance</li>
-                </ul>
-            </div>
+          <article class="box">
+            <h3>1) Wie ben ik?</h3>
+            <ul>
+              <li>Rol / beroep</li>
+              <li>Erkenning / RIZIV-nummer</li>
+              <li>Verzekeringen</li>
+              <li>Ervaring (jaren)</li>
+            </ul>
+          </article>
+
+          <article class="box">
+            <h3>2) Waar &amp; wanneer?</h3>
+            <ul>
+              <li>Regio / postcodes</li>
+              <li>Beschikbaarheid</li>
+              <li>Nacht / weekend</li>
+              <li>Mobiliteit (km, auto/OV)</li>
+            </ul>
+          </article>
+
+          <article class="box">
+            <h3>3) Wat kan ik?</h3>
+            <ul>
+              <li>Specialiteit (bv. wondzorg)</li>
+              <li>Doelgroepen (geriatrie, pediatrie)</li>
+              <li>Handelingen / bevoegdheden</li>
+              <li>Acute inzetbaarheid</li>
+            </ul>
+          </article>
+
+          <article class="box">
+            <h3>4) Hoe werk ik?</h3>
+            <ul>
+              <li>Modaliteit (huis/praktijk/digitaal)</li>
+              <li>Tools &amp; EPD-vaardig</li>
+              <li>Rapportage-voorkeur</li>
+              <li>SLA bereidheid</li>
+            </ul>
+          </article>
+
+          <article class="box">
+            <h3>5) Mens &amp; context</h3>
+            <ul>
+              <li>Taalniveau</li>
+              <li>Culturele affiniteiten</li>
+              <li>Communicatiestijl</li>
+              <li>Continuïteitsvoorkeur</li>
+            </ul>
+          </article>
+
+          <article class="box">
+            <h3>6) Kwaliteit</h3>
+            <ul>
+              <li>Opleidingsbadges</li>
+              <li>Reviews/ratings</li>
+              <li>Preferred provider</li>
+              <li>Audit / compliance</li>
+            </ul>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Zorgstart handoff -->
-    <section>
-        <h2>Zorgstart → <a href="matching.html">Flexizorg</a> v2 (de "handoff")</h2>
+    <!-- ZORGSTART HANDOFF -->
+    <section class="panel reveal" aria-labelledby="handoff-title">
+      <header class="head">
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span id="handoff-title">Zorgstart → <a href="matching.html">Flexizorg</a> v2 (de "handoff")</span>
+        </div>
+      </header>
+
+      <div class="content">
         <p class="sub">Bed → thuis = uitvoering</p>
         <div class="grid-5">
-            <div class="box">
-                <h3>1. Ontslagbrief</h3>
-                <p>OnePatient scrapt info uit ontslagdocument</p>
-            </div>
-            <div class="box">
-                <h3>2. Takenlijst</h3>
-                <p>Zorgstart v1 zet tekst om naar taken + owners + deadlines</p>
-            </div>
-            <div class="box">
-                <h3>3. Matchvraag</h3>
-                <p>Taak vraagt een uitvoerder (bv. wondzorg binnen 24u)</p>
-            </div>
-            <div class="box">
-                <h3>4. Matchscore</h3>
-                <p>v2 selecteert best-fit profielen op labels + SLA</p>
-            </div>
-            <div class="box">
-                <h3>5. Opstart</h3>
-                <p>Bevestiging, opvolging, no-show detectie, audit trail</p>
-            </div>
+          <article class="box">
+            <h3>1. Ontslagbrief</h3>
+            <p>OnePatient scrapt info uit ontslagdocument.</p>
+          </article>
+
+          <article class="box">
+            <h3>2. Takenlijst</h3>
+            <p>Zorgstart v1 zet tekst om naar taken + owners + deadlines.</p>
+          </article>
+
+          <article class="box">
+            <h3>3. Matchvraag</h3>
+            <p>Taak vraagt een uitvoerder (bv. wondzorg binnen 24u).</p>
+          </article>
+
+          <article class="box">
+            <h3>4. Matchscore</h3>
+            <p>v2 selecteert best-fit profielen op labels + SLA.</p>
+          </article>
+
+          <article class="box">
+            <h3>5. Opstart</h3>
+            <p>Bevestiging, opvolging, no-show detectie, audit trail.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Roadmap -->
-    <section>
-        <h2>Roadmap naar v2 (zonder "feature-explosie")</h2>
+    <!-- ROADMAP -->
+    <section class="panel reveal" aria-labelledby="roadmap-title">
+      <header class="head">
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span id="roadmap-title">Roadmap naar v2 (zonder "feature-explosie")</span>
+        </div>
+      </header>
+
+      <div class="content">
         <p class="sub">Bouw in lagen, bewijs waarde, schaal dan.</p>
         <div class="grid-3">
-            <div class="box">
-                <h3>v2.1 – Profielen op de kaart</h3>
-                <p>Rijke labels + zoeken/filteren. Handmatige shortlist. Basis verificatie.</p>
-                <p><b>Resultaat:</b> capaciteit zichtbaar + beter matchgesprek.</p>
-            </div>
-            <div class="box">
-                <h3>v2.2 – Matching engine</h3>
-                <p>Hard/soft constraints, auto-notify, "waarom deze match?". Eerste SLA's.</p>
-                <p><b>Resultaat:</b> snelheid + kwaliteit + transparantie.</p>
-            </div>
-            <div class="box">
-                <h3>v2.3 – Zorgstart-integratie</h3>
-                <p>Taak → match → bevestiging → opvolging. Monitoring responstijd/no-shows.</p>
-                <p><b>Resultaat:</b> bed-to-home uitvoering wordt end-to-end.</p>
-            </div>
+          <article class="box">
+            <h3>v2.1 – Profielen op de kaart</h3>
+            <p>Rijke labels + zoeken/filteren. Handmatige shortlist. Basis verificatie.</p>
+            <p><b>Resultaat:</b> capaciteit zichtbaar + beter matchgesprek.</p>
+          </article>
+
+          <article class="box">
+            <h3>v2.2 – Matching engine</h3>
+            <p>Hard/soft constraints, auto-notify, "waarom deze match?". Eerste SLA's.</p>
+            <p><b>Resultaat:</b> snelheid + kwaliteit + transparantie.</p>
+          </article>
+
+          <article class="box">
+            <h3>v2.3 – Zorgstart-integratie</h3>
+            <p>Taak → match → bevestiging → opvolging. Monitoring responstijd/no-shows.</p>
+            <p><b>Resultaat:</b> bed-to-home uitvoering wordt end-to-end.</p>
+          </article>
         </div>
+      </div>
     </section>
 
-    <!-- Strategic value -->
-    <section class="panel">
-        <h2>Wat dit strategisch doet</h2>
+    <!-- STRATEGISCHE WAARDE -->
+    <section class="panel reveal" aria-labelledby="strategic-title">
+      <header class="head">
+        <div class="title">
+          <span class="swatch brand"></span>
+          <span id="strategic-title">Wat dit strategisch doet</span>
+        </div>
+      </header>
+
+      <div class="content">
         <p>
-            <a href="matching.html">Flexizorg</a> v2 wordt de "capacity intelligence layer" bovenop je netwerk: wie kan wat, waar, wanneer en in welke context — met auditbare matching. Dit maakt latere zorgbundels/casemanagement veel eenvoudiger én verdedigbaar.
+          <a href="matching.html">Flexizorg</a> v2 wordt de "capacity intelligence layer" bovenop je netwerk:
+          wie kan wat, waar, wanneer en in welke context — met auditbare matching. Dit maakt latere
+          zorgbundels/casemanagement veel eenvoudiger én verdedigbaar.
         </p>
         <div class="hero-actions">
-            <a href="#top" class="secondary">↑ Terug naar boven</a>
-            <a href="index.html" class="secondary">← Terug naar Home</a>
+          <a href="#top" class="secondary">↑ Terug naar boven</a>
+          <a href="index.html" class="secondary">← Terug naar Home</a>
         </div>
+      </div>
     </section>
 
-</div>
+    <footer class="footer">
+      <div class="small"><a href="#top">↑ Terug naar boven</a></div>
+      <div class="small"><a href="index.html">← Terug naar Home</a></div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Markeer huidige nav-item (zelfde patroon als wireframes)
+    const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    document.querySelectorAll('.navlink').forEach(link => {
+      const href = (link.getAttribute('href') || '').toLowerCase();
+      if (href === current) {
+        link.classList.add('active');
+      }
+    });
+
+    // Optioneel: reveal class op alle sections
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('reveal');
+    });
+  </script>
 
 </body>
 </html>
