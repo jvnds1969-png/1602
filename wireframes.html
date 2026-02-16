@@ -29,6 +29,7 @@
         <a class="navlink" href="pitch.html">Pitch</a>
         <a class="navlink" href="uitrol.html">Uitrol</a>
         <a class="navlink" href="verdienmodel.html">Verdienmodel</a>
+                <a class="navlink" href="matching.html">Matching</a>
       </nav>
     </div>
   </header>
@@ -469,10 +470,17 @@
       }
     });
 
-    // Optioneel: reveal class
-    document.querySelectorAll('section').forEach(section => {
-      section.classList.add('reveal');
-    });
+    // Reveal animatie met IntersectionObserver
+    const els = Array.from(document.querySelectorAll('.reveal'));
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold: .12});
+    els.forEach(el => io.observe(el));
   </script>
 
 </body>
